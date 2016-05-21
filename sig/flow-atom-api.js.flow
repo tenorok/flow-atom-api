@@ -70,7 +70,7 @@ declare class AtomEnvironment {
 
   // managing the atom window -- extended methods
   pickFolder(callback: (paths: ?(string[])) => void): void;
-  getCurrentWindow(): any;
+  getCurrentWindow(): Window;
   center(): void;
   focus(): void;
   show(): void;
@@ -236,6 +236,9 @@ declare class TooltipManager {
 }
 
 declare class ViewRegistry {
+}
+
+declare class Window {
 }
 
 declare class Workspace {

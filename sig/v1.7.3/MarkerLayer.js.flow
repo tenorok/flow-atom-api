@@ -1,5 +1,4 @@
 // -*- mode: javascript; -*- // @flow
-/* eslint-disable no-undef */
 
 import type { Point } from "./Point.js.flow";
 import type { TextEditorMarker } from "./TextEditorMarker.js.flow";

@@ -1,5 +1,4 @@
 // -*- mode: javascript; -*- // @flow
-/* eslint-disable no-undef, no-unused-vars */
 
 import type { Clipboard } from "./Clipboard.js.flow";
 import type { CommandRegistry } from "./CommandRegistry.js.flow";

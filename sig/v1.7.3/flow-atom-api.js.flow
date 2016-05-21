@@ -232,6 +232,43 @@ declare class Decoration {
   setProperties(newProperties: Object): void;
 }
 
+declare type DecorationType =
+  | "block"
+  | "gutter"
+  | "highlight"
+  | "line-number"
+  | "line"
+  | "overlay"
+
+declare type DecorationParams =
+  | { type: "block"
+    , class: string
+    , item: HTMLElement | Object
+    , position: "before" | "after"
+    }
+  | { type: "gutter"
+    , class: string
+    , item: HTMLElement | Object
+    , onlyEmpty?: boolean
+    , onlyNonEmpty?: boolean
+    }
+  | { type: "highlight"
+    , class: string
+    , item: HTMLElement | Object
+    }
+  | { type: "line" | "line-number"
+    , class: string
+    , item: HTMLElement | Object
+    , onlyHead?: boolean
+    , onlyEmpty?: boolean
+    , onlyNonEmpty?: boolean
+    }
+  | { type: "overlay"
+    , class: string
+    , item: HTMLElement | Object
+    , position?: "head" | "tail"
+    }
+
 declare class DeserializerManager {
 }
 
@@ -280,6 +317,12 @@ declare class Gutter {
 
 declare class KeymapManager {
 }
+
+declare type LayerDecorationType =
+  | "block"
+  | "highlight"
+  | "line-number"
+  | "line"
 
 declare class LayerDecoration {
 }

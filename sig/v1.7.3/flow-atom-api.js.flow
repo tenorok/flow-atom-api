@@ -25,7 +25,7 @@ declare class AtomEnvironment {
   onDidThrowError(
     callback:
       (event: {
-        originalError: object,
+        originalError: Object,
         message: string,
         url: string,
         line: number,
@@ -36,7 +36,7 @@ declare class AtomEnvironment {
   onWillThrowError(
     callback:
       (event: {
-        originalError: object,
+        originalError: Object,
         message: string,
         url: string,
         line: number,
@@ -47,7 +47,7 @@ declare class AtomEnvironment {
   ): Disposable;
 
   // atom details
-  getLoadSettings(): object;
+  getLoadSettings(): Object;
   getVersion(): string;
   getWindowLoadTime(): number;
   inDevMode(): boolean;
@@ -167,7 +167,7 @@ declare class Config {
       value: any,
     }>;
   getSources(): string[];
-  getSchema(keyPath: string): ?object; // does this conform to some spec?
+  getSchema(keyPath: string): ?Object; // does this conform to some spec?
   getUserConfigPath(): string;
   observe(
     keyPath: string,
@@ -217,8 +217,8 @@ declare class Decoration {
   onDidChangeProperties(
     callback:
       (event: {
-        oldProperties: object,
-        newProperties: object,
+        oldProperties: Object,
+        newProperties: Object,
       })
       => void
   ): Disposable;
@@ -228,8 +228,8 @@ declare class Decoration {
   // FIXME: docs unclear on return type
   getMarker(): TextEditorMarker;
   // FIXME: docs unclear on return type
-  getProperties(): object;
-  setProperties(newProperties: object): void;
+  getProperties(): Object;
+  setProperties(newProperties: Object): void;
 }
 
 declare class DeserializerManager {
@@ -239,7 +239,7 @@ declare class Directory {
 }
 
 declare class Disposable {
-  static isDisposable(object: object): boolean;
+  static isDisposable(object: Object): boolean;
   constructor(dispoalAction: () => void): this;
   dispose(): void;
 }

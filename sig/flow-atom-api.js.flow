@@ -100,7 +100,18 @@ declare class BufferedProcess {
 declare class Clipboard {
 }
 
+type ColorValue =
+  | string
+  | { red: number
+    , green: number
+    , blue: number
+    , alpha: number
+    }
+
 declare class Color {
+  static parse(value: ColorValue): Color;
+  toHexString(): string;
+  toRGBAString(): string;
 }
 
 declare class CommandRegistry {

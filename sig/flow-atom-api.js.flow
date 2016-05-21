@@ -1,0 +1,134 @@
+declare class AtomEnvironment {
+}
+
+declare class BufferedNodeProcess {
+}
+
+declare class BufferedProcess {
+}
+
+declare class Clipboard {
+}
+
+declare class Color {
+}
+
+declare class CommandRegistry {
+}
+
+declare class CompositeDisposable {
+}
+
+declare class Config {
+}
+
+declare class ContextMenuManager {
+}
+
+declare class Cursor {
+}
+
+declare class Decoration {
+}
+
+declare class DeserializerManager {
+}
+
+declare class Directory {
+}
+
+declare class Disposable {
+}
+
+declare class Emitter {
+}
+
+declare class File {
+}
+
+declare class GitRepository {
+}
+
+declare class Grammar {
+}
+
+declare class GrammarRegistry {
+}
+
+declare class Gutter {
+}
+
+declare class KeymapManager {
+}
+
+declare class LayerDecoration {
+}
+
+declare class MarkerLayer {
+}
+
+declare class MenuManager {
+}
+
+declare class Notification {
+}
+
+declare class NotificationManager {
+}
+
+declare class Package {
+}
+
+declare class PackageManager {
+}
+
+declare class Pane {
+}
+
+declare class Panel {
+}
+
+declare class Point {
+}
+
+declare class Project {
+}
+
+declare class Range {
+}
+
+declare class ScopeDescriptor {
+}
+
+declare class Selector {
+}
+
+declare class StyleManager {
+}
+
+declare class Task {
+}
+
+declare class TextBuffer {
+}
+
+declare class TextEditor {
+}
+
+declare class TextEditorMarker {
+}
+
+declare class TextEditorMarkerLayer {
+}
+
+declare class ThemeManager {
+}
+
+declare class TooltipManager {
+}
+
+declare class ViewRegistry {
+}
+
+declare class Workspace {
+}

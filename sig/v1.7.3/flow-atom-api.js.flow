@@ -113,7 +113,7 @@ declare class Color {
       blue: number,
       alpha: number,
     }
-  ): Color;
+  ): this;
   toHexString(): string;
   toRGBAString(): string;
 }

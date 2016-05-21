@@ -325,6 +325,18 @@ declare type LayerDecorationType =
   | "line"
 
 declare class LayerDecoration {
+  destroy(): void;
+  isDestroyed(): boolean;
+  getProperties(): Object;
+  setProperties(
+    newProperties:
+      DecorationParams
+      & { type: LayerDecorationType }
+  ): void;
+  setPropertiesForMarker(
+    marker: TextEditorMarker,
+    properties: Object
+  ): void;
 }
 
 declare class MarkerLayer {

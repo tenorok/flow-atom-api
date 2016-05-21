@@ -1,4 +1,21 @@
 declare class AtomEnvironment {
+  clipboard: Clipboard;
+  commands: CommandRegistry;
+  config: Config;
+  contextMenu: ContextMenuManager;
+  deserializers: DeserializerManager;
+  grammars: GrammarRegistry;
+  keymaps: KeymapManager;
+  menu: MenuManager;
+  notifications: NotificationManager;
+  packages: PackageManager;
+  project: Project;
+  styles: StyleManager;
+  textEditors: TextEditorRegistry;
+  themes: ThemeManager;
+  tooltips: TooltipManager;
+  views: ViewRegistry;
+  workspace: Workspace;
 }
 
 declare class BufferedNodeProcess {

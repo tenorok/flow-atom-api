@@ -1,18 +1,3 @@
-type AtomEnvironmentErrorEvent =
-  | { originalError: object
-    , message: string
-    , url: string
-    , line: number
-    , column: number
-    }
-
-type AtomEnvironmentOpenParams =
-  | { pathsToOpen: string[]
-    , newWindow: boolean
-    , devMode: boolean
-    , safeMode: boolean
-    }
-
 declare class AtomEnvironment {
   // properties
   clipboard: Clipboard;
@@ -36,13 +21,26 @@ declare class AtomEnvironment {
   // event subscription
   onDidBeep(callback: () => void): Disposable;
   onDidThrowError(
-    callback : (event: AtomEnvironmentErrorEvent) => void
+    callback:
+      (event: {
+        originalError: object,
+        message: string,
+        url: string,
+        line: number,
+        column: number,
+      })
+      => void
   ): Disposable;
   onWillThrowError(
     callback:
-      (event:
-        AtomEnvironmentErrorEvent
-        & { preventDefault(): void })
+      (event: {
+        originalError: object,
+        message: string,
+        url: string,
+        line: number,
+        column: number,
+        preventDefault(): void,
+      })
       => void
   ): Disposable;
 
@@ -59,7 +57,14 @@ declare class AtomEnvironment {
   close(): void;
   getPosition(): { x: number, y: number };
   getSize(): { width: number, height: number };
-  open(params: AtomEnvironmentOpenParams): void;
+  open(
+    params: {
+      pathsToOpen: string[],
+      newWindow: boolean,
+      devMode: boolean,
+      safeMode: boolean,
+    }
+  ): void;
   setPosition(x: number, y: number): void;
   setSize(width: number, height: number): void;
 
@@ -82,7 +87,7 @@ declare class AtomEnvironment {
     options: {
       message: string,
       detailedMessage?: string,
-      buttons?: string[] | { [buttonName: string]: (() => void) },
+      buttons?: string[] | { [buttonName: string]: () => void },
     }): ?number;
 
   // managing the dev tools
@@ -100,16 +105,15 @@ declare class BufferedProcess {
 declare class Clipboard {
 }
 
-type ColorValue =
-  | string
-  | { red: number
-    , green: number
-    , blue: number
-    , alpha: number
-    }
-
 declare class Color {
-  static parse(value: ColorValue): Color;
+  static parse(
+    value: {
+      red: number,
+      green: number,
+      blue: number,
+      alpha: number,
+    }
+  ): Color;
   toHexString(): string;
   toRGBAString(): string;
 }

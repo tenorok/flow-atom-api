@@ -121,6 +121,9 @@ declare class TextEditorMarker {
 declare class TextEditorMarkerLayer {
 }
 
+declare class TextEditorRegistry {
+}
+
 declare class ThemeManager {
 }
 

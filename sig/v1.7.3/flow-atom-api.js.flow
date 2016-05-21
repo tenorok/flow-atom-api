@@ -243,6 +243,22 @@ declare class Disposable {
 }
 
 declare class Emitter {
+  constructor(): this;
+  clear(): void;
+  dispose(): void;
+  on(
+    eventName: string,
+    handler: () => void,
+  ): Disposable;
+  preempt(
+    eventName: string,
+    handler: () => void,
+  ): Disposable;
+  // FIXME: docs unclear on argument types
+  emit(
+    eventName: string,
+    value: any,
+  ): void;
 }
 
 declare class File {

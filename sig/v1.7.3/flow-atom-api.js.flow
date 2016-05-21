@@ -137,6 +137,12 @@ declare class CommandRegistry {
 }
 
 declare class CompositeDisposable {
+  // FIXME: docs missing args
+  constructor(...disposables: Disposable[]): this;
+  add(...disposables: Disposable[]): void;
+  clear(): void;
+  dispose(): void;
+  remove(disposable: Disposable): void;
 }
 
 declare class Config {

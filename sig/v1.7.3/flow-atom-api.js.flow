@@ -146,6 +146,62 @@ declare class CompositeDisposable {
 }
 
 declare class Config {
+  get(
+    keyPath: string,
+    options?: {
+      sources?: string[],
+      excludeSources?: string[],
+      scope?: ScopeDescriptor,
+    },
+  ): any;
+  getAll(
+    keyPath: string,
+    options: {
+      sources?: string[],
+      excludeSources?: string[],
+      scope?: ScopeDescriptor,
+    }): Array<{
+      scopeDescriptor: ScopeDescriptor,
+      value: any,
+    }>;
+  getSources(): string[];
+  getSchema(keyPath: string): ?object; // does this conform to some spec?
+  getUserConfigPath(): string;
+  observe(
+    keyPath: string,
+    options?: {
+      scope?: ScopeDescriptor,
+    },
+    callback: (value: any) => void,
+  ): Disposable;
+  onDidChange(
+    keyPath?: string,
+    options?: {
+      scope?: ScopeDescriptor,
+    },
+    callback:
+      (event: {
+        newValue: any,
+        oldValue: any,
+      })
+      => void,
+  ): Disposable;
+  set(
+    keyPath: string,
+    value: any,
+    options?: {
+      scopeSelector?: string,
+      source?: string,
+    },
+  ): boolean;
+  unset(
+    keyPath: string,
+    options?: {
+      scopeSelector?: string,
+      source?: string,
+    },
+  ): void;
+  transact(callback: () => void): void;
 }
 
 declare class ContextMenuManager {

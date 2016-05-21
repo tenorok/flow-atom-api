@@ -1,0 +1,68 @@
+// -*- mode: javascript -*-
+// @flow
+/* eslint-disable no-undef */
+
+declare type DecorationType =
+  | "block"
+  | "gutter"
+  | "highlight"
+  | "line-number"
+  | "line"
+  | "overlay"
+
+declare type DecorationProperties =
+  | { type: "block"
+    , class: string
+    , item: HTMLElement | Object
+    , position: "before" | "after"
+    }
+  | { type: "gutter"
+    , class: string
+    , item: HTMLElement | Object
+    , onlyEmpty?: boolean
+    , onlyNonEmpty?: boolean
+    }
+  | { type: "highlight"
+    , class: string
+    , item: HTMLElement | Object
+    }
+  | { type: "line" | "line-number"
+    , class: string
+    , item: HTMLElement | Object
+    , onlyHead?: boolean
+    , onlyEmpty?: boolean
+    , onlyNonEmpty?: boolean
+    }
+  | { type: "overlay"
+    , class: string
+    , item: HTMLElement | Object
+    , position?: "head" | "tail"
+    }
+
+declare class Decoration {
+  destroy(): void;
+
+  // FIXME: docs unclear on arg type
+  onDidChangeProperties(
+    callback:
+      (event: {
+        oldProperties: DecorationProperties,
+        newProperties: DecorationProperties,
+      })
+      => void
+  ): Disposable;
+
+  onDidDestroy(callback: () => void): Disposable;
+
+  // FIXME: docs unclear on return type
+  getId(): number;
+
+  // FIXME: docs unclear on return type
+  getMarker(): TextEditorMarker;
+
+  // FIXME: docs unclear on return type
+  getProperties(): DecorationProperties;
+
+  // FIXME: dcos unclear on arg type
+  setProperties(newProperties: DecorationProperties): void;
+}

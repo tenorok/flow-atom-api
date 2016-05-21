@@ -1,0 +1,18 @@
+// -*- mode: javascript -*-
+// @flow
+/* eslint-disable no-undef */
+
+declare class Color {
+  static parse(
+    value: {
+      red: number,
+      green: number,
+      blue: number,
+      alpha: number,
+    }
+  ): this;
+
+  toHexString(): string;
+
+  toRGBAString(): string;
+}

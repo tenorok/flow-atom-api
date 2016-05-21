@@ -1,0 +1,27 @@
+// -*- mode: javascript -*-
+// @flow
+/* eslint-disable no-undef */
+
+declare class Emitter {
+  constructor(): this;
+
+  clear(): void;
+
+  dispose(): void;
+
+  on(
+    eventName: string,
+    handler: () => void,
+  ): Disposable;
+
+  preempt(
+    eventName: string,
+    handler: () => void,
+  ): Disposable;
+  // FIXME: docs unclear on arg types
+
+  emit(
+    eventName: string,
+    value: any,
+  ): void;
+}

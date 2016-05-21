@@ -1,0 +1,5 @@
+// -*- mode: javascript -*-
+// @flow
+/* eslint-disable no-undef */
+
+declare class KeymapManager {}

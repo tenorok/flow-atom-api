@@ -1,0 +1,25 @@
+// -*- mode: javascript -*-
+// @flow
+/* eslint-disable no-undef */
+
+declare class CommandRegistry {
+  add(
+    target: string,
+    commandNameOrMap:
+      string
+      | { [commandName: string]: (event: Event) => void },
+    callback?: (event: Event) => void,
+  ): ?Disposable;
+
+  dispatch(target: any, commandName: string): void;
+
+  findCommands(params: { target: any }):
+    Array<{
+      name: string,
+      displayName: string,
+    }>;
+
+  onDidDispatch(callback: (event: Event) => void): void;
+
+  onWillDispatch(callback: (event: Event) => void): void;
+}

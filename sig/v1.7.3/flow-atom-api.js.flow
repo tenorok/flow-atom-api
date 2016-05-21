@@ -240,7 +240,7 @@ declare type DecorationType =
   | "line"
   | "overlay"
 
-declare type DecorationParams =
+declare type DecorationProperties =
   | { type: "block"
     , class: string
     , item: HTMLElement | Object
@@ -324,15 +324,15 @@ declare type LayerDecorationType =
   | "line-number"
   | "line"
 
+declare type LayerDecorationProperties =
+  | DecorationProperties & { type: LayerDecorationType }
+
 declare class LayerDecoration {
   destroy(): void;
   isDestroyed(): boolean;
-  getProperties(): Object;
-  setProperties(
-    newProperties:
-      DecorationParams
-      & { type: LayerDecorationType }
-  ): void;
+  // FIXME: docs unclear on return type
+  getProperties(): LayerDecorationProperties;
+  setProperties(newProperties: LayerDecorationProperties): void;
   setPropertiesForMarker(
     marker: TextEditorMarker,
     properties: Object

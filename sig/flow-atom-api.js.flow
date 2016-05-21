@@ -1,4 +1,20 @@
+type AtomEnvironmentErrorEvent =
+  | { originalError: object
+    , message: string
+    , url: string
+    , line: number
+    , column: number
+    }
+
+type AtomEnvironmentOpenParams =
+  | { pathsToOpen: string[]
+    , newWindow: boolean
+    , devMode: boolean
+    , safeMode: boolean
+    }
+
 declare class AtomEnvironment {
+  // properties
   clipboard: Clipboard;
   commands: CommandRegistry;
   config: Config;
@@ -16,6 +32,63 @@ declare class AtomEnvironment {
   tooltips: TooltipManager;
   views: ViewRegistry;
   workspace: Workspace;
+
+  // event subscription
+  onDidBeep(callback: () => void): Disposable;
+  onDidThrowError(
+    callback : (event: AtomEnvironmentErrorEvent) => void
+  ): Disposable;
+  onWillThrowError(
+    callback:
+      (event:
+        AtomEnvironmentErrorEvent
+        & { preventDefault(): void })
+      => void
+  ): Disposable;
+
+  // atom details
+  getLoadSettings(): object;
+  getVersion(): string;
+  getWindowLoadTime(): number;
+  inDevMode(): boolean;
+  inSafeMode(): boolean;
+  inSpecMode(): boolean;
+  isReleasedVersion(): boolean;
+
+  // managing the atom window
+  close(): void;
+  getPosition(): { x: number, y: number };
+  getSize(): { width: number, height: number };
+  open(params: AtomEnvironmentOpenParams): void;
+  setPosition(x: number, y: number): void;
+  setSize(width: number, height: number): void;
+
+  // managing the atom window -- extended methods
+  pickFolder(callback: (paths: ?(string[])) => void): void;
+  getCurrentWindow(): any;
+  center(): void;
+  focus(): void;
+  show(): void;
+  hide(): void;
+  reload(): void;
+  isMaximized(): boolean;
+  isFullScreen(): boolean;
+  setFullScreen(): void;
+  toggleFullScreen(): void;
+
+  // messaging the user
+  beep(): void;
+  confirm(
+    options: {
+      message: string,
+      detailedMessage?: string,
+      buttons?: string[] | { [buttonName: string]: (() => void) },
+    }): ?number;
+
+  // managing the dev tools
+  executeJavaScriptInDevTools(code: string): void;
+  openDevTools(): Promise<void>;
+  toggleDevTools(): Promise<void>;
 }
 
 declare class BufferedNodeProcess {

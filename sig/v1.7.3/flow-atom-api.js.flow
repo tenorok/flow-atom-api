@@ -237,6 +237,9 @@ declare class Directory {
 }
 
 declare class Disposable {
+  static isDisposable(object: object): boolean;
+  constructor(dispoalAction: () => void): this;
+  dispose(): void;
 }
 
 declare class Emitter {

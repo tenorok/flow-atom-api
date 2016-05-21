@@ -1,6 +1,8 @@
-// -*- mode: javascript -*-
-// @flow
+// -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
+
+import type { DecorationProps } from "./Decoration.js.flow";
+import type { TextEditorMarker } from "./TextEditorMarker.js.flow";
 
 declare type LayerDecorationType =
   | "block"
@@ -8,8 +10,8 @@ declare type LayerDecorationType =
   | "line-number"
   | "line"
 
-declare type LayerDecorationProperties =
-  | DecorationProperties & { type: LayerDecorationType }
+declare type LayerDecorationProps =
+  | DecorationProps & { type: LayerDecorationType }
 
 declare class LayerDecoration {
   destroy(): void;
@@ -17,9 +19,9 @@ declare class LayerDecoration {
   isDestroyed(): boolean;
 
   // FIXME: docs unclear on return type
-  getProperties(): LayerDecorationProperties;
+  getProperties(): LayerDecorationProps;
 
-  setProperties(newProperties: LayerDecorationProperties): void;
+  setProperties(newProperties: LayerDecorationProps): void;
 
   setPropertiesForMarker(
     marker: TextEditorMarker,

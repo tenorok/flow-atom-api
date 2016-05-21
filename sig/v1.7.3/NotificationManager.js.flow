@@ -1,6 +1,6 @@
-// -*- mode: javascript -*-
-// @flow
+// -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
 declare class NotificationManager {}
 
+export type { NotificationManager };

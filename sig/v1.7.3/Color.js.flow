@@ -1,5 +1,4 @@
-// -*- mode: javascript -*-
-// @flow
+// -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
 declare class Color {
@@ -16,3 +15,5 @@ declare class Color {
 
   toRGBAString(): string;
 }
+
+export type { Color };

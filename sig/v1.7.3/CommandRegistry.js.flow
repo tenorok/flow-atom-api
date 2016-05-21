@@ -1,6 +1,7 @@
-// -*- mode: javascript -*-
-// @flow
+// -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
+
+import type { Disposable } from "./Disposable.js.flow";
 
 declare class CommandRegistry {
   add(
@@ -13,7 +14,7 @@ declare class CommandRegistry {
 
   dispatch(target: any, commandName: string): void;
 
-  findCommands(params: { target: any }):
+  findCommands(props: { target: any }):
     Array<{
       name: string,
       displayName: string,
@@ -23,3 +24,5 @@ declare class CommandRegistry {
 
   onWillDispatch(callback: (event: Event) => void): void;
 }
+
+export type { CommandRegistry };

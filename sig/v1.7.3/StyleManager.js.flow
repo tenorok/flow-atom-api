@@ -1,6 +1,6 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Clipboard {}
+declare class StyleManager {}
 
-export type { Clipboard };
+export type { StyleManager };

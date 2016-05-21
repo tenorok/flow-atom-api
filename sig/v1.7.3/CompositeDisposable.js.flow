@@ -1,6 +1,7 @@
-// -*- mode: javascript -*-
-// @flow
+// -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
+
+import type { Disposable } from "./Disposable.js.flow";
 
 declare class CompositeDisposable {
   // FIXME: docs missing args

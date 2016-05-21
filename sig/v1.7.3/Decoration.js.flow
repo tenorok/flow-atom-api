@@ -1,6 +1,8 @@
-// -*- mode: javascript -*-
-// @flow
+// -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
+
+import type { Disposable } from "./Disposable.js.flow";
+import type { TextEditorMarker } from "./TextEditorMarker.js.flow";
 
 declare type DecorationType =
   | "block"
@@ -10,7 +12,7 @@ declare type DecorationType =
   | "line"
   | "overlay"
 
-declare type DecorationProperties =
+declare type DecorationProps =
   | { type: "block"
     , class: string
     , item: HTMLElement | Object
@@ -46,8 +48,8 @@ declare class Decoration {
   onDidChangeProperties(
     callback:
       (event: {
-        oldProperties: DecorationProperties,
-        newProperties: DecorationProperties,
+        oldProperties: DecorationProps,
+        newProperties: DecorationProps,
       })
       => void
   ): Disposable;
@@ -61,8 +63,14 @@ declare class Decoration {
   getMarker(): TextEditorMarker;
 
   // FIXME: docs unclear on return type
-  getProperties(): DecorationProperties;
+  getProperties(): DecorationProps;
 
   // FIXME: dcos unclear on arg type
-  setProperties(newProperties: DecorationProperties): void;
+  setProperties(newProperties: DecorationProps): void;
 }
+
+export type {
+  Decoration,
+  DecorationType,
+  DecorationProps,
+};

@@ -4,8 +4,11 @@
     "stage-0"
   ],
   "plugins": [
+    "syntax-async-functions",
     "syntax-flow",
+    "syntax-trailing-function-commas",
     "transform-class-properties",
-    "transform-flow-comments"
+    "transform-flow-comments",
+    "transform-regenerator"
   ]
 }

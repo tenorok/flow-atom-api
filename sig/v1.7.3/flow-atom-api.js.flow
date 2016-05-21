@@ -211,6 +211,23 @@ declare class Cursor {
 }
 
 declare class Decoration {
+  destroy(): void;
+  onDidChangeProperties(
+    callback:
+      (event: {
+        oldProperties: object,
+        newProperties: object,
+      })
+      => void
+  ): Disposable;
+  onDidDestroy(callback: () => void): Disposable;
+  // FIXME: docs unclear on return type
+  getId(): number;
+  // FIXME: docs unclear on return type
+  getMarker(): TextEditorMarker;
+  // FIXME: docs unclear on return type
+  getProperties(): object;
+  setProperties(newProperties: object): void;
 }
 
 declare class DeserializerManager {

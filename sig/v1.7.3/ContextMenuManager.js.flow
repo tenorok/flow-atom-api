@@ -1,11 +1,11 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare type Item =
+declare type ContextMenuItem =
   | { label?: string
     , command?: string
     , enabled?: boolean
-    , submenu?: Item[]
+    , submenu?: ContextMenuItem[]
     , visible?: boolean
     , created(event: Event): void
     , shouldDisplay(event: Event): void
@@ -13,5 +13,5 @@ declare type Item =
   | { type: "separator" }
 
 declare class ContextMenuManager {
-  add(itemsBySelector: { [cssSelectors: string]: Item[] }): Disposable;
+  add(itemsBySelector: { [cssSelectors: string]: ContextMenuItem[] }): Disposable;
 }

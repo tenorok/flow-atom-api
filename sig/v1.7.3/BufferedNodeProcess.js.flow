@@ -1,5 +1,16 @@
 // -*- mode: javascript; -*- // @flow
 
-declare class BufferedNodeProcess {}
+declare class BufferedNodeProcess {
+  constructor(
+    options: {
+      command: string,
+      args?: string[],
+      options?: Object,
+      stdout?: (data: string) => void,
+      stderr?: (data: string) => void,
+      exit?: (code: number) => void,
+    }
+  ): void;
+}
 
 export type { BufferedNodeProcess };

@@ -1,5 +1,20 @@
 // -*- mode: javascript; -*- // @flow
 
-declare class DeserializerManager {}
+import type { AtomEnvironment } from "./AtomEnvironment.js.flow";
 
-export type { DeserializerManager };
+declare interface Deserializer {
+  name: string,
+  deserialize(state: Object, atom: AtomEnvironment): any,
+}
+
+declare class DeserializerManager {
+  // FIXME: docs unclear about types
+  add(...deserializers: Deserializer[]): void;
+
+  deserialize(state: Object): any;
+}
+
+export type {
+  Deserializer,
+  DeserializerManager,
+};

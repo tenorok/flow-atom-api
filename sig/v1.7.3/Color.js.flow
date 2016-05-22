@@ -1,14 +1,15 @@
 // -*- mode: javascript; -*- // @flow
 
-declare class Color {
-  static parse(
-    value: {
-      red: number,
-      green: number,
-      blue: number,
-      alpha: number,
+declare type ColorValue =
+  | string
+  | { red: number
+    , green: number
+    , blue: number
+    , alpha: number
     }
-  ): this;
+
+declare class Color {
+  static parse(value: ColorValue): ?this;
 
   toHexString(): string;
 

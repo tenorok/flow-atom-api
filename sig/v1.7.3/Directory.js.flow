@@ -1,5 +1,50 @@
 // -*- mode: javascript; -*- // @flow
 
-declare class Directory {}
+import type { Disposable } from "./Disposable.js.flow";
+import type { File } from "./File.js.flow";
+
+declare class Directory {
+  constructor(directoryPath: string, symlink?: boolean): this;
+
+  contains(pathToCheck: string): boolean;
+
+  create(mode?: number): Promise<boolean>;
+
+  exists(): Promise<boolean>;
+
+  existsSync(): boolean;
+
+  getBaseName(): string;
+
+  getEntries(
+    callback:
+      (error: ?Error, entries: Array<Directory | File>)
+      => number
+  ): void;
+
+  getEntriesSync(): Array<Directory | File>;
+
+  getFile(filename: string): File;
+
+  getParent(): Directory;
+
+  getPath(): string;
+
+  getRealPathSync(): string;
+
+  getSubdirectory(dirname: string): Directory;
+
+  isFile(): boolean;
+
+  isDirectory(): boolean;
+
+  isRoot(): boolean;
+
+  isSymbolicLink(): boolean;
+
+  onDidChange(callback: () => void): Disposable;
+
+  relativize(): string;
+}
 
 export type { Directory };

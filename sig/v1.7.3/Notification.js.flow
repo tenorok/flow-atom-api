@@ -1,4 +1,10 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Notification {}
+declare class Notification {
+  onDidDismiss(callback: any): any;
+  onDidDisplay(callback: any): any;
+  getType(): any;
+  getMessage(): any;
+  dismiss(): any;
+}

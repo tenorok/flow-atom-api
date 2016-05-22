@@ -1,4 +1,15 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Project {}
+declare class Project {
+  onDidChangePaths(callback: any): any;
+  getRepositories(): any;
+  repositoryForDirectory(directory: any): any;
+  getPaths(): any;
+  setPaths(projectPaths: any): any;
+  addPath(projectPath: any): any;
+  removePath(projectPath: any): any;
+  getDirectories(): any;
+  relativizePath(fullPath: any): any;
+  contains(pathToCheck: any): any;
+}

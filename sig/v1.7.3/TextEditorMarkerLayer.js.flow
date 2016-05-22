@@ -1,4 +1,17 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class TextEditorMarkerLayer {}
+declare class TextEditorMarkerLayer {
+  destroy(): any;
+  findMarkers(): any;
+  getMarker(): any;
+  getMarkerCount(): any;
+  getMarkers(): any;
+  markBufferPosition(): any;
+  markBufferRange(): any;
+  markScreenPosition(): any;
+  markScreenRange(): any;
+  onDidCreateMarker(callback: any): any;
+  onDidDestroy(): any;
+  onDidUpdate(callback: any): any;
+}

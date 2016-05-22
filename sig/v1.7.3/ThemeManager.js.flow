@@ -1,4 +1,11 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class ThemeManager {}
+declare class ThemeManager {
+  getActiveThemeNames(): any;
+  getActiveThemes(): any;
+  getEnabledThemeNames(): any;
+  getLoadedThemeNames(): any;
+  getLoadedThemes(): any;
+  onDidChangeActiveThemes(callback: any): any;
+}

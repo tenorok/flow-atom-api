@@ -1,4 +1,34 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class GitRepository {}
+declare class GitRepository {
+  onDidChangeStatus(callback: any): any;
+  onDidChangeStatuses(callback: any): any;
+  getType(): any;
+  getPath(): any;
+  getWorkingDirectory(): any;
+  isProjectAtRoot(): any;
+  relativize(): any;
+  hasBranch(): any;
+  getShortHead(path: any): any;
+  isSubmodule(path: any): any;
+  getAheadBehindCount(reference: any, path: any): any;
+  getCachedUpstreamAheadBehindCount(path: any): any;
+  getConfigValue(path: any): any;
+  getOriginURL(path?: any): any;
+  getUpstreamBranch(path: any): any;
+  getReferences(path: any): any;
+  getReferenceTarget(reference: any, path: any): any;
+  isPathModified(path: any): any;
+  isPathNew(path: any): any;
+  isPathIgnored(path: any): any;
+  getDirectoryStatus(path: any): any;
+  getPathStatus(): any;
+  getCachedPathStatus(path: any): any;
+  isStatusModified(status: any): any;
+  isStatusNew(status: any): any;
+  getDiffStats(path: any): any;
+  getLineDiffs(path: any, text: any): any;
+  checkoutHead(path: any): any;
+  checkoutReference(reference: any, create: any): any;
+}

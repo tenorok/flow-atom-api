@@ -1,4 +1,11 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class StyleManager {}
+declare class StyleManager {
+  getStyleElements(): any;
+  getUserStyleSheetPath(): any;
+  observeStyleElements(callback: any): any;
+  onDidAddStyleElement(callback: any): any;
+  onDidRemoveStyleElement(callback: any): any;
+  onDidUpdateStyleElement(callback: any): any;
+}

@@ -34,6 +34,12 @@ declare class MarkerLayer {
     range: Range,
     properties: MarkRangeProperties
   ): TextEditorMarker;
+
+  // FIXME: docs don't mention args
+  markPosition(
+    position: Point,
+
+  ): TextEditorMarker;
 }
 
 declare type MarkRangeProperties =

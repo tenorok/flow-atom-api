@@ -1,4 +1,73 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Workspace {}
+declare class Workspace {
+  observeTextEditors(
+    callback: (editor: TextEditor) => void
+  ): Disposable;
+
+  // FIXME: item type
+  observePaneItems(
+    callback: (item: any) => void
+  ): Disposable;
+
+  onDidChangeActivePaneItem(
+    callback: (item: any) => void
+  ): Disposable;
+
+  onDidStopChangingActivePaneItem(
+    callback: (item: any) => void
+  ): Disposable;
+
+  onDidStopChangingActivePaneItem(
+    callback: (item: any) => void
+  ): Disposable;
+
+  observeActivePane(
+    callback: (item: any) => void
+  ): Disposable;
+
+  activateNextPane(): any;
+  activatePreviousPane(): any;
+  addBottomPanel(options: any): any;
+  addFooterPanel(options: any): any;
+  addHeaderPanel(options: any): any;
+  addLeftPanel(options: any): any;
+  addModalPanel(options: any): any;
+  addOpener(opener: any): any;
+  addRightPanel(options: any): any;
+  addTopPanel(options: any): any;
+  buildTextEditor(): any;
+  getActivePane(): any;
+  getActivePaneItem(): any;
+  getActiveTextEditor(): any;
+  getBottomPanels(): any;
+  getFooterPanels(): any;
+  getHeaderPanels(): any;
+  getLeftPanels(): any;
+  getModalPanels(): any;
+  getPaneItems(): any;
+  getPanes(): any;
+  getRightPanels(): any;
+  getTextEditors(): any;
+  getTopPanels(): any;
+  isTextEditor(object: any): any;
+  observeActivePane(callback: any): any;
+  observePanes(callback: any): any;
+  onDidAddPane(callback: any): any;
+  onDidAddPaneItem(callback: any): any;
+  onDidAddTextEditor(callback: any): any;
+  onDidChangeActivePane(callback: any): any;
+  onDidDestroyPane(callback: any): any;
+  onDidDestroyPaneItem(callback: any): any;
+  onDidOpen(callback: any): any;
+  onWillDestroyPane(callback: any): any;
+  onWillDestroyPaneItem(callback: any): any;
+  open(uri?: any, options?: any): any;
+  paneForItem(item: any): any;
+  paneForURI(uri: any): any;
+  panelForItem(item: any): any;
+  reopenItem(): any;
+  replace(regex: any, replacementText: any, filePaths: any, iterator: any): any;
+  scan(regex: any, options?: any, iterator: any): any;
+}

@@ -1,4 +1,9 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Package {}
+declare class Package {
+  onDidDeactivate(callback: any): any;
+  isCompatible(): any;
+  rebuild(): any;
+  getBuildFailureOutput(): any;
+}

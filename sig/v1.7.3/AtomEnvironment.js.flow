@@ -38,9 +38,9 @@ declare class AtomEnvironment {
 
   executeJavaScriptInDevTools(code: string): void;
 
-  getCurrentWindow(): Window;
+  getCurrentWindow(): BrowserWindow;
 
-  getLoadSettings(): Object;
+  getLoadSettings(): { [keys: string]: any };
 
   getPosition(): { x: number, y: number };
 
@@ -78,15 +78,6 @@ declare class AtomEnvironment {
       => void
   ): Disposable;
 
-  open(
-    params: {
-      pathsToOpen: string[],
-      newWindow: boolean,
-      devMode: boolean,
-      safeMode: boolean,
-    }
-  ): void;
-
   onWillThrowError(
     callback:
       (event: {
@@ -99,6 +90,15 @@ declare class AtomEnvironment {
       })
       => void
   ): Disposable;
+
+  open(
+    params: {
+      pathsToOpen: string[],
+      newWindow: boolean,
+      devMode: boolean,
+      safeMode: boolean,
+    }
+  ): void;
 
   pickFolder(callback: (paths: ?(string[])) => void): void;
 

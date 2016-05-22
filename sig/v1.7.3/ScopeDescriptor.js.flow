@@ -1,4 +1,7 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class ScopeDescriptor {}
+declare class ScopeDescriptor {
+  constructor(object: any): this;
+  getScopesArray(): any;
+}

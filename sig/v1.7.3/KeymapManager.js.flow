@@ -1,4 +1,21 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class KeymapManager {}
+declare class KeymapManager {
+  static buildKeydownEvent(key: any, options?: any): any;
+  constructor(options: any): this;
+  clear(): any;
+  destroy(): any;
+  onDidMatchBinding(callback: any): any;
+  onDidPartiallyMatchBindings(callback: any): any;
+  onDidFailToMatchBinding(callback: any): any;
+  onDidFailToReadFile(callback: any): any;
+  add(source: any, bindings: any, priority: any): any;
+  getKeyBindings(): any;
+  findKeyBindings(params: any): any;
+  loadKeymap(path: any, options: any): any;
+  watchKeymap(path: any, options: any): any;
+  handleKeyboadEvent(event: any): any;
+  keystrokeForKeyboardEvent(event: any): any;
+  getPartialMatchTimeout(): any;
+}

@@ -1,4 +1,12 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class NotificationManager {}
+declare class NotificationManager {
+  onDidAddNotification(callback: any): any;
+  addSuccess(message: any, options?: any): any;
+  addInfo(message: any, options?: any): any;
+  addWarning(message: any, options?: any): any;
+  addError(message: any, options?: any): any;
+  addFatalError(message: any, options?: any): any;
+  getNotifications(): any;
+}

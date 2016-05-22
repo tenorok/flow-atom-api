@@ -1,4 +1,72 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Selection {}
+declare class Selection {
+  addSelectionAbove(): any;
+  addSelectionBelow(): any;
+  autoIndentSelectedRows(): any;
+  backspace(): any;
+  clear(options?: any): any;
+  compare(otherSelection: any): any;
+  copy(maintainClipboard: any, fullLine: any): any;
+  cut(maintainClipboard: any, fullLine: any): any;
+  cutToEndOfBufferLine(): any;
+  cutToEndOfLine(): any;
+  delete(): any;
+  deleteLine(): any;
+  deleteSelectedText(): any;
+  deleteToBeginningOfLine(): any;
+  deleteToBeginningOfSubword(): any;
+  deleteToBeginningOfWord(): any;
+  deleteToEndOfLine(): any;
+  deleteToEndOfSubword(): any;
+  deleteToEndOfWord(): any;
+  deleteToNextWordBoundary(): any;
+  deleteToPreviousWordBoundary(): any;
+  expandOverLine(): any;
+  expandOverWord(): any;
+  fold(): any;
+  getBufferRange(): any;
+  getBufferRowRange(): any;
+  getScreenRange(): any;
+  getText(): any;
+  indentSelectedRows(): any;
+  insertText(text: any, options?: any): any;
+  intersectsBufferRange(bufferRange: any): any;
+  intersectsWith(otherSelection: any): any;
+  isEmpty(): any;
+  isReversed(): any;
+  isSingleScreenLine(): any;
+  joinLines(): any;
+  merge(otherSelection: any, options?: any): any;
+  onDidChangeRange(callback: any): any;
+  onDidDestroy(callback: any): any;
+  outdentSelectedRows(): any;
+  selectDown(rowCount?: any): any;
+  selectLeft(columnCount?: any): any;
+  selectLine(row: any): any;
+  selectRight(columnCount?: any): any;
+  selecttAll(): any;
+  selectToBeginningOfLine(): any;
+  selectToBeginningOfNextParagraph(): any;
+  selectToBeginningOfNextWord(): any;
+  selectToBeginningOfPreviousParagraph(): any;
+  selectToBeginningOfWord(): any;
+  selectToBottom(): any;
+  selectToBufferPosition(position: any): any;
+  selectToEndOfBufferLine(): any;
+  selectToEndOfLine(): any;
+  selectToEndOfWord(): any;
+  selectToFirstCharacterOfLine(): any;
+  selectToNextSubwordBoundary(): any;
+  selectToNextWordBoundary(): any;
+  selectToPreviousSubwordBoundary(): any;
+  selectToPreviousWordBoundary(): any;
+  selectToScreenPosition(position: any): any;
+  selectToTop(): any;
+  selectUp(rowCount?: any): any;
+  selectWord(): any;
+  setBufferRange(bufferRange: any, options?: any): any;
+  setScreenRange(screenRange: any, options?: any): any;
+  toggleLineComments(): any;
+}

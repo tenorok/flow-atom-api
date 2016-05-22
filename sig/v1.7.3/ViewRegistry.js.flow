@@ -1,4 +1,7 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class ViewRegistry {}
+declare class ViewRegistry {
+  addViewProvider(modelConstructor?: any, createView: any): any;
+  getView(object: any): any;
+}

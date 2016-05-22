@@ -1,4 +1,27 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class PackageManager {}
+declare class PackageManager {
+  onDidLoadInitialPackages(callback: any): any;
+  onDidActivateInitialPackages(callback: any): any;
+  onDidActivatePackage(callback: any): any;
+  onDidDeactivatePackage(callback: any): any;
+  onDidLoadPackage(callback: any): any;
+  onDidUnloadPackage(callback: any): any;
+  getApmPath(): any;
+  getPackageDirPaths(): any;
+  resolvePackagePath(name: any): any;
+  isBundledPackage(name: any): any;
+  enablePackage(name: any): any;
+  disablePackage(name: any): any;
+  isPackageDisabled(name: any): any;
+  getActivePackages(): any;
+  getActivePackage(name: any): any;
+  isPackageActive(name: any): any;
+  getLoadedPackages(): any;
+  getLoadedPackage(name: any): any;
+  isPackageLoaded(name: any): any;
+  getAvailablePackagePaths(): any;
+  getAvailablePackageNames(): any;
+  getAvailablePackageMetadata(): any;
+}

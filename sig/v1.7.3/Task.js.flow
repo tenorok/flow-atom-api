@@ -1,0 +1,12 @@
+// -*- mode: javascript; -*- // @flow
+/* eslint-disable no-undef */
+
+declare class Task {
+  static once(taskPath: any, args: any): any;
+  constructor(taskPath: any): this;
+  start(args: any, callback?: any): any;
+  send(message: any): any;
+  on(eventName: any, callback: any): any;
+  once(taskPath: any, args: any): any;
+  terminate(): any;
+}

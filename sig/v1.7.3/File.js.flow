@@ -1,4 +1,28 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class File {}
+declare class File {
+  constructor(filePath: any, symlink: any): this;
+  create(): any;
+  onDidChange(callback: any): any;
+  onDidRename(callback: any): any;
+  onDidDelete(callback: any): any;
+  onWillThrowWatchError(callback: any): any;
+  isFile(): any;
+  isDirectory(): any;
+  isSymbolicLink(): any;
+  exists(): any;
+  existsSync(): any;
+  getDigest(): any;
+  getDigestSync(): any;
+  setEncoding(encoding: any): any;
+  getEncoding(): any;
+  getPath(): any;
+  getRealPathSync(): any;
+  getRealPath(): any;
+  getBaseName(): any;
+  getParent(): any;
+  read(flushCache: any): any;
+  write(text: any): any;
+  writeSync(text: any): any;
+}

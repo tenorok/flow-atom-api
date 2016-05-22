@@ -1,4 +1,36 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class TextEditorMarker {}
+declare class TextEditorMarker {
+  clearTail(properties?: any): any;
+  compare(other: any): any;
+  copy(properties?: any): any;
+  destroy(): any;
+  getBufferRange(): any;
+  getEndBufferPosition(): any;
+  getEndScreenPosition(): any;
+  getHeadBufferPosition(): any;
+  getHeadScreenPosition(): any;
+  getInvalidationStrategy(): any;
+  getProperties(): any;
+  getScreenRange(): any;
+  getStartBufferPosition(): any;
+  getStartScreenPosition(): any;
+  getTailBufferPosition(): any;
+  getTailScreenPosition(): any;
+  hasTail(): any;
+  isDestroyed(): any;
+  isEqual(other: any): any;
+  isReversed(): any;
+  isValid(): any;
+  onDidChange(callback: any): any;
+  onDidDestroy(callback: any): any;
+  plantTail(properties?: any): any;
+  setBufferRange(bufferRange: any, properties?: any): any;
+  setHeadBufferPosition(bufferPosition: any, properties?: any): any;
+  setHeadScreenPosition(screenPosition: any, properties?: any): any;
+  setProperties(properties: any): any;
+  setScreenRange(screenRange: any, properties?: any): any;
+  setTailBufferPosition(bufferPosition: any, properties?: any): any;
+  setTailScreenPosition(screenPosition: any, properties?: any): any;
+}

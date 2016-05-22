@@ -1,4 +1,13 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Panel {}
+declare class Panel {
+  destroy(): any;
+  onDidChangeVisible(callback: any): any;
+  onDidDestroy(callback: any): any;
+  getItem(): any;
+  getPriority(): any;
+  isVisible(): any;
+  hide(): any;
+  show(): any;
+}

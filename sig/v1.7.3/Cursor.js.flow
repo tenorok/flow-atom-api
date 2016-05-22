@@ -10,7 +10,7 @@ declare class Cursor {
   clearSelection(): void;
 
   // FIXME: return type
-  compare(otherCursor: Cursor): PointComparisonResult;
+  compare(otherCursor: Cursor): PointComparison;
 
   // FIXME: return type
   getBeginningOfCurrentWordBufferPosition(

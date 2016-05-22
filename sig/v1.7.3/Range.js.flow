@@ -1,4 +1,24 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Range {}
+declare class Range {
+  static deserialize(array: [Point, Point]): this;
+  static fromObject(object: RangeLike, copy?: boolean): this;
+  end: Point,
+  start: Point,
+  constructor(pointA: PointLike, pointB: PointLike): this;
+  copy(): this;
+  getRowCount(): number;
+  getRows(): number[];
+  isEmpty(): boolean;
+  isSingleLine(): boolean;
+  negate(): this;
+  serialize(): RangeCompatible;
+}
+
+declare type RangeCompatible =
+  | [Point, Point]
+
+declare type RangeLike =
+  | Range           // nominal
+  | RangeCompatible // structural

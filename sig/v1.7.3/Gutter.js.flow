@@ -1,4 +1,26 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Gutter {}
+declare class Gutter {
+  decorateMarker(
+    marker: TextEditorMarker,
+    decorationProperties: DecorationProperties & {
+      type: "gutter" | "line-number"
+    },
+  ): Decoration;
+
+  destroy(): void;
+
+  hide(): void;
+
+  // FIXME: callback type
+  onDidChangeVisible(
+    callback: (gutter: Gutter) => void
+  ): Disposable;
+
+  onDidDestroy(callback: () => void): Disposable;
+
+  isVisible(): boolean;
+
+  show(): void;
+}

@@ -1,5 +1,20 @@
 // -*- mode: javascript; -*- // @flow
 
-declare class ContextMenuManager {}
+import type { Disposable } from "./Disposable.js.flow";
+
+declare type Item =
+  | { label?: string
+    , command?: string
+    , enabled?: boolean
+    , submenu?: Item[]
+    , visible?: boolean
+    , created(event: Event): void
+    , shouldDisplay(event: Event): void
+    }
+  | { type: "separator" }
+
+declare class ContextMenuManager {
+  add(itemsBySelector: { [cssSelectors: string]: Item[] }): Disposable;
+}
 
 export type { ContextMenuManager };

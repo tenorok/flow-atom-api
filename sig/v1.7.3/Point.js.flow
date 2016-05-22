@@ -1,4 +1,9 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Point {}
+// FIXME: eslint doesn't understand the negative literal
+type PointComparisonResult =
+  | (-1 | 0 | 1)
+
+declare class Point {
+}

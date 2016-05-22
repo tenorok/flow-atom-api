@@ -3,22 +3,13 @@
 import type { DecorationProps } from "./Decoration.js.flow";
 import type { TextEditorMarker } from "./TextEditorMarker.js.flow";
 
-declare type LayerDecorationType =
-  | "block"
-  | "highlight"
-  | "line-number"
-  | "line"
-
-declare type LayerDecorationProps =
-  | DecorationProps & { type: LayerDecorationType }
-
 declare class LayerDecoration {
   destroy(): void;
 
-  isDestroyed(): boolean;
-
   // FIXME: docs unclear on return type
   getProperties(): LayerDecorationProps;
+
+  isDestroyed(): boolean;
 
   setProperties(newProperties: LayerDecorationProps): void;
 
@@ -27,3 +18,12 @@ declare class LayerDecoration {
     properties: Object
   ): void;
 }
+
+declare type LayerDecorationProps =
+  | DecorationProps & { type: LayerDecorationType }
+
+declare type LayerDecorationType =
+  | "block"
+  | "highlight"
+  | "line-number"
+  | "line"

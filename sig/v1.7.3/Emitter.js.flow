@@ -9,21 +9,12 @@ declare class Emitter {
 
   dispose(): void;
 
-  on(
-    eventName: string,
-    handler: () => void,
-  ): Disposable;
-
-  preempt(
-    eventName: string,
-    handler: () => void,
-  ): Disposable;
-
   // FIXME: docs unclear on arg types
-  emit(
-    eventName: string,
-    value: any,
-  ): void;
+  emit(eventName: string, value: any): void;
+
+  on(eventName: string, handler: () => void): Disposable;
+
+  preempt(eventName: string, handler: () => void): Disposable;
 }
 
 export type { Emitter };

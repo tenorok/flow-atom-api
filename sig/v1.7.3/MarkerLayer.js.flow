@@ -13,19 +13,13 @@ declare type FindMarkersProps =
     , intersectsRow?: number
     }
 
-declare type MarkRangeProps =
-  | { reversed: boolean
-    , persistent: boolean
-    , invalidate: "inside" | "never" | "overlap" | "surround" | "touch"
-    }
-
 declare class MarkerLayer {
   copy(): MarkerLayer;
 
   destroy(): void;
 
-  // FIXME: docs unclear on return type
-  isDestroyed(): boolean;
+  // FIXME: docs don't mention arg; unclear on arg type; same for return
+  findMarkers(props: FindMarkersProps): TextEditorMarker[];
 
   // FIXME: docs don't mention arg; unclear on arg type
   getMarker(id: number): TextEditorMarker;
@@ -34,12 +28,18 @@ declare class MarkerLayer {
 
   getMarkerCount(): number;
 
-  // FIXME: docs don't mention arg; unclear on arg type; same for return
-  findMarkers(props: FindMarkersProps): TextEditorMarker[];
+  // FIXME: docs unclear on return type
+  isDestroyed(): boolean;
 
   // FIXME: docs doesn't mention args; unclear on arg types; same for return
   markRange(range: Range, props: MarkRangeProps): TextEditorMarker;
 }
+
+declare type MarkRangeProps =
+  | { reversed: boolean
+    , persistent: boolean
+    , invalidate: "inside" | "never" | "overlap" | "surround" | "touch"
+    }
 
 export type {
   FindMarkersProps,

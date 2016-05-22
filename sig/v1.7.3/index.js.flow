@@ -1,5 +1,3 @@
-// -*- mode: javascript; // @flow
-
-import type { AtomEnvironment } from "./AtomEnvironment.js.flow";
+// -*- mode: javascript; -*- // @flow
 
 declare var atom: AtomEnvironment;

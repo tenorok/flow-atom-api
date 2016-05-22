@@ -1,6 +1,8 @@
 [include]
+src/**
+
+[libs]
 sig
-src
 
 [options]
 esproposal.class_instance_fields=enable

@@ -1,4 +1,5 @@
 // -*- mode: javascript; -*- // @flow
+/* eslint-disable no-undef */
 
 declare type ColorValue =
   | string
@@ -15,5 +16,3 @@ declare class Color {
 
   toRGBAString(): string;
 }
-
-export type { Color };

@@ -1,24 +1,5 @@
 // -*- mode: javascript; -*- // @flow
-
-import type { Clipboard } from "./Clipboard.js.flow";
-import type { CommandRegistry } from "./CommandRegistry.js.flow";
-import type { Config } from "./Config.js.flow";
-import type { ContextMenuManager } from "./ContextMenuManager.js.flow";
-import type { DeserializerManager } from "./DeserializerManager.js.flow";
-import type { Disposable } from "./Disposable.js.flow";
-import type { GrammarRegistry } from "./GrammarRegistry.js.flow";
-import type { KeymapManager } from "./KeymapManager.js.flow";
-import type { MenuManager } from "./MenuManager.js.flow";
-import type { NotificationManager } from "./NotificationManager.js.flow";
-import type { PackageManager } from "./PackageManager.js.flow";
-import type { Project } from "./Project.js.flow";
-import type { StyleManager } from "./StyleManager.js.flow";
-import type { TextEditorRegistry } from "./TextEditorRegistry.js.flow";
-import type { ThemeManager } from "./ThemeManager.js.flow";
-import type { TooltipManager } from "./TooltipManager.js.flow";
-import type { ViewRegistry } from "./ViewRegistry.js.flow";
-import type { Window } from "./Window.js.flow";
-import type { Workspace } from "./Workspace.js.flow";
+/* eslint-disable no-undef */
 
 declare class AtomEnvironment {
   clipboard: Clipboard;
@@ -137,5 +118,3 @@ declare class AtomEnvironment {
 
   toggleDevTools(): Promise<void>;
 }
-
-export type { AtomEnvironment };

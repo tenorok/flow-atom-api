@@ -1,4 +1,5 @@
 // -*- mode: javascript; -*- // @flow
+/* eslint-disable no-undef */
 
 declare class BufferedNodeProcess {
   constructor(
@@ -12,5 +13,3 @@ declare class BufferedNodeProcess {
     }
   ): void;
 }
-
-export type { BufferedNodeProcess };

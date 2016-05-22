@@ -1,7 +1,5 @@
 // -*- mode: javascript; -*- // @flow
-
-import type { Disposable } from "./Disposable.js.flow";
-import type { ScopeDescriptor } from "./ScopeDescriptor.js.flow";
+/* eslint-disable no-undef */
 
 declare class Config {
   get(
@@ -70,5 +68,3 @@ declare class Config {
 
   transact(callback: () => void): void;
 }
-
-export type { Config };

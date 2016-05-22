@@ -1,7 +1,5 @@
 // -*- mode: javascript; -*- // @flow
-
-import type { Point } from "./Point.js.flow";
-import type { TextEditorMarker } from "./TextEditorMarker.js.flow";
+/* eslint-disable no-undef */
 
 declare type FindMarkersProps =
   | { startPosition?: Point
@@ -40,9 +38,3 @@ declare type MarkRangeProps =
     , persistent: boolean
     , invalidate: "inside" | "never" | "overlap" | "surround" | "touch"
     }
-
-export type {
-  FindMarkersProps,
-  MarkRangeProps,
-  MarkerLayer,
-};

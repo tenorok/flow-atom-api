@@ -2,8 +2,34 @@
 /* eslint-disable no-undef */
 
 // FIXME: eslint doesn't understand the negative literal
-type PointComparisonResult =
+type PointComparison =
   | (-1 | 0 | 1)
 
 declare class Point {
+  static fromObject(object: PointLike, copy?: boolean): this;
+  static min(pointA: PointLike, pointB: PointLike): this;
+  column: number;
+  row: number;
+  constructor(row: number, column: number): this;
+  compare(other: PointLike): PointComparison;
+  copy(): this;
+  freeze(): this;
+  negate(): this;
+  isEqual(other: PointLike): boolean;
+  isGreaterThan(other: PointLike): boolean;
+  isGreaterThanOrEqual(other: PointLike): boolean;
+  isLessThan(other: PointLike): boolean;
+  isLessThanOrEqual(other: PointLike): boolean;
+  toArray(): PointCompatible;
+  toString(): string;
+  serialize(): PointCompatible;
+  translate(other: PointLike): this;
+  traverse(other: PointLike): this;
 }
+
+declare type PointCompatible =
+  | [number, number]
+
+declare type PointLike =
+  | Point           // nominal
+  | PointCompatible // structural

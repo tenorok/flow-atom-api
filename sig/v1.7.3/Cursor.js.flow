@@ -1,5 +1,195 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class Cursor {}
+declare type Position =
+  | [number, number]
 
+declare class Cursor {
+  clearAutoscroll(): void;
+
+  clearSelection(): void;
+
+  // FIXME: return type
+  compare(otherCursor: Cursor): PointComparisonResult;
+
+  // FIXME: return type
+  getBeginningOfCurrentWordBufferPosition(
+    options?: {
+      wordRegex: RegExp,
+      includeNonWordCharacters: boolean,
+      allowPrevious: boolean,
+    }
+  ): Range;
+
+  // FIXME: return type
+  getBeginningOfNextWordBufferPosition(
+    options:? {
+      wordRegex: RegExp,
+    }
+  ): Range;
+
+  getBufferColumn(): number;
+
+  getBufferPosition(): Position;
+
+  getBufferRow(): number;
+
+  // FIXME:
+  getCurrentBufferLine(): string;
+
+  // FIXME: return type
+  getCurrentLineBufferRange(
+    options?: { includeNewline: boolean }
+  ): Range;
+
+  getCurrentParagraphBufferRange(): Range;
+
+  // FIXME: return type; naming
+  getCurrentWordBufferRange(
+    options?: { wordRegex: RegExp }
+  ): Range;
+
+  // FIXME: return type
+  getCurrentWordPrefix(): string;
+
+  // FIXME: return type
+  getEndOfCurrentWordBufferPosition(
+    options?: {
+      wordRegex: RegExp,
+      includeNonWordCharacters: boolean,
+    }
+  ): Range;
+
+  // FIXME:
+  getIndentLevel(): number;
+
+  getMarker(): TextEditorMarker;
+
+  // FIXME: return type
+  getNextWordBoundaryBufferPosition(
+    options?: { wordRegex: RegExp }
+  ): Position;
+
+  // FIXME: return type
+  getPreviousWordBoundaryBufferPosition(
+    options?: { wordRegex: RegExp }
+  ): Position;
+
+  getScopeDescriptor(): ScopeDescriptor;
+
+  getScreenColumn(): number;
+
+  getScreenPosition(): Point;
+
+  getScreenRow(): number;
+
+  // FIXME:
+  hasPrecedingCharactersOnLine(): boolean;
+
+  // FIXME:
+  isAtBeginningOfLine(): boolean;
+
+  // FIXME:
+  isAtEndOfLine(): boolean;
+
+  isBetweenWordAndNonWord(): boolean;
+
+  isInsideWord(options?: { wordRegex: RegExp }): boolean;
+
+  isLastCursor(): boolean;
+
+  isSurroundedByWhitespace(): boolean;
+
+  // FIXME: return type
+  isVisible(): boolean;
+
+  // FIXME: cursor name wrong in docs
+  onDidChangePosition(
+    callback: (event: {
+      oldBufferPosition: Point,
+      oldScreenPosition: Point,
+      newBufferPosition: Point,
+      newScreenPosition: Point,
+      textChanged: boolean,
+      cursor: Cursor,
+    }) => void
+  ): Disposable;
+
+  onDidChangeVisibility(callback: (visibility: boolean) => void): Disposable;
+
+  onDidDestroy(callback: () => void): Disposable;
+
+  moveDown(
+    rowCount?: number,
+    options?: { moveToEndOfSelection: boolean }
+  ): void;
+
+  moveLeft(
+    columnCount?: number,
+    options?: { moveToEndOfSelection: boolean }
+  ): void;
+
+  moveRight(
+    columnCount?: number,
+    options?: { moveToEndOfSelection: boolean }
+  ): void;
+
+  moveToBeginningOfScreenLine(): void;
+
+  moveToBeginningOfLine(): void;
+
+  moveToBottom(): void;
+
+  moveToTop(): void;
+
+  moveUp(
+    rowCount?: number,
+    options?: { moveToEndOfSelection: boolean }
+  ): void;
+
+  moveToBeginningOfNextParagraph(): void;
+
+  moveToBeginningOfNextWord(): void;
+
+  moveToBeginningOfPreviousParagraph(): void;
+
+  moveToBeginningOfWord(): void;
+
+  moveToEndOfLine(): void;
+
+  moveToEndOfScreenLine(): void;
+
+  moveToEndOfWord(): void;
+
+  moveToFirstCharacterOfLine(): void;
+
+  moveToNextWordBoundary(): void;
+
+  moveToNextSubwordBoundary(): void;
+
+  moveToPreviousWordBoundary(): void;
+
+  moveToPreviousSubwordBoundary(): void;
+
+  skipLeadingWhitespace(): void;
+
+  setBufferPosition(
+    bufferPosition: Position,
+    options: { autoscroll: boolean }
+  ): void;
+
+  setScreenPosition(
+    screenPosition: Position,
+    options?: { autoscroll: boolean }
+  ): void;
+
+  setVisible(): void;
+
+  subwordRegExp(
+    options?: { backwards: boolean }
+  ): RegExp;
+
+  wordRegExp(
+    options?: { includeNonWordCharacters: boolean }
+  ): RegExp;
+}

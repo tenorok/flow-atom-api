@@ -1,4 +1,36 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class GrammarRegistry {}
+declare class GrammarRegistry {
+  addGrammar(grammar: Grammar): Disposable;
+
+  getGrammars(): Grammar[];
+
+  // FIXME: return type
+  grammarForScopeName(scopeName: string): ?Grammar;
+
+  loadGrammar(
+    grammarPath: string,
+    callback: (error: ?Error, grammar: ?Grammar) => void
+  ): void;
+
+  loadGrammarSync(grammarPath: string): Grammar;
+
+  onDidAddGrammar(
+    callback: (grammar: Grammar) => void,
+  ): Disposable;
+
+  onDidUpdateGrammar(
+    callback: (grammar: Grammar) => void,
+  ): Disposable;
+
+  readGrammar(
+    grammarPath: string,
+    callback: (error: ?Error, grammar: ?Grammar) => void
+  ): void;
+
+  // FIXME: return type
+  removeGrammarForScopeName(scopeName: string): ?Grammar;
+
+  readGrammarSync(grammarPath: string): Grammar;
+}

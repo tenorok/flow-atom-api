@@ -23,9 +23,7 @@ declare class Cursor {
 
   // FIXME: return type
   getBeginningOfNextWordBufferPosition(
-    options:? {
-      wordRegex: RegExp,
-    }
+    options:? { wordRegex: RegExp }
   ): Range;
 
   getBufferColumn(): number;
@@ -115,7 +113,9 @@ declare class Cursor {
     }) => void
   ): Disposable;
 
-  onDidChangeVisibility(callback: (visibility: boolean) => void): Disposable;
+  onDidChangeVisibility(
+    callback: (visibility: boolean) => void
+  ): Disposable;
 
   onDidDestroy(callback: () => void): Disposable;
 

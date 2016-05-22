@@ -9,7 +9,7 @@ declare type DecorationType =
   | "line"
   | "overlay"
 
-declare type DecorationProps =
+declare type DecorationProperties =
   | { type: "block"
     , class: string
     , item: HTMLElement | Object
@@ -48,14 +48,14 @@ declare class Decoration {
   getMarker(): TextEditorMarker;
 
   // FIXME: docs unclear on return type
-  getProperties(): DecorationProps;
+  getProperties(): DecorationProperties;
 
   // FIXME: docs unclear on arg type
   onDidChangeProperties(
     callback:
       (event: {
-        oldProperties: DecorationProps,
-        newProperties: DecorationProps,
+        oldProperties: DecorationProperties,
+        newProperties: DecorationProperties,
       })
       => void
   ): Disposable;
@@ -63,5 +63,5 @@ declare class Decoration {
   onDidDestroy(callback: () => void): Disposable;
 
   // FIXME: dcos unclear on arg type
-  setProperties(newProperties: DecorationProps): void;
+  setProperties(newProperties: DecorationProperties): void;
 }

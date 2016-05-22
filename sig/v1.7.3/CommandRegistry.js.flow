@@ -12,7 +12,7 @@ declare class CommandRegistry {
 
   dispatch(target: any, commandName: string): void;
 
-  findCommands(props: { target: any }):
+  findCommands(params: { target: any }):
     Array<{
       name: string,
       displayName: string,

@@ -5,11 +5,11 @@ declare class LayerDecoration {
   destroy(): void;
 
   // FIXME: docs unclear on return type
-  getProperties(): LayerDecorationProps;
+  getProperties(): LayerDecorationProperties;
 
   isDestroyed(): boolean;
 
-  setProperties(newProperties: LayerDecorationProps): void;
+  setProperties(newProperties: LayerDecorationProperties): void;
 
   setPropertiesForMarker(
     marker: TextEditorMarker,
@@ -17,8 +17,9 @@ declare class LayerDecoration {
   ): void;
 }
 
-declare type LayerDecorationProps =
-  | DecorationProps & { type: LayerDecorationType }
+declare type LayerDecorationProperties =
+  | DecorationProperties
+  & { type: LayerDecorationType }
 
 declare type LayerDecorationType =
   | "block"

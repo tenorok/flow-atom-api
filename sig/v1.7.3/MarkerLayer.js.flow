@@ -1,7 +1,7 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare type FindMarkersProps =
+declare type FindMarkersParameters =
   | { startPosition?: Point
     , endPosition?: Point
     , containsPoint?: Point
@@ -17,7 +17,7 @@ declare class MarkerLayer {
   destroy(): void;
 
   // FIXME: docs don't mention arg; unclear on arg type; same for return
-  findMarkers(props: FindMarkersProps): TextEditorMarker[];
+  findMarkers(params: FindMarkersParameters): TextEditorMarker[];
 
   // FIXME: docs don't mention arg; unclear on arg type
   getMarker(id: number): TextEditorMarker;
@@ -30,10 +30,13 @@ declare class MarkerLayer {
   isDestroyed(): boolean;
 
   // FIXME: docs doesn't mention args; unclear on arg types; same for return
-  markRange(range: Range, props: MarkRangeProps): TextEditorMarker;
+  markRange(
+    range: Range,
+    properties: MarkRangeProperties
+  ): TextEditorMarker;
 }
 
-declare type MarkRangeProps =
+declare type MarkRangeProperties =
   | { reversed: boolean
     , persistent: boolean
     , invalidate: "inside" | "never" | "overlap" | "surround" | "touch"

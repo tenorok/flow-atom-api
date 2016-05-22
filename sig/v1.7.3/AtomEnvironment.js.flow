@@ -79,7 +79,7 @@ declare class AtomEnvironment {
   ): Disposable;
 
   open(
-    props: {
+    params: {
       pathsToOpen: string[],
       newWindow: boolean,
       devMode: boolean,

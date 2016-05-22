@@ -41,6 +41,15 @@ declare type DecorationProps =
 declare class Decoration {
   destroy(): void;
 
+  // FIXME: docs unclear on return type
+  getId(): number;
+
+  // FIXME: docs unclear on return type
+  getMarker(): TextEditorMarker;
+
+  // FIXME: docs unclear on return type
+  getProperties(): DecorationProps;
+
   // FIXME: docs unclear on arg type
   onDidChangeProperties(
     callback:
@@ -52,15 +61,6 @@ declare class Decoration {
   ): Disposable;
 
   onDidDestroy(callback: () => void): Disposable;
-
-  // FIXME: docs unclear on return type
-  getId(): number;
-
-  // FIXME: docs unclear on return type
-  getMarker(): TextEditorMarker;
-
-  // FIXME: docs unclear on return type
-  getProperties(): DecorationProps;
 
   // FIXME: dcos unclear on arg type
   setProperties(newProperties: DecorationProps): void;

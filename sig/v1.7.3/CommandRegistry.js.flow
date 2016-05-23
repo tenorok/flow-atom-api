@@ -11,8 +11,8 @@ declare class CommandRegistry {
     commandNameOrMap: CommandRegistryNameOrMap,
     callback?: (event: Event) => void,
   ): ?Disposable;
-  dispatch(target: any, commandName: string): void;
-  findCommands(params: { target: any }): Array<{
+  dispatch(target: Node, commandName: string): void;
+  findCommands(params: { target: Node }): Array<{
     name: string,
     displayName: string,
   }>;

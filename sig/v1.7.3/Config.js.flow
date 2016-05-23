@@ -10,32 +10,25 @@ declare class Config {
       scope?: ScopeDescriptor,
     },
   ): any;
-
   getAll(
     keyPath: string,
     options: {
       sources?: string[],
       excludeSources?: string[],
       scope?: ScopeDescriptor,
-    }): Array<{
-      scopeDescriptor: ScopeDescriptor,
-      value: any,
-    }>;
-
-  getSources(): string[];
-
+    },
+  ): Array<{
+    scopeDescriptor: ScopeDescriptor,
+    value: any,
+  }>;
   getSchema(keyPath: string): ?Object; // does this conform to some spec?
-
+  getSources(): string[];
   getUserConfigPath(): string;
-
   observe(
     keyPath: string,
-    options?: {
-      scope?: ScopeDescriptor,
-    },
+    options?: { scope?: ScopeDescriptor },
     callback: (value: any) => void,
   ): Disposable;
-
   onDidChange(
     keyPath?: string,
     options?: {
@@ -45,10 +38,8 @@ declare class Config {
       (event: {
         newValue: any,
         oldValue: any,
-      })
-      => void,
+      }) => void,
   ): Disposable;
-
   set(
     keyPath: string,
     value: any,
@@ -57,7 +48,7 @@ declare class Config {
       source?: string,
     },
   ): boolean;
-
+  transact(callback: () => void): void;
   unset(
     keyPath: string,
     options?: {
@@ -65,6 +56,4 @@ declare class Config {
       source?: string,
     },
   ): void;
-
-  transact(callback: () => void): void;
 }

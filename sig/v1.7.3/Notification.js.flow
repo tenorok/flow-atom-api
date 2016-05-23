@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 
 declare class Notification {
+  dismiss(): any;
+  getMessage(): any;
+  getType(): any;
   onDidDismiss(callback: any): any;
   onDidDisplay(callback: any): any;
-  getType(): any;
-  getMessage(): any;
-  dismiss(): any;
 }

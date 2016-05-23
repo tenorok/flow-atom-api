@@ -8,19 +8,12 @@ declare class Gutter {
       type: "gutter" | "line-number"
     },
   ): Decoration;
-
   destroy(): void;
-
   hide(): void;
-
-  // FIXME: callback type
   onDidChangeVisible(
-    callback: (gutter: Gutter) => void
+    callback: (gutter: Gutter) => void // FIXME
   ): Disposable;
-
   onDidDestroy(callback: () => void): Disposable;
-
   isVisible(): boolean;
-
   show(): void;
 }

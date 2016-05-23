@@ -2,14 +2,14 @@
 /* eslint-disable no-undef */
 
 declare class Project {
-  onDidChangePaths(callback: any): any;
-  getRepositories(): any;
-  repositoryForDirectory(directory: any): any;
-  getPaths(): any;
-  setPaths(projectPaths: any): any;
   addPath(projectPath: any): any;
-  removePath(projectPath: any): any;
-  getDirectories(): any;
-  relativizePath(fullPath: any): any;
   contains(pathToCheck: any): any;
+  getDirectories(): any;
+  getPaths(): any;
+  getRepositories(): any;
+  onDidChangePaths(callback: any): any;
+  relativizePath(fullPath: any): any;
+  removePath(projectPath: any): any;
+  repositoryForDirectory(directory: any): any;
+  setPaths(projectPaths: any): any;
 }

@@ -13,5 +13,9 @@ declare type ContextMenuItem =
   | { type: "separator" }
 
 declare class ContextMenuManager {
-  add(itemsBySelector: { [cssSelectors: string]: ContextMenuItem[] }): Disposable;
+  add(
+    itemsBySelector: {
+      [cssSelectors: string]: ContextMenuItem[],
+    },
+  ): Disposable;
 }

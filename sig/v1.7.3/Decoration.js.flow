@@ -40,28 +40,16 @@ declare type DecorationProperties =
 
 declare class Decoration {
   destroy(): void;
-
-  // FIXME: docs unclear on return type
-  getId(): number;
-
-  // FIXME: docs unclear on return type
+  getId(): number; // FIXME
   getMarker(): TextEditorMarker;
-
-  // FIXME: docs unclear on return type
-  getProperties(): DecorationProperties;
-
-  // FIXME: docs unclear on arg type
+  getProperties(): DecorationProperties; // FIXME
   onDidChangeProperties(
     callback:
       (event: {
         oldProperties: DecorationProperties,
         newProperties: DecorationProperties,
-      })
-      => void
-  ): Disposable;
-
+      }) => void
+  ): Disposable; // FIXME
   onDidDestroy(callback: () => void): Disposable;
-
-  // FIXME: dcos unclear on arg type
-  setProperties(newProperties: DecorationProperties): void;
+  setProperties(newProperties: DecorationProperties): void; // FIXME
 }

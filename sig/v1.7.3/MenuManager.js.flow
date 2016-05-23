@@ -10,6 +10,5 @@ declare type MenuItem =
 // FIXME:
 declare class MenuManager {
   add(items: MenuItem[]): Disposable;
-
   update(): void;
 }

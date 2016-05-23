@@ -2,8 +2,8 @@
 /* eslint-disable no-undef */
 
 declare class Package {
-  onDidDeactivate(callback: any): any;
-  isCompatible(): any;
-  rebuild(): any;
   getBuildFailureOutput(): any;
+  isCompatible(): any;
+  onDidDeactivate(callback: any): any;
+  rebuild(): any;
 }

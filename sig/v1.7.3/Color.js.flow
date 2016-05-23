@@ -11,8 +11,6 @@ declare type ColorValue =
 
 declare class Color {
   static parse(value: ColorValue): ?this;
-
   toHexString(): string;
-
   toRGBAString(): string;
 }

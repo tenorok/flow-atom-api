@@ -21,51 +21,37 @@ declare class AtomEnvironment {
   workspace: Workspace;
 
   beep(): void;
-
   center(): void;
-
   close(): void;
-
-  confirm(
-    options: {
-      message: string,
-      detailedMessage?: string,
-      buttons?: string[] | { [buttonName: string]: () => void },
-    }): ?number;
-
+  confirm(options: {
+    message: string,
+    detailedMessage?: string,
+    buttons?: string[] | { [buttonName: string]: () => void },
+  }) : ?number;
   focus(): void;
-  // FIXME: docs unclear on arg type
-
-  executeJavaScriptInDevTools(code: string): void;
-
+  executeJavaScriptInDevTools(code: string): void; // FIXME
   getCurrentWindow(): BrowserWindow;
-
-  getLoadSettings(): { [keys: string]: any };
-
-  getPosition(): { x: number, y: number };
-
-  getSize(): { width: number, height: number };
-
+  getLoadSettings(): {
+    [keys: string]: any,
+  };
+  getPosition(): {
+    x: number,
+    y: number,
+  };
+  getSize(): {
+    width: number,
+    height: number,
+  };
   getVersion(): string;
-
   getWindowLoadTime(): number;
-
   hide(): void;
-
   inDevMode(): boolean;
-
   inSafeMode(): boolean;
-
   inSpecMode(): boolean;
-
   isFullScreen(): boolean;
-
   isMaximized(): boolean;
-
   isReleasedVersion(): boolean;
-
   onDidBeep(callback: () => void): Disposable;
-
   onDidThrowError(
     callback:
       (event: {
@@ -74,10 +60,8 @@ declare class AtomEnvironment {
         url: string,
         line: number,
         column: number,
-      })
-      => void
+      }) => void,
   ): Disposable;
-
   onWillThrowError(
     callback:
       (event: {
@@ -87,34 +71,21 @@ declare class AtomEnvironment {
         line: number,
         column: number,
         preventDefault(): void,
-      })
-      => void
+      }) => void,
   ): Disposable;
-
-  open(
-    params: {
-      pathsToOpen: string[],
-      newWindow: boolean,
-      devMode: boolean,
-      safeMode: boolean,
-    }
-  ): void;
-
-  pickFolder(callback: (paths: ?(string[])) => void): void;
-
-  reload(): void;
-
-  setFullScreen(): void;
-
-  setPosition(x: number, y: number): void;
-
-  setSize(width: number, height: number): void;
-
-  show(): void;
-
-  toggleFullScreen(): void;
-
+  open(params: {
+    pathsToOpen: string[],
+    newWindow: boolean,
+    devMode: boolean,
+    safeMode: boolean,
+  }): void;
   openDevTools(): Promise<void>;
-
+  pickFolder(callback: (paths: ?(string[])) => void): void;
+  reload(): void;
+  setFullScreen(): void;
+  setPosition(x: number, y: number): void;
+  setSize(width: number, height: number): void;
+  show(): void;
+  toggleFullScreen(): void;
   toggleDevTools(): Promise<void>;
 }

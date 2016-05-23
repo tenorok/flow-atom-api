@@ -1,22 +1,6 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare class LayerDecoration {
-  destroy(): void;
-
-  // FIXME: docs unclear on return type
-  getProperties(): LayerDecorationProperties;
-
-  isDestroyed(): boolean;
-
-  setProperties(newProperties: LayerDecorationProperties): void;
-
-  setPropertiesForMarker(
-    marker: TextEditorMarker,
-    properties: Object
-  ): void;
-}
-
 declare type LayerDecorationProperties =
   | DecorationProperties
   & { type: LayerDecorationType }
@@ -26,3 +10,11 @@ declare type LayerDecorationType =
   | "highlight"
   | "line-number"
   | "line"
+
+declare class LayerDecoration {
+  destroy(): void;
+  getProperties(): LayerDecorationProperties; // FIXME
+  isDestroyed(): boolean;
+  setProperties(newProperties: LayerDecorationProperties): void;
+  setPropertiesForMarker(marker: TextEditorMarker, properties: Object): void;
+}

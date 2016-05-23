@@ -3,11 +3,11 @@
 
 declare class Panel {
   destroy(): any;
-  onDidChangeVisible(callback: any): any;
-  onDidDestroy(callback: any): any;
   getItem(): any;
   getPriority(): any;
-  isVisible(): any;
   hide(): any;
+  isVisible(): any;
+  onDidChangeVisible(callback: any): any;
+  onDidDestroy(callback: any): any;
   show(): any;
 }

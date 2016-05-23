@@ -1,27 +1,19 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-// FIXME: details in first-mate
-declare type GrammarToken =
+declare type GrammarToken = // FIXME
   | { value: string, scopes: string[] }
 
-// FIXME: details in first-mate
-declare type GrammarRule =
+declare type GrammarRule = // FIXME
   | Object
 
 declare class Grammar {
   onDidUpdate(callback: () => void): Disposable;
-
-  // FIXME: ruleStack type
   tokenizeLine(line: string, ruleStack?: GrammarRule[], firstLine?: boolean): {
     line: string,
-    // FIXME: docs suggest tags: (number | string)[] but this doesn't seem to
-    // ever happen in testing
-    tags: number[],
+    tags: number[], // FIXME
     tokens: GrammarToken[],
     ruleStack: GrammarRule[],
-  };
-
-  // FIXME: return type
-  tokenizeLines(text: string): (GrammarToken[])[];
+  }; // FIXME
+  tokenizeLines(text: string): (GrammarToken[])[]; // FIXME
 }

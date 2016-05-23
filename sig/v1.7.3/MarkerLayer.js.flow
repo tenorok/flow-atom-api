@@ -11,39 +11,20 @@ declare type FindMarkersParameters =
     , intersectsRow?: number
     }
 
-declare class MarkerLayer {
-  copy(): MarkerLayer;
-
-  destroy(): void;
-
-  // FIXME: docs don't mention arg; unclear on arg type; same for return
-  findMarkers(params: FindMarkersParameters): TextEditorMarker[];
-
-  // FIXME: docs don't mention arg; unclear on arg type
-  getMarker(id: number): TextEditorMarker;
-
-  getMarkers(): TextEditorMarker[];
-
-  getMarkerCount(): number;
-
-  // FIXME: docs unclear on return type
-  isDestroyed(): boolean;
-
-  // FIXME: docs doesn't mention args; unclear on arg types; same for return
-  markRange(
-    range: Range,
-    properties: MarkRangeProperties
-  ): TextEditorMarker;
-
-  // FIXME: docs don't mention args
-  markPosition(
-    position: Point,
-
-  ): TextEditorMarker;
-}
-
 declare type MarkRangeProperties =
   | { reversed: boolean
     , persistent: boolean
     , invalidate: "inside" | "never" | "overlap" | "surround" | "touch"
     }
+
+declare class MarkerLayer {
+  copy(): MarkerLayer;
+  destroy(): void;
+  findMarkers(params: FindMarkersParameters): TextEditorMarker[]; // FIXME
+  getMarker(id: number): TextEditorMarker; // FIXME
+  getMarkers(): TextEditorMarker[];
+  getMarkerCount(): number;
+  isDestroyed(): boolean; // FIXME
+  markRange(range: Range, properties: MarkRangeProperties): TextEditorMarker; // FIXME
+  markPosition(position: Point): TextEditorMarker;
+}

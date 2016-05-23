@@ -1,24 +1,21 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
+declare type CommandRegistryNameOrMap =
+  | string
+  | { [commandName: string]: (event: Event) => void }
+
 declare class CommandRegistry {
   add(
     target: string,
-    commandNameOrMap:
-      string
-      | { [commandName: string]: (event: Event) => void },
+    commandNameOrMap: CommandRegistryNameOrMap,
     callback?: (event: Event) => void,
   ): ?Disposable;
-
   dispatch(target: any, commandName: string): void;
-
-  findCommands(params: { target: any }):
-    Array<{
-      name: string,
-      displayName: string,
-    }>;
-
+  findCommands(params: { target: any }): Array<{
+    name: string,
+    displayName: string,
+  }>;
   onDidDispatch(callback: (event: Event) => void): void;
-
   onWillDispatch(callback: (event: Event) => void): void;
 }

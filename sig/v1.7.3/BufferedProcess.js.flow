@@ -2,20 +2,20 @@
 /* eslint-disable no-undef */
 
 declare class BufferedProcess {
-  constructor(
-    options: {
-      command: string,
-      args?: string[],
-      options?: Object,
-      stdout?: (data: string) => void,
-      stderr?: (data: string) => void,
-      exit?: (code: number) => void,
-    }
-  ): void;
-
+  constructor(options: {
+    command: string,
+    args?: string[],
+    options?: Object,
+    stdout?: (data: string) => void,
+    stderr?: (data: string) => void,
+    exit?: (code: number) => void,
+  }): void;
   kill(): void;
-
   onWillThrowError(
-    callback: (errorObject: { error: Object, handle(): void }) => void
+    callback:
+      (errorObject: {
+        error: Object,
+        handle(): void,
+      }) => void,
   ): Disposable;
 }

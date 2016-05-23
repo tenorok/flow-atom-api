@@ -1,6 +1,9 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
+declare type RangeCompatible =
+  | [Point, Point]
+
 declare class Range {
   static deserialize(array: [Point, Point]): this;
   static fromObject(object: RangeLike, copy?: boolean): this;
@@ -15,9 +18,6 @@ declare class Range {
   negate(): this;
   serialize(): RangeCompatible;
 }
-
-declare type RangeCompatible =
-  | [Point, Point]
 
 declare type RangeLike =
   | Range           // nominal

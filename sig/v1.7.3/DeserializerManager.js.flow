@@ -7,8 +7,6 @@ declare interface Deserializer {
 }
 
 declare class DeserializerManager {
-  // FIXME: docs unclear about types
-  add(...deserializers: Deserializer[]): void;
-
+  add(...deserializers: Deserializer[]): void; // FIXME
   deserialize(state: Object): any;
 }

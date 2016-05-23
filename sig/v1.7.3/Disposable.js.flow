@@ -3,8 +3,6 @@
 
 declare class Disposable {
   static isDisposable(object: Object): boolean;
-
   constructor(dispoalAction: () => void): this;
-
   dispose(): void;
 }

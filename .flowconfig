@@ -2,7 +2,8 @@
 src/**
 
 [libs]
-sig
+sig/v1.7.3
+node_modules/flow-electron-api/sig/v1.1.1
 
 [options]
 esproposal.class_instance_fields=enable

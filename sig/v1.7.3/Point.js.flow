@@ -1,10 +1,6 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-// FIXME: eslint doesn't understand the negative literal
-type PointComparison =
-  | (-1 | 0 | 1)
-
 declare class Point {
   static fromObject(object: PointLike, copy?: boolean): this;
   static min(pointA: PointLike, pointB: PointLike): this;
@@ -26,6 +22,10 @@ declare class Point {
   translate(other: PointLike): this;
   traverse(other: PointLike): this;
 }
+
+// FIXME: eslint doesn't understand the negative literal
+declare type PointComparison =
+  | (-1 | 0 | 1)
 
 declare type PointCompatible =
   | [number, number]

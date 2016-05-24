@@ -21,7 +21,7 @@ declare class Config {
     scopeDescriptor: ScopeDescriptor,
     value: JSON,
   }>;
-  getSchema(keyPath: string): ?Object; // does this conform to some spec?
+  getSchema(keyPath: string): JSON;
   getSources(): string[];
   getUserConfigPath(): string;
   observe(

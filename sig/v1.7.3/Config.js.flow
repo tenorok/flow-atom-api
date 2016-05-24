@@ -9,7 +9,7 @@ declare class Config {
       excludeSources?: string[],
       scope?: ScopeDescriptor,
     },
-  ): any;
+  ): ?JSON;
   getAll(
     keyPath: string,
     options: {
@@ -19,7 +19,7 @@ declare class Config {
     },
   ): Array<{
     scopeDescriptor: ScopeDescriptor,
-    value: any,
+    value: JSON,
   }>;
   getSchema(keyPath: string): ?Object; // does this conform to some spec?
   getSources(): string[];
@@ -27,7 +27,7 @@ declare class Config {
   observe(
     keyPath: string,
     options?: { scope?: ScopeDescriptor },
-    callback: (value: any) => void,
+    callback: (value: JSON) => void,
   ): Disposable;
   onDidChange(
     keyPath?: string,
@@ -36,13 +36,13 @@ declare class Config {
     },
     callback:
       (event: {
-        newValue: any,
-        oldValue: any,
+        newValue: JSON,
+        oldValue: JSON,
       }) => void,
   ): Disposable;
   set(
     keyPath: string,
-    value: any,
+    value: JSON,
     options?: {
       scopeSelector?: string,
       source?: string,

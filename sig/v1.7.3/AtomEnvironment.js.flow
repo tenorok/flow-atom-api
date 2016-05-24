@@ -32,7 +32,7 @@ declare class AtomEnvironment {
   executeJavaScriptInDevTools(code: string): void; // FIXME
   getCurrentWindow(): BrowserWindow;
   getLoadSettings(): {
-    [keys: string]: any,
+    [keys: string]: JSON,
   };
   getPosition(): {
     x: number,

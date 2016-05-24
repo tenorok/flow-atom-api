@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/freebroccolo/flow-atom-api#readme",
   "dependencies": {
-    "flow-electron-api": "freebroccolo/flow-electron-api"
+    "flow-electron-api": "freebroccolo/flow-electron-api",
+    "flow-atom-event-kit": "freebroccolo/flow-atom-event-kit"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

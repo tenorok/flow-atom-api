@@ -3,6 +3,7 @@ src/**
 
 [libs]
 sig/v1.7.3
+node_modules/flow-atom-event-kit/sig/v1.5.0
 node_modules/flow-electron-api/sig/v1.1.1
 
 [options]

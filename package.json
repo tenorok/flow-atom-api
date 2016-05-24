@@ -7,17 +7,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/freebroccolo/flow-atom-api.git"
+    "url": "git+https://github.com/flow-atom/flow-atom-api.git"
   },
   "author": "Darin Morrison",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/freebroccolo/flow-atom-api/issues"
+    "url": "https://github.com/flow-atom/flow-atom-api/issues"
   },
-  "homepage": "https://github.com/freebroccolo/flow-atom-api#readme",
+  "homepage": "https://github.com/flow-atom/flow-atom-api#readme",
   "dependencies": {
-    "flow-electron-api": "freebroccolo/flow-electron-api",
-    "flow-atom-event-kit": "freebroccolo/flow-atom-event-kit"
+    "flow-electron-api": "flow-atom/flow-electron-api",
+    "flow-atom-event-kit": "flow-atom/flow-atom-event-kit"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

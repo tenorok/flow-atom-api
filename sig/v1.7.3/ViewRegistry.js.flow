@@ -2,6 +2,9 @@
 /* eslint-disable no-undef */
 
 declare class ViewRegistry {
-  addViewProvider(modelConstructor?: any, createView: any): any;
-  getView(object: any): any;
+  addViewProvider<T: Object>(
+    modelConstructor?: Class<T>,
+    createView: (model: T, atom: AtomEnvironment) => HTMLElement,
+  ): Disposable; // FIXME
+  getView(object: Object): HTMLElement;
 }

@@ -5,7 +5,7 @@ declare class Emitter {
   constructor(): this;
   clear(): void;
   dispose(): void;
-  emit(eventName: string, value: any): void; // FIXME
-  on(eventName: string, handler: () => void): Disposable;
-  preempt(eventName: string, handler: () => void): Disposable;
+  emit(eventName: string, value?: any): void; // FIXME
+  on(eventName: string, handler: (value?: any) => void): Disposable;
+  preempt(eventName: string, handler: (value?: any) => void): Disposable;
 }

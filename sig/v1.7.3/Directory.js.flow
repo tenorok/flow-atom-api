@@ -20,8 +20,8 @@ declare class Directory {
   getPath(): string;
   getRealPathSync(): string;
   getSubdirectory(dirname: string): Directory;
-  isFile(): boolean;
-  isDirectory(): boolean;
+  isFile(): false;
+  isDirectory(): true;
   isRoot(): boolean;
   isSymbolicLink(): boolean;
   onDidChange(callback: () => void): Disposable;

@@ -16,8 +16,9 @@
   },
   "homepage": "https://github.com/flow-atom/flow-atom-api#readme",
   "dependencies": {
-    "flow-electron-api": "flow-atom/flow-electron-api",
-    "flow-atom-event-kit": "flow-atom/flow-atom-event-kit"
+    "event-kit": "^2.0.0",
+    "flow-atom-event-kit": "flow-atom/flow-atom-event-kit",
+    "flow-electron-api": "flow-atom/flow-electron-api"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

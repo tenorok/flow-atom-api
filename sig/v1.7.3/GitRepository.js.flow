@@ -2,33 +2,60 @@
 /* eslint-disable no-undef */
 
 declare class GitRepository {
-  onDidChangeStatus(callback: any): any;
-  onDidChangeStatuses(callback: any): any;
-  getType(): any;
-  getPath(): any;
-  getWorkingDirectory(): any;
-  isProjectAtRoot(): any;
-  relativize(): any;
-  hasBranch(): any;
-  getShortHead(path: any): any;
-  isSubmodule(path: any): any;
-  getAheadBehindCount(reference: any, path: any): any;
-  getCachedUpstreamAheadBehindCount(path: any): any;
-  getConfigValue(path: any): any;
-  getOriginURL(path?: any): any;
-  getUpstreamBranch(path: any): any;
-  getReferences(path: any): any;
-  getReferenceTarget(reference: any, path: any): any;
-  isPathModified(path: any): any;
-  isPathNew(path: any): any;
-  isPathIgnored(path: any): any;
-  getDirectoryStatus(path: any): any;
-  getPathStatus(): any;
-  getCachedPathStatus(path: any): any;
-  isStatusModified(status: any): any;
-  isStatusNew(status: any): any;
-  getDiffStats(path: any): any;
-  getLineDiffs(path: any, text: any): any;
-  checkoutHead(path: any): any;
-  checkoutReference(reference: any, create: any): any;
+  static open(
+    path: string,
+    options?: { refreshOnWindowFocus: boolean },
+  ): this;
+  checkoutHead(path: string): boolean;
+  checkoutReference(reference: string, create: boolean): boolean;
+  destroy(): void;
+  getAheadBehindCount(reference: string, path: string): number;
+  getCachedPathStatus(path: string): number;
+  getCachedUpstreamAheadBehindCount(path: string): {
+    ahead: number,
+    behind: number,
+  };
+  getConfigValue(path?: string): null | boolean | number | string;
+  getDiffStats(path: string): {
+    added: number,
+    deleted: number,
+  };
+  getDirectoryStatus(path: string): number;
+  getLineDiffs(path: string, text: string): Array<{
+    oldStart: number,
+    newStart: number,
+    oldLines: number,
+    newLines: number,
+  }>;
+  getOriginURL(path?: string): string;
+  getPath(): string;
+  getPathStatus(path: string): number; // FIXME
+  getReferences(path?: string): {
+    heads: string[],
+    remotes: string[],
+    tags: string[],
+  };
+  getReferenceTarget(reference: string, path?: string): string;
+  getShortHead(path?: string): string;
+  getType(): "git";
+  getUpstreamBranch(path?: string): null | string;
+  getWorkingDirectory(): string;
+  hasBranch(branch: string): boolean; // FIXME
+  isPathIgnored(path: string): boolean;
+  isPathModified(path: string): boolean; // FIXME
+  isPathNew(path: string): boolean;
+  isProjectAtRoot(): boolean;
+  isStatusModified(status: number): boolean;
+  isStatusNew(status: number): boolean;
+  isSubmodule(path: string): boolean;
+  onDidChangeStatus(
+    callback:
+      (event: {
+        path: string,
+        pathStatus: number,
+      }) => void,
+  ): Disposable;
+  onDidChangeStatuses(callback: () => void): Disposable; // FIXME
+  onDidDestroy(callback: () => void): Disposable;
+  relativize(): string; // FIXME
 }

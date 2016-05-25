@@ -1,6 +1,12 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
+declare type GitConfigValue =
+  | null
+  | boolean
+  | number
+  | string
+
 declare class GitRepository {
   static open(
     path: string,
@@ -15,7 +21,7 @@ declare class GitRepository {
     ahead: number,
     behind: number,
   };
-  getConfigValue(path?: string): null | boolean | number | string;
+  getConfigValue(path?: string): GitConfigValue;
   getDiffStats(path: string): {
     added: number,
     deleted: number,

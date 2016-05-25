@@ -3,19 +3,19 @@
 
 declare type CommandRegistryNameOrMap =
   | string
-  | { [commandName: string]: (event: Event) => void }
+  | { [commandName: string]: EventHandler }
 
 declare class CommandRegistry {
   add(
     target: string,
     commandNameOrMap: CommandRegistryNameOrMap,
-    callback?: (event: Event) => void,
+    callback?: EventHandler,
   ): ?Disposable;
   dispatch(target: Node, commandName: string): void;
   findCommands(params: { target: Node }): Array<{
     name: string,
     displayName: string,
   }>;
-  onDidDispatch(callback: (event: Event) => void): void;
-  onWillDispatch(callback: (event: Event) => void): void;
+  onDidDispatch(callback: EventHandler): void;
+  onWillDispatch(callback: EventHandler): void;
 }

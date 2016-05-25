@@ -9,7 +9,7 @@ declare class CommandRegistry {
   add(
     target: string,
     commandNameOrMap: CommandRegistryNameOrMap,
-    callback?: EventHandler,
+    callback?: EventHandler, // FIXME: this references the matching Node
   ): ?Disposable;
   dispatch(target: Node, commandName: string): void;
   findCommands(params: { target: Node }): Array<{

@@ -2,18 +2,18 @@
 /* eslint-disable no-undef */
 
 declare class Workspace {
-  activateNextPane(): any;
-  activatePreviousPane(): any;
-  addBottomPanel(options: any): any;
-  addFooterPanel(options: any): any;
-  addHeaderPanel(options: any): any;
-  addLeftPanel(options: any): any;
-  addModalPanel(options: any): any;
-  addOpener(opener: any): any;
-  addRightPanel(options: any): any;
-  addTopPanel(options: any): any;
-  buildTextEditor(): any;
-  getActivePane(): any;
+  activateNextPane(): void;
+  activatePreviousPane(): void;
+  addBottomPanel(options: any): Panel;
+  addFooterPanel(options: any): Panel;
+  addHeaderPanel(options: any): Panel;
+  addLeftPanel(options: any): Panel;
+  addModalPanel(options: any): Panel;
+  addOpener(opener: any): Disposable;
+  addRightPanel(options: any): Panel;
+  addTopPanel(options: any): Panel;
+  buildTextEditor(): TextEditor;
+  getActivePane(): Pane;
   getActivePaneItem(): any;
   getActiveTextEditor(): any;
   getBottomPanels(): any;

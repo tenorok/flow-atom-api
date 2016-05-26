@@ -2,10 +2,10 @@
 /* eslint-disable no-undef */
 
 declare class ThemeManager {
-  getActiveThemeNames(): any;
-  getActiveThemes(): any;
-  getEnabledThemeNames(): any;
-  getLoadedThemeNames(): any;
-  getLoadedThemes(): any;
-  onDidChangeActiveThemes(callback: any): any;
+  getActiveThemeNames(): string[];
+  getActiveThemes(): Package[];
+  getEnabledThemeNames(): string[];
+  getLoadedThemeNames(): string[];
+  getLoadedThemes(): Package[];
+  onDidChangeActiveThemes(callback: () => void): void;
 }

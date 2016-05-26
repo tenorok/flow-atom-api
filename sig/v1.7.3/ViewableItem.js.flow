@@ -1,7 +1,7 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
-declare type PanelItem =
+declare type ViewableItem =
   | Node
   | JQuery
   | Object

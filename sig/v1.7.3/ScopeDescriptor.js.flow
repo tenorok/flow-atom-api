@@ -2,6 +2,8 @@
 /* eslint-disable no-undef */
 
 declare class ScopeDescriptor {
-  constructor(object: any): this;
-  getScopesArray(): any;
+  constructor(object: {
+    scopes: string[],
+  }): this;
+  getScopesArray(): string[];
 }

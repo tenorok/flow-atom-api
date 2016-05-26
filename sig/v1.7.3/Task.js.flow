@@ -2,11 +2,10 @@
 /* eslint-disable no-undef */
 
 declare class Task {
-  static once(taskPath: any, args: any): any;
-  constructor(taskPath: any): this;
-  start(args: any, callback?: any): any;
-  send(message: any): any;
-  on(eventName: any, callback: any): any;
-  once(taskPath: any, args: any): any;
-  terminate(): any;
+  static once(taskPath: string, ...args: mixed[]): this; // FIXME: variadic
+  constructor(taskPath: string): this;
+  start(args: mixed[], callback?: () => void): void; // FIXME: variadic
+  send(message: JSON): void; // FIXME: use object instead?
+  on(eventName: string, callback: () => void): Disposable;
+  terminate(): boolean;
 }

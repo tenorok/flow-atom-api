@@ -5,7 +5,7 @@ declare class Clipboard {
   read(): string;
   readWithMetadata(): {
     text: string,
-    metadata: any,
+    metadata: mixed,
   };
-  write(text: string, metadata?: any): void;
+  write(text: string, metadata?: mixed): void;
 }

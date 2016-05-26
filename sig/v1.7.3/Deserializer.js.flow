@@ -3,5 +3,5 @@
 
 declare interface Deserializer {
   name: string,
-  deserialize(state: Object, atom: AtomEnvironment): any,
+  deserialize(state: Object, atom: AtomEnvironment): mixed,
 }

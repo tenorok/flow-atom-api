@@ -2,12 +2,12 @@
 /* eslint-disable no-undef */
 
 declare class Panel {
-  destroy(): any;
-  getItem(): any;
-  getPriority(): any;
-  hide(): any;
-  isVisible(): any;
-  onDidChangeVisible(callback: any): any;
-  onDidDestroy(callback: any): any;
-  show(): any;
+  destroy(): void;
+  getItem(): PanelItem;
+  getPriority(): number;
+  hide(): void;
+  isVisible(): boolean;
+  onDidChangeVisible(callback: (visible: boolean) => void): Disposable;
+  onDidDestroy(callback: (panel: Panel) => void): Disposable;
+  show(): void;
 }

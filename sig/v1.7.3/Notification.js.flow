@@ -1,10 +1,14 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
+declare type NotificationType =
+  | ("error" | "fatal" | "info" | "success" | "warning")
+  | string
+
 declare class Notification {
-  dismiss(): any;
-  getMessage(): any;
-  getType(): any;
-  onDidDismiss(callback: any): any;
-  onDidDisplay(callback: any): any;
+  dismiss(): void;
+  getMessage(): string;
+  getType(): NotificationType;
+  onDidDismiss(callback: () => void): Disposable;
+  onDidDisplay(callback: () => void): Disposable;
 }

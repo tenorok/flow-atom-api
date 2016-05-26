@@ -1,0 +1,22 @@
+// -*- mode: javascript; -*- // @flow
+/* eslint-disable no-undef */
+
+declare interface FindMarkersProperties {
+  startPosition?: Point;
+  endPosition?: Point;
+  containsPoint?: Point;
+  containsRange?: Range;
+  startRow?: number;
+  endRow?: number;
+  intersectsRow?: number;
+}
+
+declare interface MarkOptions {
+  reversed?: boolean;
+  persistent?: boolean;
+  invalidate?: "inside" | "never" | "overlap" | "surround" | "touch";
+}
+
+declare interface MarkOptionsWithHistory extends MarkOptions {
+  maintainHistory?: boolean;
+}

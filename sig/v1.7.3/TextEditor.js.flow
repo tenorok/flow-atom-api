@@ -1,58 +1,112 @@
 // -*- mode: javascript; -*- // @flow
 /* eslint-disable no-undef */
 
+// FIXME: check optional fields
+
 declare class TextEditor {
-  abortTransaction(): any;
-  addCursorAtBufferPosition(bufferPosition: any): any;
-  addCursorAtScreenPosition(screenPosition: any): any;
-  addGutter(options: any): any;
-  addMarkerLayer(options: any): any;
-  addSelectionForBufferRange(bufferRange: any, options?: any): any;
-  addSelectionForScreenRange(screenRange: any, options?: any): any;
-  autoIndentSelectedRows(): any;
-  backspace(): any;
-  backwardsScanInBufferRange(regex: any, range: any, iterator: any): any;
-  bufferPositionForScreenPosition(bufferPosition: any, options?: any): any;
-  bufferRangeForScopeAtCursor(scopeSelector: any): any;
-  bufferRangeForScreenRange(screenRange: any): any;
-  clipBufferPosition(bufferPosition: any): any;
-  clipBufferRange(range: any): any;
-  clipScreenPosition(screenPosition: any, options?: any): any;
-  clipScreenRange(range: any, options?: any): any;
-  copySelectedText(): any;
-  createCheckpoint(): any;
-  cutSelectedText(): any;
-  cutToEndOfBufferLine(): any;
-  cutToEndOfLine(): any;
-  decorateMarker(marker: any, decorationParams: any): any;
-  decorateMarkerLayer(markerLayer: any, decorationParams: any): any;
-  delete(): any;
-  deleteLine(): any;
-  deleteToBeginningOfLine(): any;
-  deleteToBeginningOfSubword(): any;
-  deleteToBeginningOfWord(): any;
-  deleteToEndOfLine(): any;
-  deleteToEndOfSubword(): any;
-  deleteToEndOfWord(): any;
-  deleteToNextWordBoundary(): any;
-  deleteToPreviousWordBoundary(): any;
-  findMarkers(properties: any): any;
-  foldAll(): any;
-  foldAllAtIndentLevel(level: any): any;
-  foldBufferRow(bufferRow: any): any;
-  foldCurrentRow(): any;
-  foldSelectedLines(): any;
-  getBuffer(): any;
-  getCurrentParagraphBufferRange(): any;
-  getCursorAtScreenPosition(position: any): any;
-  getCursorBufferPosition(): any;
-  getCursorBufferPositions(): any;
-  getCursors(): any;
-  getCursorScreenPosition(): any;
-  getCursorScreenPositions(): any;
-  getCursorsOrderedByBufferPosition(): any;
+  abortTransaction(): void;
+  addCursorAtBufferPosition(bufferPosition: PointLike): Cursor;
+  addCursorAtScreenPosition(screenPosition: PointLike): Cursor;
+  addGutter(options: {
+    name: string,
+    priority?: number,
+    visible?: boolean
+  }): Gutter;
+  addMarkerLayer(options: {
+    maintainHistory?: boolean,
+  }): TextEditorMarkerLayer;
+  addSelectionForBufferRange(
+    bufferRange: RangeLike,
+    options?: {
+      reversed: boolean,
+    }
+  ): Selection;
+  addSelectionForScreenRange(
+    screenRange: RangeLike,
+    options?: {
+      reversed: boolean,
+    }
+  ): Selection;
+  autoIndentSelectedRows(): void;
+  backspace(): void;
+  backwardsScanInBufferRange(
+    regex: RegExp,
+    range: RangeLike,
+    iterator: any,
+  ): void;
+  bufferPositionForScreenPosition(
+    bufferPosition: PointLike, // FIXME
+    options?: {
+      screenLine: boolean,
+      wrapAtSoftNewlines: boolean,
+      wrapBeyondNewlines: boolean,
+    },
+  ): Point;
+  bufferRangeForScopeAtCursor(scopeSelector: string): Range;
+  bufferRangeForScreenRange(screenRange: RangeLike): Range;
+  clipBufferPosition(bufferPosition: PointLike): Point;
+  clipBufferRange(range: RangeLike): Range;
+  clipScreenPosition(
+    screenPosition: PointLike,
+    options?: {
+      screenLine: boolean,
+      wrapAtSoftNewlines: boolean,
+      wrapBeyondNewlines: boolean,
+    },
+  ): Point;
+  clipScreenRange(
+    range: RangeLike,
+    options?: {
+      screenLine: boolean,
+      wrapAtSoftNewlines: boolean,
+      wrapBeyondNewlines: boolean,
+    },
+  ): Range;
+  copySelectedText(): void;
+  createCheckpoint(): number;
+  cutSelectedText(): void;
+  cutToEndOfBufferLine(): void;
+  cutToEndOfLine(): void;
+  decorateMarker(
+    marker: TextEditorMarker,
+    decorationParams: DecorationProperties,
+  ): Decoration;
+  decorateMarkerLayer(
+    markerLayer: TextEditorMarkerLayer,
+    decorationParams: DecorationProperties,
+  ): LayerDecoration;
+  delete(): void;
+  deleteLine(): void;
+  deleteToBeginningOfLine(): void;
+  deleteToBeginningOfSubword(): void;
+  deleteToBeginningOfWord(): void;
+  deleteToEndOfLine(): void;
+  deleteToEndOfSubword(): void;
+  deleteToEndOfWord(): void;
+  deleteToNextWordBoundary(): void;
+  deleteToPreviousWordBoundary(): void;
+  findMarkers(properties: {
+    startBufferRow: number,
+    endBufferRow: number,
+    containsBufferRange: RangeLike,
+    containsBufferPosition: PointLike,
+  }): TextEditorMarker[];
+  foldAll(): void;
+  foldAllAtIndentLevel(level: number): void;
+  foldBufferRow(bufferRow: number): void;
+  foldCurrentRow(): void;
+  foldSelectedLines(): void;
+  getBuffer(): TextBuffer;
+  getCurrentParagraphBufferRange(): Range;
+  getCursorAtScreenPosition(position: PointLike): void | Cursor;
+  getCursorBufferPosition(): Point;
+  getCursorBufferPositions(): Point[];
+  getCursors(): Cursor[]; // FIXME
+  getCursorScreenPosition(): Point;
+  getCursorScreenPositions(): Point[];
+  getCursorsOrderedByBufferPosition(): Cursor[];
   getDecorations(propertyFilter?: any): any;
-  getDefaultMarkerLayer(): any;
+  getDefaultMarkerLayer(): TextEditorMarkerLayer;
   getEncoding(): any;
   getGrammar(): any;
   getGutters(): any;
@@ -207,29 +261,64 @@ declare class TextEditor {
   setCursorBufferPosition(position: any, options?: any): any;
   setCursorScreenPosition(position: any, options?: any): any;
   setCursorScreenPositions(): any;
-  setEncoding(encoding: any): any;
-  setGrammar(grammar: any): any;
-  setIndentationForBufferRow(bufferRow: any, newLevel: any, options?: any): any;
-  setPlaceholderText(placeholderText: any): any;
-  setSelectedBufferRange(bufferRange: any, options?: any): any;
-  setSelectedBufferRanges(bufferRanges: any, options?: any): any;
-  setSelectedScreenRange(screenRange: any, options?: any): any;
-  setSelectedScreenRanges(screenRanges: any, options?: any): any;
-  setSoftTabs(softTabs: any): any;
-  setSoftWrapped(softWrapped: any): any;
-  setTabLength(tabLength: any): any;
-  setText(text: any): any;
-  setTextInBufferRange(range: any, text: any, options?: any): any;
-  toggleFoldAtBufferRow(): any;
-  toggleLineCommentsInSelection(): any;
-  toggleSoftTabs(): any;
-  toggleSoftWrapped(): any;
-  transact(groupInterval?: any, fn: any): any;
-  transpose(): any;
-  undo(): any;
-  unfoldAll(): any;
-  unfoldBufferRow(bufferRow: any): any;
-  unfoldCurrentRow(): any;
-  upperCase(): any;
-  usesSoftTabs(): any;
+  setEncoding(encoding: string): void; // FIXME: could refine encoding
+  setGrammar(grammar: Grammar): void;
+  setIndentationForBufferRow(
+    bufferRow: number,
+    newLevel: number,
+    options?: {
+      preserveLeadingWhitespace?: boolean,
+    },
+  ): void;
+  setPlaceholderText(placeholderText: string): void;
+  setSelectedBufferRange(
+    bufferRange: RangeLike,
+    options?: {
+      reversed?: boolean,
+      preserveFolds?: boolean,
+    },
+  ): void;
+  setSelectedBufferRanges(
+    bufferRanges: RangeLike[],
+    options?: { // FIXME: are these optional?
+      reversed?: boolean,
+      preserveFolds?: boolean,
+    },
+  ): void;
+  setSelectedScreenRange(
+    screenRange: RangeLike,
+    options?: {
+      reversed?: boolean,
+    },
+  ): void;
+  setSelectedScreenRanges(
+    screenRanges: RangeLike[],
+    options?: {
+      reversed?: boolean,
+    },
+  ): void;
+  setSoftTabs(softTabs: boolean): void;
+  setSoftWrapped(softWrapped: boolean): boolean;
+  setTabLength(tabLength: ?number): void;
+  setText(text: string): void;
+  setTextInBufferRange(
+    range: RangeLike,
+    text: String,
+    options?: {
+      normalizeLineEndings?: boolean,
+      undo?: string,
+    },
+  ): Range;
+  toggleFoldAtBufferRow(): void;
+  toggleLineCommentsInSelection(): void;
+  toggleSoftTabs(): void;
+  toggleSoftWrapped(): boolean;
+  transact(groupInterval?: number, fn: () => void): void;
+  transpose(): void;
+  undo(): void;
+  unfoldAll(): void;
+  unfoldBufferRow(bufferRow: number): void;
+  unfoldCurrentRow(): void;
+  upperCase(): void;
+  usesSoftTabs(): boolean;
 }

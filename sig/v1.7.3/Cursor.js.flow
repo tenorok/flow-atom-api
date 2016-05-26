@@ -8,52 +8,38 @@ declare class Cursor {
   clearAutoscroll(): void;
   clearSelection(): void;
   compare(otherCursor: Cursor): PointComparison; // FIXME
-  getBeginningOfCurrentWordBufferPosition( // FIXME
-    options?: {
-      allowPrevious: boolean,
-      includeNonWordCharacters: boolean,
-      wordRegex: RegExp,
-    },
-  ): Range;
-  getBeginningOfNextWordBufferPosition(
-    options:? {
-      wordRegex: RegExp,
-    },
-  ): Range; // FIXME
+  getBeginningOfCurrentWordBufferPosition(options?: {
+    allowPrevious: boolean,
+    includeNonWordCharacters: boolean,
+    wordRegex: RegExp,
+  }): Range; // FIXME
+  getBeginningOfNextWordBufferPosition(options:? {
+    wordRegex: RegExp,
+  }): Range; // FIXME
   getBufferColumn(): number;
   getBufferPosition(): Position;
   getBufferRow(): number;
   getCurrentBufferLine(): string; // FIXME
-  getCurrentLineBufferRange(
-    options?: {
-      includeNewline: boolean,
-    },
-  ): Range; // FIXME
+  getCurrentLineBufferRange(options?: {
+    includeNewline: boolean,
+  }): Range; // FIXME
   getCurrentParagraphBufferRange(): Range;
-  getCurrentWordBufferRange(
-    options?: {
-      wordRegex: RegExp,
-    },
-  ): Range; // FIXME
+  getCurrentWordBufferRange(options?: {
+    wordRegex: RegExp,
+  }): Range; // FIXME
   getCurrentWordPrefix(): string; // FIXME
-  getEndOfCurrentWordBufferPosition(
-    options?: {
-      wordRegex: RegExp,
-      includeNonWordCharacters: boolean,
-    },
-  ): Range; // FIXME
+  getEndOfCurrentWordBufferPosition(options?: {
+    wordRegex: RegExp,
+    includeNonWordCharacters: boolean,
+  }): Range; // FIXME
   getIndentLevel(): number; // FIXME
   getMarker(): TextEditorMarker;
-  getNextWordBoundaryBufferPosition(
-    options?: {
-      wordRegex: RegExp,
-    },
-  ): Position; // FIXME
-  getPreviousWordBoundaryBufferPosition(
-    options?: {
-      wordRegex: RegExp,
-    },
-  ): Position; // FIXME
+  getNextWordBoundaryBufferPosition(options?: {
+    wordRegex: RegExp,
+  }): Position; // FIXME
+  getPreviousWordBoundaryBufferPosition(options?: {
+    wordRegex: RegExp,
+  }): Position; // FIXME
   getScopeDescriptor(): ScopeDescriptor;
   getScreenColumn(): number;
   getScreenPosition(): Point;
@@ -66,30 +52,33 @@ declare class Cursor {
   isLastCursor(): boolean;
   isSurroundedByWhitespace(): boolean;
   isVisible(): boolean; // FIXME
-  onDidChangePosition(
-    callback:
-      (event: {
-        oldBufferPosition: Point,
-        oldScreenPosition: Point,
-        newBufferPosition: Point,
-        newScreenPosition: Point,
-        textChanged: boolean,
-        cursor: Cursor,
-      }) => void,
-  ): Disposable; // FIXME
+  onDidChangePosition(callback: (event: {
+    oldBufferPosition: Point,
+    oldScreenPosition: Point,
+    newBufferPosition: Point,
+    newScreenPosition: Point,
+    textChanged: boolean,
+    cursor: Cursor,
+  }) => void): Disposable; // FIXME
   onDidChangeVisibility(callback: (visibility: boolean) => void): Disposable;
   onDidDestroy(callback: () => void): Disposable;
   moveDown(
     rowCount?: number,
-    options?: { moveToEndOfSelection: boolean }
+    options?: {
+      moveToEndOfSelection: boolean,
+    }
   ): void;
   moveLeft(
     columnCount?: number,
-    options?: { moveToEndOfSelection: boolean }
+    options?: {
+      moveToEndOfSelection: boolean,
+    }
   ): void;
   moveRight(
     columnCount?: number,
-    options?: { moveToEndOfSelection: boolean }
+    options?: {
+      moveToEndOfSelection: boolean,
+    }
   ): void;
   moveToBeginningOfScreenLine(): void;
   moveToBeginningOfLine(): void;
@@ -97,7 +86,9 @@ declare class Cursor {
   moveToTop(): void;
   moveUp(
     rowCount?: number,
-    options?: { moveToEndOfSelection: boolean }
+    options?: {
+      moveToEndOfSelection: boolean,
+    }
   ): void;
   moveToBeginningOfNextParagraph(): void;
   moveToBeginningOfNextWord(): void;
@@ -114,17 +105,21 @@ declare class Cursor {
   skipLeadingWhitespace(): void;
   setBufferPosition(
     bufferPosition: Position,
-    options: { autoscroll: boolean }
+    options?: {
+      autoscroll: boolean,
+    }
   ): void;
   setScreenPosition(
     screenPosition: Position,
-    options?: { autoscroll: boolean }
+    options?: {
+      autoscroll: boolean,
+    }
   ): void;
   setVisible(): void;
-  subwordRegExp(
-    options?: { backwards: boolean }
-  ): RegExp;
-  wordRegExp(
-    options?: { includeNonWordCharacters: boolean }
-  ): RegExp;
+  subwordRegExp(options?: {
+    backwards: boolean,
+  }): RegExp;
+  wordRegExp(options?: {
+    includeNonWordCharacters: boolean,
+  }): RegExp;
 }

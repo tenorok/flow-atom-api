@@ -10,7 +10,9 @@ declare type GitConfigValue =
 declare class GitRepository {
   static open(
     path: string,
-    options?: { refreshOnWindowFocus: boolean },
+    options?: {
+      refreshOnWindowFocus: boolean,
+    },
   ): this;
   checkoutHead(path: string): boolean;
   checkoutReference(reference: string, create: boolean): boolean;
@@ -54,13 +56,10 @@ declare class GitRepository {
   isStatusModified(status: number): boolean;
   isStatusNew(status: number): boolean;
   isSubmodule(path: string): boolean;
-  onDidChangeStatus(
-    callback:
-      (event: {
-        path: string,
-        pathStatus: number,
-      }) => void,
-  ): Disposable;
+  onDidChangeStatus(callback: (event: {
+    path: string,
+    pathStatus: number,
+  }) => void): Disposable;
   onDidChangeStatuses(callback: () => void): Disposable; // FIXME
   onDidDestroy(callback: () => void): Disposable;
   relativize(): string; // FIXME

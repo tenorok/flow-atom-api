@@ -10,9 +10,7 @@ declare class Gutter {
   ): Decoration;
   destroy(): void;
   hide(): void;
-  onDidChangeVisible(
-    callback: (gutter: Gutter) => void // FIXME
-  ): Disposable;
+  onDidChangeVisible(callback: (gutter: Gutter) => void): Disposable; // FIXME
   onDidDestroy(callback: () => void): Disposable;
   isVisible(): boolean;
   show(): void;

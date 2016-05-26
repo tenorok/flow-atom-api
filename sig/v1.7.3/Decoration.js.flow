@@ -43,13 +43,10 @@ declare class Decoration {
   getId(): number; // FIXME
   getMarker(): TextEditorMarker;
   getProperties(): DecorationProperties; // FIXME
-  onDidChangeProperties(
-    callback:
-      (event: {
-        oldProperties: DecorationProperties,
-        newProperties: DecorationProperties,
-      }) => void
-  ): Disposable; // FIXME
+  onDidChangeProperties(callback: (event: {
+    oldProperties: DecorationProperties,
+    newProperties: DecorationProperties,
+  }) => void): Disposable; // FIXME
   onDidDestroy(callback: () => void): Disposable;
   setProperties(newProperties: DecorationProperties): void; // FIXME
 }

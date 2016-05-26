@@ -11,11 +11,8 @@ declare class BufferedProcess {
     exit?: (code: number) => void,
   }): void;
   kill(): void;
-  onWillThrowError(
-    callback:
-      (errorObject: {
-        error: Object,
-        handle(): void,
-      }) => void,
-  ): Disposable;
+  onWillThrowError(callback: (errorObject: {
+    error: Object,
+    handle(): void,
+  }) => void): Disposable;
 }

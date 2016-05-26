@@ -10,13 +10,10 @@ declare class File {
   onDidChange(callback: () => void): Disposable;
   onDidRename(callback: () => void): Disposable;
   onDidDelete(callback: () => void): Disposable;
-  onWillThrowWatchError(
-    callback:
-      (errorObject: {
-        error: Object,
-        handle(): void
-      }) => void,
-  ): Disposable;
+  onWillThrowWatchError(callback:(errorObject: {
+    error: Object,
+    handle(): void
+  }) => void): Disposable;
   isFile(): true;
   isDirectory(): false;
   isSymbolicLink(): boolean;

@@ -7,8 +7,8 @@ declare type ContextMenuItem =
     , enabled?: boolean
     , submenu?: ContextMenuItem[]
     , visible?: boolean
-    , created(event: Event): void
-    , shouldDisplay(event: Event): void
+    , created: EventHandler
+    , shouldDisplay: EventHandler
     }
   | { type: "separator" }
 

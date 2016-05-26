@@ -9,7 +9,11 @@ declare type GrammarRule = // FIXME
 
 declare class Grammar {
   onDidUpdate(callback: () => void): Disposable;
-  tokenizeLine(line: string, ruleStack?: GrammarRule[], firstLine?: boolean): {
+  tokenizeLine(
+    line: string,
+    ruleStack?: GrammarRule[],
+    firstLine?: boolean,
+  ): {
     line: string,
     tags: number[], // FIXME
     tokens: GrammarToken[],

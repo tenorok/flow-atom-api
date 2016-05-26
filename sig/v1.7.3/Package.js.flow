@@ -2,8 +2,12 @@
 /* eslint-disable no-undef */
 
 declare class Package {
-  getBuildFailureOutput(): any;
-  isCompatible(): any;
-  onDidDeactivate(callback: any): any;
-  rebuild(): any;
+  getBuildFailureOutput(): null | string;
+  isCompatible(): boolean;
+  onDidDeactivate(callback: () => void): Disposable;
+  rebuild(): Promise<{
+    code: number, // FIXME
+    stdout: string,
+    stderr: string,
+  }>;
 }

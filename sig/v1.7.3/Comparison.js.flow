@@ -1,0 +1,5 @@
+// -*- mode: javascript; -*- // @flow
+/* eslint-disable no-undef */
+
+declare type Comparison = // FIXME: eslint doesn't understand the negative literal
+  | (-1 | 0 | 1)

@@ -9,7 +9,7 @@ declare class Point {
   static min(pointA: PointLike, pointB: PointLike): this;
   column: number;
   row: number;
-  compare(other: PointLike): PointComparison;
+  compare(other: PointLike): Comparison;
   constructor(row: number, column: number): this;
   copy(): this;
   freeze(): this;

@@ -7,7 +7,7 @@ declare type Position =
 declare class Cursor {
   clearAutoscroll(): void;
   clearSelection(): void;
-  compare(otherCursor: Cursor): PointComparison; // FIXME
+  compare(otherCursor: Cursor): Comparison; // FIXME
   getBeginningOfCurrentWordBufferPosition(options?: {
     allowPrevious: boolean,
     includeNonWordCharacters: boolean,

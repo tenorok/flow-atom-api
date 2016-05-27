@@ -2,71 +2,109 @@
 /* eslint-disable no-undef */
 
 declare class Selection {
-  addSelectionAbove(): any;
-  addSelectionBelow(): any;
-  autoIndentSelectedRows(): any;
-  backspace(): any;
-  clear(options?: any): any;
-  compare(otherSelection: any): any;
-  copy(maintainClipboard: any, fullLine: any): any;
-  cut(maintainClipboard: any, fullLine: any): any;
-  cutToEndOfBufferLine(): any;
-  cutToEndOfLine(): any;
-  delete(): any;
-  deleteLine(): any;
-  deleteSelectedText(): any;
-  deleteToBeginningOfLine(): any;
-  deleteToBeginningOfSubword(): any;
-  deleteToBeginningOfWord(): any;
-  deleteToEndOfLine(): any;
-  deleteToEndOfSubword(): any;
-  deleteToEndOfWord(): any;
-  deleteToNextWordBoundary(): any;
-  deleteToPreviousWordBoundary(): any;
-  expandOverLine(): any;
-  expandOverWord(): any;
-  fold(): any;
-  getBufferRange(): any;
-  getBufferRowRange(): any;
-  getScreenRange(): any;
-  getText(): any;
-  indentSelectedRows(): any;
-  insertText(text: any, options?: any): any;
-  intersectsBufferRange(bufferRange: any): any;
-  intersectsWith(otherSelection: any): any;
-  isEmpty(): any;
-  isReversed(): any;
-  isSingleScreenLine(): any;
-  joinLines(): any;
-  merge(otherSelection: any, options?: any): any;
-  onDidChangeRange(callback: any): any;
-  onDidDestroy(callback: any): any;
-  outdentSelectedRows(): any;
-  selectDown(rowCount?: any): any;
-  selectLeft(columnCount?: any): any;
-  selectLine(row: any): any;
-  selectRight(columnCount?: any): any;
-  selecttAll(): any;
-  selectToBeginningOfLine(): any;
-  selectToBeginningOfNextParagraph(): any;
-  selectToBeginningOfNextWord(): any;
-  selectToBeginningOfPreviousParagraph(): any;
-  selectToBeginningOfWord(): any;
-  selectToBottom(): any;
-  selectToBufferPosition(position: any): any;
-  selectToEndOfBufferLine(): any;
-  selectToEndOfLine(): any;
-  selectToEndOfWord(): any;
-  selectToFirstCharacterOfLine(): any;
-  selectToNextSubwordBoundary(): any;
-  selectToNextWordBoundary(): any;
-  selectToPreviousSubwordBoundary(): any;
-  selectToPreviousWordBoundary(): any;
-  selectToScreenPosition(position: any): any;
-  selectToTop(): any;
-  selectUp(rowCount?: any): any;
-  selectWord(): any;
-  setBufferRange(bufferRange: any, options?: any): any;
-  setScreenRange(screenRange: any, options?: any): any;
-  toggleLineComments(): any;
+  addSelectionAbove(): void;
+  addSelectionBelow(): void;
+  autoIndentSelectedRows(): void;
+  backspace(): void;
+  clear(options?: {
+    autoscroll?: boolean,
+  }): void;
+  compare(other: Selection): Comparison;
+  copy(maintainClipboard: boolean, fullLine: boolean): void;
+  cut(maintainClipboard: boolean, fullLine: boolean): void;
+  cutToEndOfBufferLine(maintainClipboard: boolean): void;
+  cutToEndOfLine(maintainClipboard: boolean): void;
+  delete(): void;
+  deleteLine(): void;
+  deleteSelectedText(): void;
+  deleteToBeginningOfLine(): void;
+  deleteToBeginningOfSubword(): void;
+  deleteToBeginningOfWord(): void;
+  deleteToEndOfLine(): void;
+  deleteToEndOfSubword(): void;
+  deleteToEndOfWord(): void;
+  deleteToNextWordBoundary(): void;
+  deleteToPreviousWordBoundary(): void;
+  expandOverLine(options?: {
+    autoscroll?: boolean,
+  }): void; // FIXME
+  expandOverWord(options?: {
+    autoscroll?: boolean,
+  }): void;
+  fold(): void;
+  getBufferRange(): Range;
+  getBufferRowRange(): RangeCompatible;
+  getScreenRange(): Range;
+  getText(): string;
+  indentSelectedRows(): void;
+  insertText(text: string, options?: { // FIXME: optional fields
+    select?: boolean,
+    autoIndent?: boolean,
+    autoIndentNewline?: boolean,
+    autoDecreaseIndent?: boolean,
+    normalizeEndings?: boolean,
+    undo?: "skip" | string,
+  }): Range;
+  intersectsBufferRange(range: RangeLike): boolean;
+  intersectsWith(other: Selection): boolean;
+  isEmpty(): boolean;
+  isReversed(): boolean;
+  isSingleScreenLine(): boolean;
+  joinLines(): void;
+  merge(other: Selection, options?: { // FIXME
+    preserveFolds?: true,
+    autoscroll?: true,
+  }): void;
+  onDidChangeRange(callback: (event: { // FIXME: should these just use Range?
+    oldBufferRange: RangeLike,
+    oldScreenRange: RangeLike,
+    newBufferRange: RangeLike,
+    newScreenRange: RangeLike,
+    selection: Selection,
+  }) => void): Disposable;
+  onDidDestroy(callback: () => void): Disposable;
+  outdentSelectedRows(): void;
+  selectDown(rows?: number): void;
+  selectLeft(columns?: number): void;
+  selectLine(row: number, options?: { // FIXME: options undocumented
+    preserveFolds?: true,
+    autoscroll?: true,
+  }): void;
+  selectRight(columns?: number): void;
+  selectAll(): void;
+  selectToBeginningOfLine(): void;
+  selectToBeginningOfNextParagraph(): void;
+  selectToBeginningOfNextWord(): void;
+  selectToBeginningOfPreviousParagraph(): void;
+  selectToBeginningOfWord(): void;
+  selectToBottom(): void;
+  selectToBufferPosition(position: PointLike): void;
+  selectToEndOfBufferLine(): void;
+  selectToEndOfLine(): void;
+  selectToEndOfWord(): void;
+  selectToFirstCharacterOfLine(): void;
+  selectToNextSubwordBoundary(): void;
+  selectToNextWordBoundary(): void;
+  selectToPreviousSubwordBoundary(): void;
+  selectToPreviousWordBoundary(): void;
+  selectToScreenPosition(
+    position: PointLike,
+    options?: { // FIXME: options undocumented
+      autoscroll?: boolean,
+    }
+  ): void;
+  selectToTop(): void;
+  selectUp(rowCount?: number): void;
+  selectWord(): void;
+  setBufferRange(range: RangeLike, options?: { // FIXME
+    preserveFolds?: boolean,
+    autoscroll?: boolean,
+  }): void;
+  setScreenRange(range: RangeLike, options?: {
+    preserveFolds?: boolean,
+    autoscroll?: boolean,
+  }): void;
+  toggleLineComments(): void;
 }
+
+// autoscroll?: boolean

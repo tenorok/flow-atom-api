@@ -131,7 +131,7 @@ declare class Workspace {
         lineText: string,
         lineTextOffset: number,
         matchText: string,
-        range: RangeCompatible,
+        range: RangeLike,
       }>,
     },
   ): Promise<{

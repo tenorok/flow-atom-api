@@ -64,7 +64,7 @@ declare class Pane {
     index: number,
   }) => void): Disposable;
   saveActiveItem(nextAction?: () => void): void;
-  saveActiveItemAs(nextAction?: () => void): any;
+  saveActiveItemAs(nextAction?: () => void): void;
   saveItem(item: ViewableItem, nextAction?: () => void): void;
   saveItemAs(item: ViewableItem, nextAction?: () => void): void;
   saveItems(): void;

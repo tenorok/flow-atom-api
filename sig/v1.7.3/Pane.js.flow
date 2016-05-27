@@ -2,50 +2,86 @@
 /* eslint-disable no-undef */
 
 declare class Pane {
-  activate(): any;
-  activateItem(options?: any): any;
-  activateItemAtIndex(index: any): any;
-  activateItemForURI(uri: any): any;
-  activateNextItem(): any;
-  activatePreviousItem(): any;
-  addItem(item: any, options?: any): any;
-  addItems(items: any, index?: any): any;
-  destroy(): any;
-  destroyActiveItem(): any;
-  destroyInactiveItems(): any;
-  destroyItem(item: any): any;
-  getActiveItem(): any;
-  getActiveItemIndex(): any;
-  getItems(): any;
-  isActive(): any;
-  itemAtIndex(index: any): any;
-  itemForURI(uri: any): any;
-  moveItem(item: any, index: any): any;
-  moveItemLeft(): any;
-  moveItemRight(): any;
-  moveItemToPane(item: any, pane: any, index: any): any;
-  observeActive(callback: any): any;
-  observeActiveItem(callback: any): any;
-  observeFlexScale(callback: any): any;
-  observeItems(callback: any): any;
-  onDidActivate(callback: any): any;
-  onDidAddItem(callback: any): any;
-  onDidChangeActive(callback: any): any;
-  onDidChangeActiveItem(callback: any): any;
-  onDidChangeFlexScale(callback: any): any;
-  onDidDestroy(callback: any): any;
-  onDidMoveItem(callback: any): any;
-  onDidRemoveItem(callback: any): any;
-  onWillDestroy(callback: any): any;
-  onWillDestroyItem(callback: any): any;
-  onWillRemoveItem(callback: any): any;
-  saveActiveItem(): any;
-  saveActiveItemAs(nextAction?: any): any;
-  saveItem(item: any, nextAction?: any): any;
-  saveItemAs(item: any, nextAction?: any): any;
-  saveItems(): any;
-  splitDown(params?: any): any;
-  splitLeft(params?: any): any;
-  splitRight(params?: any): any;
-  splitUp(params?: any): any;
+  activate(): void;
+  activateItem(options?: {
+    pending?: boolean,
+  }): void;
+  activateItemAtIndex(index: number): ViewableItem; // FIXME
+  activateItemForURI(uri: string): boolean;
+  activateNextItem(): ViewableItem; // FIXME
+  activatePreviousItem(): ViewableItem; // FIXME
+  addItem(
+    item: mixed,
+    options?: {
+      index?: number,
+      pending?: boolean,
+    },
+  ): ViewableItem; // FIXME
+  addItems(items: ViewableItem[], index?: number): ViewableItem[];
+  destroy(): void; // FIXME: this might return something other than undefined
+  destroyActiveItem(): false;
+  destroyInactiveItems(): void;
+  destroyItem(item: ViewableItem): boolean;
+  getActiveItem(): ViewableItem;
+  getActiveItemIndex(): number;
+  getItems(): ViewableItem[];
+  isActive(): boolean;
+  itemAtIndex(index: number): null | ViewableItem;
+  itemForURI(uri: string): void | ViewableItem;
+  moveItem(item: ViewableItem, index: number): void;
+  moveItemLeft(): void;
+  moveItemRight(): void;
+  moveItemToPane(item: ViewableItem, pane: Pane, index: number): ViewableItem;
+  observeActive(callback: (active: boolean) => void): Disposable;
+  observeActiveItem(callback: (activeItem: ViewableItem) => void): Disposable;
+  observeFlexScale(callback: (flexScale: number) => void): Disposable;
+  observeItems(callback: (item: ViewableItem) => void): Disposable;
+  onDidActivate(callback: () => void): Disposable;
+  onDidAddItem(callback: (event :{
+    item: ViewableItem,
+    index: number,
+  }) => void): Disposable;
+  onDidChangeActive(callback: (active: boolean) => void): Disposable;
+  onDidChangeActiveItem(callback: (activeItem: ViewableItem) => void): Disposable;
+  onDidChangeFlexScale(callback: (flexScale: number) => void): Disposable;
+  onDidDestroy(callback: () => void): Disposable;
+  onDidMoveItem(callback: (event: {
+    item: ViewableItem,
+    oldIndex: number,
+    newIndex: number,
+  }) => void): Disposable;
+  onDidRemoveItem(callback: (event: {
+    item: ViewableItem,
+    index: number,
+  }) => void): Disposable;
+  onWillDestroy(callback: () => void): Disposable;
+  onWillDestroyItem(callback: (event: {
+    item: ViewableItem,
+    index: number,
+  }) => void): Disposable;
+  onWillRemoveItem(callback: (event: {
+    item: ViewableItem,
+    index: number,
+  }) => void): Disposable;
+  saveActiveItem(nextAction?: () => void): void;
+  saveActiveItemAs(nextAction?: () => void): any;
+  saveItem(item: ViewableItem, nextAction?: () => void): void;
+  saveItemAs(item: ViewableItem, nextAction?: () => void): void;
+  saveItems(): void;
+  splitDown(params?: {
+    items?: ViewableItem[],
+    copyActiveItem?: boolean,
+  }): Pane;
+  splitLeft(params?: {
+    items?: ViewableItem[],
+    copyActiveItem?: boolean,
+  }): Pane;
+  splitRight(params?: {
+    items?: ViewableItem[],
+    copyActiveItem?: boolean,
+  }): Pane;
+  splitUp(params?: {
+    items?: ViewableItem[],
+    copyActiveItem?: boolean,
+  }): Pane;
 }

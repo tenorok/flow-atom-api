@@ -9,14 +9,27 @@ declare class Range {
   static fromObject(object: RangeLike, copy?: boolean): this;
   end: Point,
   start: Point,
+  compare(other: RangeLike): Comparison;
   constructor(pointA: PointLike, pointB: PointLike): this;
+  containsPoint(other: PointLike, exclusive?: boolean): boolean;
+  containsRange(other: RangeLike, exclusive?: boolean): boolean;
   copy(): this;
+  coversSameRows(other: RangeLike): boolean;
+  freeze(): this;
   getRowCount(): number;
   getRows(): number[];
+  intersectsWith(other: RangeLike, exclusive?: boolean): boolean;
+  intersectsRow(row: number): boolean;
+  intersectsRowRange(startRow: number, endRow: number): boolean;
+  isEqual(other: RangeLike): boolean;
   isEmpty(): boolean;
   isSingleLine(): boolean;
   negate(): this;
   serialize(): RangeCompatible;
+  toString(): string;
+  translate(startDelta: PointLike, endDelta?: PointLike): Range;
+  traverse(delta: PointLike): Range;
+  union(otherRange: RangeLike): Range;
 }
 
 declare type RangeLike =

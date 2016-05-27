@@ -2,65 +2,139 @@
 /* eslint-disable no-undef */
 
 declare class Workspace {
-  activateNextPane(): void;
-  activatePreviousPane(): void;
-  addBottomPanel(options: any): Panel;
-  addFooterPanel(options: any): Panel;
-  addHeaderPanel(options: any): Panel;
-  addLeftPanel(options: any): Panel;
-  addModalPanel(options: any): Panel;
-  addOpener(opener: any): Disposable;
-  addRightPanel(options: any): Panel;
-  addTopPanel(options: any): Panel;
+  activateNextPane(): boolean;
+  activatePreviousPane(): boolean;
+  addBottomPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: boolean,
+  }): Panel;
+  addFooterPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: boolean,
+  }): Panel;
+  addHeaderPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: boolean,
+  }): Panel;
+  addLeftPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: boolean,
+  }): Panel;
+  addModalPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: boolean,
+  }): Panel;
+  addOpener(opener: () => void): Disposable;
+  addRightPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: boolean,
+  }): Panel;
+  addTopPanel(options: {
+    item: ViewableItem,
+    priority?: number,
+    visible?: number,
+  }): Panel;
   buildTextEditor(): TextEditor;
   getActivePane(): Pane;
-  getActivePaneItem(): any;
-  getActiveTextEditor(): any;
-  getBottomPanels(): any;
-  getFooterPanels(): any;
-  getHeaderPanels(): any;
-  getLeftPanels(): any;
-  getModalPanels(): any;
-  getPaneItems(): any;
-  getPanes(): any;
-  getRightPanels(): any;
-  getTextEditors(): any;
-  getTopPanels(): any;
-  isTextEditor(object: any): any;
-  observeActivePane(callback: any): any;
-  observePanes(callback: any): any;
-  observeActivePane(
-    callback: (item: any) => void
-  ): Disposable;
-  observePaneItems(
-    callback: (item: any) => void // FIXME
-  ): Disposable;
-  observeTextEditors(
-    callback: (editor: TextEditor) => void
-  ): Disposable;
-  onDidAddPane(callback: any): any;
-  onDidAddPaneItem(callback: any): any;
-  onDidAddTextEditor(callback: any): any;
-  onDidChangeActivePane(callback: any): any;
-  onDidChangeActivePaneItem(
-    callback: (item: any) => void
-  ): Disposable;
-  onDidDestroyPane(callback: any): any;
-  onDidDestroyPaneItem(callback: any): any;
-  onDidOpen(callback: any): any;
-  onDidStopChangingActivePaneItem(
-    callback: (item: any) => void
-  ): Disposable;
-  onDidStopChangingActivePaneItem(
-    callback: (item: any) => void
-  ): Disposable;
-  onWillDestroyPane(callback: any): any;
-  onWillDestroyPaneItem(callback: any): any;
-  open(uri?: any, options?: any): any;
-  paneForItem(item: any): any;
-  paneForURI(uri: any): any;
-  panelForItem(item: any): any;
-  reopenItem(): any;
-  replace(regex: any, replacementText: any, filePaths: any, iterator: any): any;
-  scan(regex: any, options?: any, iterator: any): any;
+  getActivePaneItem(): ViewableItem;
+  getActiveTextEditor(): TextEditor;
+  getBottomPanels(): Panel[];
+  getFooterPanels(): Panel[];
+  getHeaderPanels(): Panel[];
+  getLeftPanels(): Panel[];
+  getModalPanels(): Panel[];
+  getPaneItems(): ViewableItem[];
+  getPanes(): Pane[];
+  getRightPanels(): Panel[];
+  getTextEditors(): TextEditor[];
+  getTopPanels(): Panel[];
+  isTextEditor(object: Object): boolean;
+  observeActivePane(callback: (pane: Pane) => void): Disposable;
+  observePanes(callback: (pane: Pane) => void): Disposable;
+  observePaneItems(callback: (item: ViewableItem) => void): Disposable;
+  observeTextEditors(callback: (editor: TextEditor) => void): Disposable;
+  onDidAddPane(callback: (event: {
+    pane: Pane,
+  }) => void): Disposable;
+  onDidAddPaneItem(callback: (event: {
+    index: number,
+    item: ViewableItem,
+    pane: Pane,
+  }) => void): Disposable;
+  onDidAddTextEditor(callback: (event: {
+    index: number,
+    pane: Pane,
+    textEditor: TextEditor,
+  }) => void): Disposable;
+  onDidChangeActivePane(callback: (pane: Pane) => void): Disposable;
+  onDidChangeActivePaneItem(callback: (item: ViewableItem) => void): Disposable;
+  onDidDestroyPane(callback: (event: {
+    pane: Pane,
+  }) => void): Disposable;
+  onDidDestroyPaneItem(callback: (event: {
+    index: number,
+    item: ViewableItem,
+    pane: Pane,
+  }) => void): Disposable;
+  onDidOpen(callback: (event: {
+    index: number,
+    item: ViewableItem,
+    pane: Pane,
+    uri: void | string,
+  }) => void): Disposable;
+  onDidStopChangingActivePaneItem(callback: (item: ViewableItem) => void): Disposable;
+  onWillDestroyPane(callback: (event: {
+    pane: Pane,
+  }) => void): Disposable;
+  onWillDestroyPaneItem(callback: (event: {
+    index: number,
+    item: ViewableItem,
+    pane: Pane,
+  }) => void): Disposable;
+  open(uri?: string, options?: {
+    activateItem?: boolean,
+    activatePane?: boolean,
+    initialColumn?: number,
+    initialLine?: number,
+    pending?: boolean,
+    searchAllPanes?: boolean,
+    split?: "down" | "left" | "right" | "up",
+  }): Promise<TextEditor>;
+  paneForItem(item: ViewableItem): void | Pane;
+  paneForURI(uri: string): void | Pane;
+  panelForItem(item: ViewableItem): null | Panel;
+  reopenItem(): Promise<void>; // FIXME
+  replace(
+    regex: RegExp,
+    replacementText: string,
+    filePaths: string[],
+    iterator: (options: {
+      filePath: string,
+      replacements: number,
+    }) => void,
+  ): Promise<void>;
+  scan(
+    regex: RegExp,
+    options?: {
+      paths: string[], // FIXME
+      onPathsSearched(count: number): void,
+    },
+    iterator: { // FIXME: arguments undocumented
+      filePath: string,
+      matches: Array<{
+        lineText: string,
+        lineTextOffset: number,
+        matchText: string,
+        range: RangeCompatible,
+      }>,
+    },
+  ): Promise<{
+    cancel(): void,
+  }>;
 }

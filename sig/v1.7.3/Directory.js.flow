@@ -10,7 +10,7 @@ declare class Directory {
   getBaseName(): string;
   getEntries(
     callback: (
-      error: ?Error,
+      error: null | Error,
       entries: Array<Directory | File>,
     ) => number,
   ): void;

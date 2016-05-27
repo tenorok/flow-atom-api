@@ -26,13 +26,22 @@ declare class AtomEnvironment {
   confirm(options: {
     message: string,
     detailedMessage?: string,
-    buttons?: string[] | { [buttonName: string]: () => void },
-  }) : ?number;
+  }) : void;
+  confirm(options: {
+    message: string,
+    detailedMessage?: string,
+    buttons: string[],
+  }) : number;
+  confirm<T>(options: {
+    message: string,
+    detailedMessage?: string,
+    buttons: { [buttonName: string]: () => T },
+  }) : T;
   focus(): void;
   executeJavaScriptInDevTools(code: string): void; // FIXME
   getCurrentWindow(): BrowserWindow;
   getLoadSettings(): {
-    [keys: string]: JSON,
+    [keys: string]: JSONValue,
   };
   getPosition(): {
     x: number,

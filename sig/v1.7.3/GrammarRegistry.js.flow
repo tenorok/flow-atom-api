@@ -4,10 +4,10 @@
 declare class GrammarRegistry {
   addGrammar(grammar: Grammar): Disposable;
   getGrammars(): Grammar[];
-  grammarForScopeName(scopeName: string): ?Grammar; // FIXME
+  grammarForScopeName(scopeName: string): void | Grammar;
   loadGrammar(
     grammarPath: string,
-    callback: (error: ?Error, grammar: ?Grammar) => void
+    callback: (error: (null | Error), grammar: (null | Grammar)) => void
   ): void;
   loadGrammarSync(grammarPath: string): Grammar;
   onDidAddGrammar(
@@ -18,8 +18,8 @@ declare class GrammarRegistry {
   ): Disposable;
   readGrammar(
     grammarPath: string,
-    callback: (error: ?Error, grammar: ?Grammar) => void
+    callback: (error: (null | Error), grammar: (null | Grammar)) => void
   ): void;
-  removeGrammarForScopeName(scopeName: string): ?Grammar; // FIXME
+  removeGrammarForScopeName(scopeName: string): void | Grammar;
   readGrammarSync(grammarPath: string): Grammar;
 }

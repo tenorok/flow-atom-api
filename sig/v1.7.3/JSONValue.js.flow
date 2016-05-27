@@ -1,0 +1,17 @@
+// -*- mode: javascript; -*- // @flow
+/* eslint-disable no-undef, no-use-before-define */
+
+type JSONValue =
+  | boolean
+  | JSONArray
+  | JSONObject
+  | null
+  | number
+  | string
+
+type JSONArray =
+  | Array<JSONValue>
+
+type JSONObject = {
+  [key: string]: JSONValue,
+}

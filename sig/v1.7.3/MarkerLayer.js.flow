@@ -6,9 +6,9 @@ declare class MarkerLayer {
   destroy(): void;
   findMarkers(options: FindMarkersOptions): TextEditorMarker[]; // FIXME
   getMarker(id: number): TextEditorMarker; // FIXME
-  getMarkers(): TextEditorMarker[];
   getMarkerCount(): number;
+  getMarkers(): TextEditorMarker[];
   isDestroyed(): boolean; // FIXME
-  markRange(range: Range, options: MarkOptions): TextEditorMarker; // FIXME
-  markPosition(position: Point): TextEditorMarker;
+  markPosition(position: PointLike, properties: MarkOptions): TextEditorMarker;
+  markRange(range: RangeLike, properties: MarkOptions): TextEditorMarker;
 }

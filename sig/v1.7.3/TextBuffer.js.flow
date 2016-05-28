@@ -68,7 +68,7 @@ declare class TextBuffer {
   getText(): string;
   getTextInRange(range: RangeLike): string;
   getUri(): string;
-  groupChangesSinceCheckpoint(): boolean;
+  groupChangesSinceCheckpoint(checkpoint: number): boolean;
   insert(
     position: PointLike,
     text: string,

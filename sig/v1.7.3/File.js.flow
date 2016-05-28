@@ -11,7 +11,7 @@ declare class File {
   onDidRename(callback: () => void): Disposable;
   onDidDelete(callback: () => void): Disposable;
   onWillThrowWatchError(callback:(errorObject: {
-    error: Object,
+    error: Error, // FIXME: should refine this
     handle(): void
   }) => void): Disposable;
   isFile(): true;

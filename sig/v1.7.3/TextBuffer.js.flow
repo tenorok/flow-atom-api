@@ -121,7 +121,7 @@ declare class TextBuffer {
   onWillReload(callback: () => void): Disposable;
   onWillSave(callback: () => void): Disposable;
   onWillThrowWatchError(callback: (errorObject: {
-    error: mixed, // FIXME
+    error: Error, // FIXME: should refine this
     handle(): void,
   }) => void): Disposable;
   positionForCharacterIndex(offset: number): Point;

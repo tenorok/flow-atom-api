@@ -12,7 +12,15 @@ declare class BufferedProcess {
   }): void;
   kill(): void;
   onWillThrowError(callback: (errorObject: {
-    error: Object,
+    error:
+      (Error & {
+        name: "BufferedProcessError"
+      }) |
+      (Error & {
+        code: string,
+        errno: string,
+        syscall: string,
+      }),
     handle(): void,
   }) => void): Disposable;
 }

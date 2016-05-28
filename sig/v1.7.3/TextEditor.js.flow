@@ -299,7 +299,7 @@ declare class TextEditor {
   ): void;
   setSoftTabs(softTabs: boolean): void;
   setSoftWrapped(softWrapped: boolean): boolean;
-  setTabLength(tabLength: ?number): void;
+  setTabLength(tabLength: null | number): void;
   setText(text: string): void;
   setTextInBufferRange(
     range: RangeLike,

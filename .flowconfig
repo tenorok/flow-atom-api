@@ -5,6 +5,7 @@ src/**
 sig/v1.7.3
 node_modules/flow-atom-event-kit/sig/v1.5.0
 node_modules/flow-atom-keymap/sig/v6.3.2
+node_modules/flow-atom-pathwatcher/sig/v6.2.4
 node_modules/flow-electron-api/sig/v1.1.1
 node_modules/iflow-jquery/index.js.flow
 

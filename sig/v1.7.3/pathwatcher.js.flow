@@ -1,0 +1,11 @@
+// -*- mode: javascript; -*- // @flow
+/* eslint-disable import/no-duplicates, import/no-unresolved, max-len, no-duplicate-imports, no-unused-vars */
+
+import type {
+  FileEncoding,
+} from "pathwatcher";
+
+import {
+  Directory,
+  File,
+} from "pathwatcher";

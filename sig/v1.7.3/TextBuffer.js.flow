@@ -50,7 +50,7 @@ declare class TextBuffer {
     newText: string,
   }>;
   getDefaultMarkerLayer(): MarkerLayer;
-  getEncoding(): string; // FIXME: should refine
+  getEncoding(): FileEncoding;
   getEndPosition(): Point;
   getFirstPosition(): Point & { column: 0, row: 0 };
   getLastLine(): string;
@@ -99,7 +99,7 @@ declare class TextBuffer {
     oldRange: Range,
     oldText: string,
   }) => void): Disposable;
-  onDidChangeEncoding(callback: (encoding: string) => void): Disposable;
+  onDidChangeEncoding(callback: (encoding: FileEncoding) => void): Disposable;
   onDidChangeModified(callback: (modified: boolean) => void): Disposable;
   onDidChangePath(callback: (path: string) => void): Disposable;
   onDidConflict(callback: () => void): Disposable;
@@ -154,7 +154,7 @@ declare class TextBuffer {
       replace(newText: string): void,
     }) => void,
   ): void;
-  setEncoding(encoding: string): void; // FIXME: should refine
+  setEncoding(encoding: FileEncoding): void;
   setPath(filePath: string): void;
   setText(text: string): Range;
   setTextInRange(

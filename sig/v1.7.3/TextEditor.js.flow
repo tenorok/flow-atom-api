@@ -118,7 +118,7 @@ declare class TextEditor {
     getProperties(): DecorationProperties & T,
   }>;
   getDefaultMarkerLayer(): TextEditorMarkerLayer;
-  getEncoding(): string; // FIXME: should refine this
+  getEncoding(): FileEncoding;
   getGrammar(): Grammar;
   getGutters(): Gutter[];
   getHighlightDecorations(
@@ -245,7 +245,7 @@ declare class TextEditor {
     textChanged: boolean,
   }) => void): Disposable;
   // FIXME: docs don't mention callback args
-  onDidChangeEncoding(callback: (encoding: string) => void): Disposable;
+  onDidChangeEncoding(callback: (encoding: FileEncoding) => void): Disposable;
   onDidChangeGrammar(callback: (grammar: Grammar) => void): Disposable;
   onDidChangeModified(callback: () => void): Disposable; // FIXME: callback args
   onDidChangePath(callback: () => void): Disposable; // FIXME: callback args
@@ -380,7 +380,7 @@ declare class TextEditor {
       wrapBeyondNewlines: boolean,
     },
   ): void;
-  setEncoding(encoding: string): void; // FIXME: could refine encoding
+  setEncoding(encoding: FileEncoding): void;
   setGrammar(grammar: Grammar): void;
   setIndentationForBufferRow(
     bufferRow: number,

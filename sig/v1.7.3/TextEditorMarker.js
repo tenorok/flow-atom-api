@@ -1,0 +1,95 @@
+// @flow
+
+declare class TextEditorMarker {
+  clearTail(properties?: {
+    [keys: string]: mixed,
+  }): void | boolean;
+  compare(other: TextEditorMarker): Comparison;
+  copy(properties?: {
+    [keys: string]: mixed,
+  }): null | TextEditorMarker; // FIXME: see comments in docs
+  destroy(): void;
+  getBufferRange(): Range;
+  getEndBufferPosition(): Point;
+  getEndScreenPosition(): Point;
+  getHeadBufferPosition(): Point;
+  getHeadScreenPosition(): Point;
+  getInvalidationStrategy(): MarkerInvalidationStrategy;
+  getProperties(): {
+    [keys: string]: mixed, // FIXME: can this be refined?
+  };
+  getScreenRange(): Range;
+  getStartBufferPosition(): Point;
+  getStartScreenPosition(): Point;
+  getTailBufferPosition(): Point;
+  getTailScreenPosition(): Point;
+  hasTail(): boolean;
+  isDestroyed(): boolean;
+  isEqual(other: TextEditorMarker): boolean;
+  isReversed(): boolean;
+  isValid(): boolean;
+  onDidChange(callback: (event: {
+    oldHeadBufferPosition: Point,
+    newHeadBufferPosition: Point,
+    oldTailBufferPosition: Point,
+    newTailBufferPosition: Point,
+    oldHeadScreenPosition: Point,
+    newHeadScreenPosition: Point,
+    oldTailScreenPosition: Point,
+    newTailScreenPosition: Point,
+    wasValid: boolean,
+    isValid: boolean,
+    hadTail: boolean,
+    hasTail: boolean,
+    oldProperties: {
+      [keys: string]: mixed, // FIXME
+    },
+    newProperties: {
+      [keys: string]: mixed, // FIXME
+    },
+    textChanged: boolean,
+  }) => void): Disposable;
+  onDidDestroy(callback: () => void): Disposable;
+  plantTail(properties?: { // FIXME: properties seems unused
+    [keys: string]: mixed,
+  }): void | boolean;
+  setBufferRange(
+    range: Range,
+    properties?: {
+      [keys: string]: mixed,
+    },
+  ): void | boolean; // FIXME
+  setHeadBufferPosition(
+    position: PointLike,
+    properties?: {
+      [keys: string]: mixed,
+    },
+  ): void | boolean;
+  setHeadScreenPosition(
+    position: PointLike,
+    properties?: {
+      [keys: string]: mixed,
+    },
+  ): void | boolean;
+  setProperties(properties: {
+    [keys: string]: mixed,
+  }): void | boolean;
+  setScreenRange(
+    screenRange: RangeLike,
+    properties?: {
+      [keys: string]: mixed,
+    },
+  ): void | boolean;
+  setTailBufferPosition(
+    bufferPosition: PointLike,
+    properties?: {
+      [keys: string]: mixed,
+    },
+  ): void | boolean;
+  setTailScreenPosition(
+    screenPosition: PointLike,
+    properties?: {
+      [keys: string]: mixed,
+    },
+  ): void | boolean;
+}

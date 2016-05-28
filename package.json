@@ -20,6 +20,7 @@
     "flow-atom-first-mate": "flow-atom/flow-atom-first-mate",
     "flow-atom-keymap": "flow-atom/flow-atom-keymap",
     "flow-atom-pathwatcher": "flow-atom/flow-atom-pathwatcher",
+    "flow-atom-text-buffer": "flow-atom/flow-atom-text-buffer",
     "flow-electron-api": "flow-atom/flow-electron-api",
     "iflow-jquery": "^1.0.32"
   },

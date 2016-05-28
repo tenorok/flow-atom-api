@@ -1,0 +1,14 @@
+// @flow
+
+declare class Project {
+  addPath(projectPath: string): void;
+  contains(pathToCheck: string): boolean;
+  getDirectories(): Directory[];
+  getPaths(): string[];
+  getRepositories(): GitRepository[];
+  onDidChangePaths(callback: (projectPaths: string[]) => void): Disposable;
+  relativizePath(fullPath: string): [null | string, string];
+  removePath(projectPath: string): boolean; // FIXME
+  repositoryForDirectory(directory: Directory): Promise<null | GitRepository>;
+  setPaths(projectPaths: string[]): void;
+}

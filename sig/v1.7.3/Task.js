@@ -1,0 +1,10 @@
+// @flow
+
+declare class Task {
+  static once(taskPath: string, ...args: mixed[]): this; // FIXME: variadic
+  constructor(taskPath: string): this;
+  start(args: mixed[], callback?: () => void): void; // FIXME: variadic
+  send(message: JSONValue): void; // FIXME: use object instead?
+  on(eventName: string, callback: () => void): Disposable;
+  terminate(): boolean;
+}

@@ -1,0 +1,7 @@
+// -*- mode: javascript; -*- // @flow
+/* eslint-disable import/no-unresolved, no-unused-vars */
+
+import {
+  KeyBinding,
+  KeymapManager,
+} from "atom-keymap";

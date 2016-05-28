@@ -1,8 +1,0 @@
-// -*- mode: javascript; -*- // @flow
-/* eslint-disable no-undef */
-
-declare class KeyBinding { // FIXME
-  enabled: boolean;
-  matches(keystroke: string): boolean;
-  compare(keyBinding: KeyBinding): number; // FIXME
-}

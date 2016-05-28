@@ -1,4 +1,4 @@
 // -*- mode: javascript; -*- // @flow
-/* eslint-disable no-undef, no-unused-vars */
+/* eslint-disable import/no-unresolved, no-unused-vars */
 
 import { Disposable } from "event-kit";

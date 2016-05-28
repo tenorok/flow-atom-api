@@ -32,12 +32,19 @@ declare class TextEditor {
   backwardsScanInBufferRange(
     regex: RegExp,
     range: RangeLike,
-    iterator: any,
+    iterator: (event: {
+      match: RegExp,
+      matchText: string,
+      range: Range,
+      stop(): void,
+      replace(newText: string): void,
+    }) => void, // FIXME
   ): void;
   bufferPositionForScreenPosition(
     bufferPosition: PointLike, // FIXME
     options?: {
       screenLine: boolean,
+      skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
@@ -50,6 +57,7 @@ declare class TextEditor {
     screenPosition: PointLike,
     options?: {
       screenLine: boolean,
+      skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
@@ -58,6 +66,7 @@ declare class TextEditor {
     range: RangeLike,
     options?: {
       screenLine: boolean,
+      skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
@@ -105,162 +114,272 @@ declare class TextEditor {
   getCursorScreenPosition(): Point;
   getCursorScreenPositions(): Point[];
   getCursorsOrderedByBufferPosition(): Cursor[];
-  getDecorations(propertyFilter?: any): any;
+  getDecorations<T: $Shape<DecorationProperties>>(propertyFilter?: T): Array<Decoration & {
+    getProperties(): DecorationProperties & T,
+  }>;
   getDefaultMarkerLayer(): TextEditorMarkerLayer;
-  getEncoding(): any;
-  getGrammar(): any;
-  getGutters(): any;
-  getHighlightDecorations(propertyFilter?: any): any;
-  getLastBufferRow(): any;
-  getLastCursor(): any;
-  getLastScreenRow(): any;
-  getLastSelection(): any;
-  getLineCount(): any;
-  getLineDecorations(propertyFilter?: any): any;
-  getLineNumberDecorations(propertyFilter?: any): any;
-  getLongTitle(): any;
-  getMarker(id: any): any;
-  getMarkerCount(): any;
-  getMarkerLayer(id: any): any;
-  getMarkers(): any;
-  getOverlayDecorations(propertyFilter?: any): any;
-  getPath(): any;
-  getPlaceholderText(): any;
-  getRootScopeDescriptor(): any;
-  getScreenLineCount(): any;
-  getSelectedBufferRange(): any;
-  getSelectedBufferRanges(): any;
-  getSelectedScreenRange(): any;
-  getSelectedScreenRanges(): any;
-  getSelectedText(): any;
-  getSelections(): any;
-  getSelectionsOrderedByBufferPosition(): any;
-  getSoftTabs(): any;
-  getSoftWrapColumn(): any;
-  getTabLength(): any;
-  getTabText(): any;
-  getText(): any;
-  getTextInBufferRange(range: any): any;
-  getTitle(): any;
-  getWordUnderCursor(options?: any): any;
-  groupChangesSinceCheckpoint(): any;
-  gutterWithName(): any;
-  hasMultipleCursors(): any;
-  indentationForBufferRow(): any;
-  indentLevelForLine(): any;
-  indentSelectedRows(): any;
-  insertNewline(): any;
-  insertNewlineAbove(): any;
-  insertNewlineBelow(): any;
-  insertText(text: any, options?: any): any;
-  isBufferRowCommented(): any;
-  isEmpty(): any;
-  isFoldableAtBufferRow(bufferRow: any): any;
-  isFoldableAtScreenRow(bufferRow: any): any;
-  isFoldedAtBufferRow(bufferRow: any): any;
-  isFoldedAtCursorRow(): any;
-  isFoldedAtScreenRow(screenRow: any): any;
-  isModified(): any;
-  isSoftWrapped(): any;
-  lineTextForBufferRow(bufferRow: any): any;
-  lineTextForScreenRow(screenRow: any): any;
-  lowerCase(): any;
-  markBufferPosition(position: any, options?: any): any;
-  markBufferRange(range: any, properties: any): any;
-  markScreenPosition(position: any, options?: any): any;
-  markScreenRange(range: any, properties: any): any;
-  moveBeginningOfPreviousParagraph(): any;
-  moveDown(lineCount?: any): any;
-  moveLeft(columnCount?: any): any;
-  moveRight(columnCount?: any): any;
-  moveToBeginningOfLine(): any;
-  moveToBeginningOfNextParagraph(): any;
-  moveToBeginningOfNextWord(): any;
-  moveToBeginningOfScreenLine(): any;
-  moveToBeginningOfWord(): any;
-  moveToBottom(): any;
-  moveToEndOfLine(): any;
-  moveToEndOfScreenLine(): any;
-  moveToEndOfWord(): any;
-  moveToFirstCharacterOfLine(): any;
-  moveToNextSubwordBoundary(): any;
-  moveToNextWordBoundary(): any;
-  moveToPreviousSubwordBoundary(): any;
-  movetoPreviousWordBoundary(): any;
-  moveToTop(): any;
-  moveUp(lineCount?: any): any;
-  mutateSelectedText(fn: any): any;
-  observeCursors(callback: any): any;
-  observeDecorations(callback: any): any;
-  observeGrammar(callback: any): any;
-  observeGutters(callback: any): any;
-  observeSelections(callback: any): any;
-  onDidAddCursor(callback: any): any;
-  onDidAddDecoration(callback: any): any;
-  onDidAddGutter(callback: any): any;
-  onDidAddSelection(callback: any): any;
-  onDidChange(callback: any): any;
-  onDidChangeCursorPosition(callback: any): any;
-  onDidChangeEncoding(callback: any): any;
-  onDidChangeGrammar(callback: any): any;
-  onDidChangeModified(callback: any): any;
-  onDidChangePath(callback: any): any;
-  onDidChangePlaceholderText(callback: any): any;
-  onDidChangeSelectionRange(callback: any): any;
-  onDidChangeSoftWrapped(callback: any): any;
-  onDidChangeTitle(callback: any): any;
-  onDidConflict(callback: any): any;
-  onDidDestroy(callback: any): any;
-  onDidInsertText(callback: any): any;
-  onDidRemoveCursor(callback: any): any;
-  onDidRemoveDecoration(callback: any): any;
-  onDidRemoveGutter(callback: any): any;
-  onDidRemoveSelection(callback: any): any;
-  onDidSave(callback: any): any;
-  onDidStopChanging(callback: any): any;
-  onWillInsertText(callback: any): any;
-  outdentSelectedRows(): any;
-  pasteText(options?: any): any;
-  redo(): any;
-  revertToCheckpoint(): any;
-  save(): any;
-  saveAs(filePath: any): any;
-  scan(regex: any, iterator: any): any;
-  scanInBufferRange(regex: any, range: any, iterator: any): any;
-  scopeDescriptorForBufferPosition(bufferPosition: any): any;
-  screenPositionForBufferPosition(bufferPosition: any, options?: any): any;
-  screenRangeForBufferRange(bufferRange: any): any;
-  scrollToBufferPosition(bufferPosition: any, options?: any): any;
-  scrollToCursorPosition(options?: any): any;
-  scrollToScreenPosition(screenPosition: any, options?: any): any;
-  selectAll(): any;
-  selectDown(rowCount?: any): any;
-  selectionIntersectsBufferRange(bufferRange: any): any;
-  selectLeft(columnCount?: any): any;
-  selectLinesContainingCursors(): any;
-  selectMarker(marker: any): any;
-  selectRight(columnCount?: any): any;
-  selectToBeginningOfLine(): any;
-  selectToBeginningOfNextParagraph(): any;
-  selectToBeginningOfNextWord(): any;
-  selectToBeginningOfPreviousParagraph(): any;
-  selectToBeginningOfWord(): any;
-  selectToBottom(): any;
-  selectToBufferPosition(position: any): any;
-  selectToEndOfLine(): any;
-  selectToEndOfWord(): any;
-  selectToFirstCharacterOfLine(): any;
-  selectToNextSubwordBoundary(): any;
-  selectToNextWordBoundary(): any;
-  selectToPreviousSubwordBoundary(): any;
-  selectToPreviousWordBoundary(): any;
-  selectToScreenPosition(position: any): any;
-  selectToTop(): any;
-  selectUp(rowCount?: any): any;
-  selectWordsContainingCursors(): any;
-  setCursorBufferPosition(position: any, options?: any): any;
-  setCursorScreenPosition(position: any, options?: any): any;
-  setCursorScreenPositions(): any;
+  getEncoding(): string; // FIXME: should refine this
+  getGrammar(): Grammar;
+  getGutters(): Gutter[];
+  getHighlightDecorations(
+    propertyFilter?: $Shape<HighlightDecorationProperties>,
+  ): HighlightDecoration[];
+  getLastBufferRow(): number;
+  getLastCursor(): Cursor;
+  getLastScreenRow(): number;
+  getLastSelection(): Selection;
+  getLineCount(): number;
+  getLineDecorations(
+    propertyFilter?: $Shape<LineDecorationProperties>,
+  ): LineDecorationProperties[];
+  getLineNumberDecorations(
+    propertyFilter?: $Shape<LineNumberDecorationProperties>,
+  ): LineNumberDecorationProperties[];
+  getLongTitle(): string;
+  getMarker(id: number): TextEditorMarker;
+  getMarkerCount(): number;
+  getMarkerLayer(id: number): MarkerLayer;
+  getMarkers(): TextEditorMarker[];
+  getOverlayDecorations(
+    propertyFilter?: $Shape<OverlayDecorationProperties>,
+  ): OverlayDecorationProperties[];
+  getPath(): string;
+  getPlaceholderText(): string;
+  getRootScopeDescriptor(): ScopeDescriptor;
+  getScreenLineCount(): number;
+  getSelectedBufferRange(): Range;
+  getSelectedBufferRanges(): Range[];
+  getSelectedScreenRange(): Range;
+  getSelectedScreenRanges(): Range[];
+  getSelectedText(): string;
+  getSelections(): Selection[];
+  getSelectionsOrderedByBufferPosition(): Selection[];
+  getSoftTabs(): boolean;
+  getSoftWrapColumn(): number;
+  getTabLength(): number;
+  getTabText(): string;
+  getText(): string;
+  getTextInBufferRange(range: RangeLike): string;
+  getTitle(): string;
+  getWordUnderCursor(options?: { // FIXME
+    allowPrevious: boolean,
+    includeNonWordCharacters: boolean,
+    wordRegex: RegExp,
+  }): string;
+  groupChangesSinceCheckpoint(checkpoint: number): boolean;
+  gutterWithName(name: string): null | Gutter;
+  hasMultipleCursors(): boolean;
+  indentationForBufferRow(row: number): number;
+  indentLevelForLine(line: string): number;
+  indentSelectedRows(): void[];
+  insertNewline(): false | Range;
+  insertNewlineAbove(): void | Range;
+  insertNewlineBelow(): false | Range;
+  insertText(
+    text: string,
+    options?: {
+      select?: boolean,
+      autoIndent?: boolean,
+      autoIndentNewline?: boolean,
+      autoDecreaseIndent?: boolean,
+      normalizeEndings?: boolean,
+      undo?: "skip" | string,
+    },
+  ): false | Range[];
+  isBufferRowCommented(): boolean;
+  isEmpty(): boolean;
+  isFoldableAtBufferRow(row: number): boolean;
+  isFoldableAtScreenRow(row: number): boolean;
+  isFoldedAtBufferRow(row: number): boolean;
+  isFoldedAtCursorRow(): boolean;
+  isFoldedAtScreenRow(row: number): boolean;
+  isModified(): boolean;
+  isSoftWrapped(): boolean;
+  lineTextForBufferRow(row: number): string;
+  lineTextForScreenRow(row: number): string;
+  lowerCase(): mixed[]; // FIXME: docs are wrong; also, seems to return false[]
+  markBufferPosition(position: PointLike, options?: MarkOptions): TextEditorMarker;
+  markBufferRange(range: RangeLike, properties: MarkOptionsWithHistory): TextEditorMarker;
+  markScreenPosition(position: PointLike, options?: MarkOptions): TextEditorMarker;
+  markScreenRange(range: RangeLike, properties: MarkOptionsWithHistory): TextEditorMarker;
+  moveToBeginningOfPreviousParagraph(): void;
+  moveDown(lines?: number): void;
+  moveLeft(columns?: number): void;
+  moveRight(columns?: number): void;
+  moveToBeginningOfLine(): void;
+  moveToBeginningOfNextParagraph(): void;
+  moveToBeginningOfNextWord(): void;
+  moveToBeginningOfScreenLine(): void;
+  moveToBeginningOfWord(): void;
+  moveToBottom(): void;
+  moveToEndOfLine(): void;
+  moveToEndOfScreenLine(): void;
+  moveToEndOfWord(): void;
+  moveToFirstCharacterOfLine(): void;
+  moveToNextSubwordBoundary(): void;
+  moveToNextWordBoundary(): void;
+  moveToPreviousSubwordBoundary(): void;
+  movetoPreviousWordBoundary(): void;
+  moveToTop(): void;
+  moveUp(lines?: number): void;
+  mutateSelectedText<T>(
+    fn: (selection: Selection, index: number) => T,
+    groupingInterval?: number,
+  ): T[];
+  observeCursors(callback: (cursor: Cursor) => void): Disposable;
+  observeDecorations(callback: (decoration: Decoration) => void): Disposable;
+  observeGrammar(callback: (grammar: Grammar) => void): Disposable;
+  observeGutters(callback: (gutter: Gutter) => void): Disposable;
+  observeSelections(callback: (selection: Selection) => void): Disposable;
+  onDidAddCursor(callback: (cursor: Cursor) => void): Disposable;
+  onDidAddDecoration(callback: (decoration: Decoration) => void): Disposable;
+  onDidAddGutter(callback: (gutter: Gutter) => void): Disposable;
+  onDidAddSelection(callback: (selection: Selection) => void): Disposable;
+  onDidChange(callback: () => void): Disposable;
+  onDidChangeCursorPosition(callback: (event: {
+    cursor: Cursor,
+    newBufferPosition: Point,
+    newScreenPosition: Point,
+    oldBufferPosition: Point,
+    oldScreenPosition: Point,
+    textChanged: boolean,
+  }) => void): Disposable;
+  // FIXME: docs don't mention callback args
+  onDidChangeEncoding(callback: (encoding: string) => void): Disposable;
+  onDidChangeGrammar(callback: (grammar: Grammar) => void): Disposable;
+  onDidChangeModified(callback: () => void): Disposable; // FIXME: callback args
+  onDidChangePath(callback: () => void): Disposable; // FIXME: callback args
+  onDidChangePlaceholderText(callback: (text: string) => void): Disposable;
+  onDidChangeSelectionRange(callback: (event: {
+    newBufferRange: Range,
+    newScreenRange: Range,
+    oldBufferRange: Range,
+    oldScreenRange: Range,
+    selection: Selection,
+  }) => void): Disposable;
+  onDidChangeSoftWrapped(callback: () => void): Disposable; // FIXME: callback args
+  onDidChangeTitle(callback: () => void): Disposable; // FIXME: callback args
+  onDidConflict(callback: () => void): Disposable; // FIXME: callback args
+  onDidDestroy(callback: () => void): Disposable;
+  onDidInsertText(callback: (event: {
+    text: string,
+  }) => void): Disposable;
+  onDidRemoveCursor(callback: (cursor: Cursor) => void): Disposable;
+  onDidRemoveDecoration(callback: (decoration: Decoration) => void): Disposable;
+  onDidRemoveGutter(callback: (gutterName: string) => void): Disposable;
+  onDidRemoveSelection(callback: (selection: Selection) => void): Disposable;
+  onDidSave(callback: (event: {
+    path: string,
+  }) => void): Disposable;
+  onDidStopChanging(callback: () => void): Disposable;
+  onWillInsertText(callback: (event: {
+    cancel(): void,
+    text: string,
+  }) => void): Disposable;
+  outdentSelectedRows(): void[];
+  pasteText(options?: { // FIXME: optional fields
+    select?: boolean,
+    autoIndent?: boolean,
+    autoIndentNewline?: boolean,
+    autoDecreaseIndent?: boolean,
+    normalizeEndings?: boolean,
+    undo?: "skip" | string,
+  }): false | void[]; // FIXME
+  redo(): void;
+  revertToCheckpoint(): boolean;
+  save(): void;
+  saveAs(filePath: string): void;
+  scan(
+    regex: RegExp,
+    iterator: (event: {
+      match: number, // FIXME
+      matchText: string,
+      range: Range, // FIXME
+      stop(): void,
+      replace(newText: string): void,
+    }) => void,
+  ): void;
+  scanInBufferRange(
+    regex: RegExp,
+    range: Range,
+    iterator: (event: {
+      match: number, // FIXME
+      matchText: string,
+      range: Range, // FIXME
+      stop(): void,
+      replace(newText: string): void,
+    }) => void,
+  ): void;
+  scopeDescriptorForBufferPosition(position: PointLike): ScopeDescriptor;
+  screenPositionForBufferPosition(
+    position: PointLike,
+    options?: {
+      screenLine: boolean,
+      skipSoftWrapIndentation: boolean, // FIXME: not in docs
+      wrapAtSoftNewlines: boolean,
+      wrapBeyondNewlines: boolean,
+    },
+  ): Point;
+  screenRangeForBufferRange(range: Range): Range;
+  scrollToBufferPosition(
+    position: PointLike,
+    options?: {
+      center: boolean,
+    },
+  ): void;
+  scrollToCursorPosition(options?: {
+    center: boolean,
+  }): void;
+  scrollToScreenPosition(
+    position: PointLike,
+    options?: {
+      center: boolean,
+    },
+  ): void;
+  selectAll(): void;
+  selectDown(rows?: number): void;
+  selectionIntersectsBufferRange(bufferRange: RangeLike): boolean;
+  selectLeft(columns?: number): void;
+  selectLinesContainingCursors(): void;
+  selectMarker(marker: TextEditorMarker): void | Range;
+  selectRight(columns?: number): void;
+  selectToBeginningOfLine(): void;
+  selectToBeginningOfNextParagraph(): void;
+  selectToBeginningOfNextWord(): void;
+  selectToBeginningOfPreviousParagraph(): void;
+  selectToBeginningOfWord(): void;
+  selectToBottom(): void;
+  selectToBufferPosition(position: PointLike): void;
+  selectToEndOfLine(): void;
+  selectToEndOfWord(): void;
+  selectToFirstCharacterOfLine(): void;
+  selectToNextSubwordBoundary(): void;
+  selectToNextWordBoundary(): void;
+  selectToPreviousSubwordBoundary(): void;
+  selectToPreviousWordBoundary(): void;
+  selectToScreenPosition(position: PointLike): void;
+  selectToTop(): void;
+  selectUp(rows?: number): void;
+  selectWordsContainingCursors(): void;
+  setCursorBufferPosition(
+    position: PointLike,
+    options?: {
+      autoscroll: boolean,
+      screenLine: boolean,
+      wrapAtSoftNewlines: boolean,
+      wrapBeyondNewlines: boolean,
+    },
+  ): void;
+  setCursorScreenPosition(
+    position: PointLike,
+    options?: {
+      autoscroll: boolean,
+      screenLine: boolean,
+      skipSoftWrapIndentation: boolean, // FIXME: not in docs
+      wrapAtSoftNewlines: boolean,
+      wrapBeyondNewlines: boolean,
+    },
+  ): void;
   setEncoding(encoding: string): void; // FIXME: could refine encoding
   setGrammar(grammar: Grammar): void;
   setIndentationForBufferRow(
@@ -313,7 +432,7 @@ declare class TextEditor {
   toggleLineCommentsInSelection(): void;
   toggleSoftTabs(): void;
   toggleSoftWrapped(): boolean;
-  transact(groupInterval?: number, fn: () => void): void;
+  transact<T>(groupingInterval?: number, fn: () => T): void | T;
   transpose(): void;
   undo(): void;
   unfoldAll(): void;

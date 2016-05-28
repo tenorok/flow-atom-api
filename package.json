@@ -18,6 +18,7 @@
   "dependencies": {
     "event-kit": "^2.0.0",
     "flow-atom-event-kit": "flow-atom/flow-atom-event-kit",
+    "flow-atom-first-mate": "flow-atom/flow-atom-first-mate",
     "flow-atom-keymap": "flow-atom/flow-atom-keymap",
     "flow-atom-pathwatcher": "flow-atom/flow-atom-pathwatcher",
     "flow-electron-api": "flow-atom/flow-electron-api",

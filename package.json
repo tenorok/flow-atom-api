@@ -15,15 +15,6 @@
     "url": "https://github.com/flow-atom/flow-atom-api/issues"
   },
   "homepage": "https://github.com/flow-atom/flow-atom-api#readme",
-  "dependencies": {
-    "flow-atom-event-kit": "flow-atom/flow-atom-event-kit",
-    "flow-atom-first-mate": "flow-atom/flow-atom-first-mate",
-    "flow-atom-keymap": "flow-atom/flow-atom-keymap",
-    "flow-atom-pathwatcher": "flow-atom/flow-atom-pathwatcher",
-    "flow-atom-text-buffer": "flow-atom/flow-atom-text-buffer",
-    "flow-electron-api": "flow-atom/flow-electron-api",
-    "iflow-jquery": "^1.0.32"
-  },
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-core": "^6.8.0",
@@ -38,7 +29,6 @@
     "babel-preset-es2015-rollup": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "babelrc-rollup": "^1.0.0",
-    "eslint": "^2.10.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-flow-vars": "^0.4.0",
@@ -47,11 +37,19 @@
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-prefer-object-spread": "^1.1.0",
     "eslint-plugin-react": "^5.1.1",
+    "eslint": "^2.10.1",
+    "flow-atom-event-kit": "flow-atom/flow-atom-event-kit",
+    "flow-atom-first-mate": "flow-atom/flow-atom-first-mate",
+    "flow-atom-keymap": "flow-atom/flow-atom-keymap",
+    "flow-atom-pathwatcher": "flow-atom/flow-atom-pathwatcher",
+    "flow-atom-text-buffer": "flow-atom/flow-atom-text-buffer",
     "flow-bin": "^0.25.0",
-    "rollup": "^0.26.3",
+    "flow-electron-api": "flow-atom/flow-electron-api",
+    "iflow-jquery": "^1.0.32",
     "rollup-plugin-babel": "^2.4.0",
     "rollup-plugin-commonjs": "^2.2.1",
     "rollup-plugin-node-resolve": "^1.5.0",
+    "rollup": "^0.26.3",
     "source-map-support": "^0.4.0"
   }
 }

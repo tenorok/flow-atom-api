@@ -2,7 +2,7 @@
 src/**
 
 [libs]
-sig/v1.7.3
+sig/v1.7.4
 node_modules/flow-atom-event-kit/sig/v1.5.0
 node_modules/flow-atom-first-mate/sig/v5.1.1
 node_modules/flow-atom-keymap/sig/v6.3.2

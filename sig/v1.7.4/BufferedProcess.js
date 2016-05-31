@@ -21,5 +21,5 @@ declare class BufferedProcess {
         syscall: string,
       }),
     handle(): void,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
 }

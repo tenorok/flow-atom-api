@@ -28,7 +28,7 @@ declare class Workspace {
     priority?: number,
     visible?: boolean,
   }): Panel;
-  addOpener(opener: () => void): Disposable;
+  addOpener(opener: () => void): EventKit$Disposable;
   addRightPanel(options: {
     item: ViewableItem,
     priority?: number,
@@ -54,48 +54,48 @@ declare class Workspace {
   getTextEditors(): TextEditor[];
   getTopPanels(): Panel[];
   isTextEditor(object: Object): boolean;
-  observeActivePane(callback: (pane: Pane) => void): Disposable;
-  observePanes(callback: (pane: Pane) => void): Disposable;
-  observePaneItems(callback: (item: ViewableItem) => void): Disposable;
-  observeTextEditors(callback: (editor: TextEditor) => void): Disposable;
+  observeActivePane(callback: (pane: Pane) => void): EventKit$Disposable;
+  observePanes(callback: (pane: Pane) => void): EventKit$Disposable;
+  observePaneItems(callback: (item: ViewableItem) => void): EventKit$Disposable;
+  observeTextEditors(callback: (editor: TextEditor) => void): EventKit$Disposable;
   onDidAddPane(callback: (event: {
     pane: Pane,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onDidAddPaneItem(callback: (event: {
     index: number,
     item: ViewableItem,
     pane: Pane,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onDidAddTextEditor(callback: (event: {
     index: number,
     pane: Pane,
     textEditor: TextEditor,
-  }) => void): Disposable;
-  onDidChangeActivePane(callback: (pane: Pane) => void): Disposable;
-  onDidChangeActivePaneItem(callback: (item: ViewableItem) => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidChangeActivePane(callback: (pane: Pane) => void): EventKit$Disposable;
+  onDidChangeActivePaneItem(callback: (item: ViewableItem) => void): EventKit$Disposable;
   onDidDestroyPane(callback: (event: {
     pane: Pane,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onDidDestroyPaneItem(callback: (event: {
     index: number,
     item: ViewableItem,
     pane: Pane,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onDidOpen(callback: (event: {
     index: number,
     item: ViewableItem,
     pane: Pane,
     uri: void | string,
-  }) => void): Disposable;
-  onDidStopChangingActivePaneItem(callback: (item: ViewableItem) => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidStopChangingActivePaneItem(callback: (item: ViewableItem) => void): EventKit$Disposable;
   onWillDestroyPane(callback: (event: {
     pane: Pane,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onWillDestroyPaneItem(callback: (event: {
     index: number,
     item: ViewableItem,
     pane: Pane,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   open(uri?: string, options?: {
     activateItem?: boolean,
     activatePane?: boolean,
@@ -130,7 +130,7 @@ declare class Workspace {
         lineText: string,
         lineTextOffset: number,
         matchText: string,
-        range: RangeLike,
+        range: TextBuffer$RangeLike,
       }>,
     },
   ): Promise<{

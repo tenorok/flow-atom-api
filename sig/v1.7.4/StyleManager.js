@@ -7,16 +7,16 @@ declare class StyleManager {
     context: string,
     sheet: null,
     sourcePath: string,
-  }) => void): Disposable; // FIXME
+  }) => void): EventKit$Disposable; // FIXME
   onDidAddStyleElement(callback: (styleElement: HTMLStyleElement & {
     context: string,
     sheet: null,
     sourcePath: string,
-  }) => void): Disposable; // FIXME
-  onDidRemoveStyleElement(callback: (styleElement: HTMLStyleElement) => void): Disposable; // FIXME
+  }) => void): EventKit$Disposable; // FIXME
+  onDidRemoveStyleElement(callback: (styleElement: HTMLStyleElement) => void): EventKit$Disposable; // FIXME
   onDidUpdateStyleElement(callback: (styleElement: HTMLStyleElement & {
     context: string,
     sheet: null,
     sourcePath: string,
-  }) => void): Disposable; // FIXME
+  }) => void): EventKit$Disposable; // FIXME
 }

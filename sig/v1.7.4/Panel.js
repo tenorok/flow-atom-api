@@ -6,7 +6,7 @@ declare class Panel {
   getPriority(): number;
   hide(): void;
   isVisible(): boolean;
-  onDidChangeVisible(callback: (visible: boolean) => void): Disposable;
-  onDidDestroy(callback: (panel: Panel) => void): Disposable;
+  onDidChangeVisible(callback: (visible: boolean) => void): EventKit$Disposable;
+  onDidDestroy(callback: (panel: Panel) => void): EventKit$Disposable;
   show(): void;
 }

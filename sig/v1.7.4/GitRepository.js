@@ -58,8 +58,8 @@ declare class GitRepository {
   onDidChangeStatus(callback: (event: {
     path: string,
     pathStatus: number,
-  }) => void): Disposable;
-  onDidChangeStatuses(callback: () => void): Disposable; // FIXME
-  onDidDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidChangeStatuses(callback: () => void): EventKit$Disposable; // FIXME
+  onDidDestroy(callback: () => void): EventKit$Disposable;
   relativize(): string; // FIXME
 }

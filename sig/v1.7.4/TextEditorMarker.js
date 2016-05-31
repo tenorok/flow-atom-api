@@ -4,39 +4,39 @@ declare class TextEditorMarker {
   clearTail(properties?: {
     [keys: string]: mixed,
   }): void | boolean;
-  compare(other: TextEditorMarker): Comparison;
+  compare(other: TextEditorMarker): TextBuffer$Comparison;
   copy(properties?: {
     [keys: string]: mixed,
   }): null | TextEditorMarker; // FIXME: see comments in docs
   destroy(): void;
-  getBufferRange(): Range;
-  getEndBufferPosition(): Point;
-  getEndScreenPosition(): Point;
-  getHeadBufferPosition(): Point;
-  getHeadScreenPosition(): Point;
-  getInvalidationStrategy(): MarkerInvalidationStrategy;
+  getBufferRange(): TextBuffer$Range;
+  getEndBufferPosition(): TextBuffer$Point;
+  getEndScreenPosition(): TextBuffer$Point;
+  getHeadBufferPosition(): TextBuffer$Point;
+  getHeadScreenPosition(): TextBuffer$Point;
+  getInvalidationStrategy(): TextBuffer$MarkerInvalidationStrategy;
   getProperties(): {
     [keys: string]: mixed, // FIXME: can this be refined?
   };
-  getScreenRange(): Range;
-  getStartBufferPosition(): Point;
-  getStartScreenPosition(): Point;
-  getTailBufferPosition(): Point;
-  getTailScreenPosition(): Point;
+  getScreenRange(): TextBuffer$Range;
+  getStartBufferPosition(): TextBuffer$Point;
+  getStartScreenPosition(): TextBuffer$Point;
+  getTailBufferPosition(): TextBuffer$Point;
+  getTailScreenPosition(): TextBuffer$Point;
   hasTail(): boolean;
   isDestroyed(): boolean;
   isEqual(other: TextEditorMarker): boolean;
   isReversed(): boolean;
   isValid(): boolean;
   onDidChange(callback: (event: {
-    oldHeadBufferPosition: Point,
-    newHeadBufferPosition: Point,
-    oldTailBufferPosition: Point,
-    newTailBufferPosition: Point,
-    oldHeadScreenPosition: Point,
-    newHeadScreenPosition: Point,
-    oldTailScreenPosition: Point,
-    newTailScreenPosition: Point,
+    oldHeadBufferPosition: TextBuffer$Point,
+    newHeadBufferPosition: TextBuffer$Point,
+    oldTailBufferPosition: TextBuffer$Point,
+    newTailBufferPosition: TextBuffer$Point,
+    oldHeadScreenPosition: TextBuffer$Point,
+    newHeadScreenPosition: TextBuffer$Point,
+    oldTailScreenPosition: TextBuffer$Point,
+    newTailScreenPosition: TextBuffer$Point,
     wasValid: boolean,
     isValid: boolean,
     hadTail: boolean,
@@ -48,25 +48,25 @@ declare class TextEditorMarker {
       [keys: string]: mixed, // FIXME
     },
     textChanged: boolean,
-  }) => void): Disposable;
-  onDidDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidDestroy(callback: () => void): EventKit$Disposable;
   plantTail(properties?: { // FIXME: properties seems unused
     [keys: string]: mixed,
   }): void | boolean;
   setBufferRange(
-    range: Range,
+    range: TextBuffer$Range,
     properties?: {
       [keys: string]: mixed,
     },
   ): void | boolean; // FIXME
   setHeadBufferPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     properties?: {
       [keys: string]: mixed,
     },
   ): void | boolean;
   setHeadScreenPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     properties?: {
       [keys: string]: mixed,
     },
@@ -75,19 +75,19 @@ declare class TextEditorMarker {
     [keys: string]: mixed,
   }): void | boolean;
   setScreenRange(
-    screenRange: RangeLike,
+    screenRange: TextBuffer$RangeLike,
     properties?: {
       [keys: string]: mixed,
     },
   ): void | boolean;
   setTailBufferPosition(
-    bufferPosition: PointLike,
+    bufferPosition: TextBuffer$PointLike,
     properties?: {
       [keys: string]: mixed,
     },
   ): void | boolean;
   setTailScreenPosition(
-    screenPosition: PointLike,
+    screenPosition: TextBuffer$PointLike,
     properties?: {
       [keys: string]: mixed,
     },

@@ -6,8 +6,8 @@ declare class AtomEnvironment {
   config: Config;
   contextMenu: ContextMenuManager;
   deserializers: DeserializerManager;
-  grammars: GrammarRegistry;
-  keymaps: KeymapManager;
+  grammars: FirstMate$GrammarRegistry;
+  keymaps: Keymap$KeymapManager;
   menu: MenuManager;
   notifications: NotificationManager;
   packages: PackageManager;
@@ -38,7 +38,7 @@ declare class AtomEnvironment {
   }) : T;
   focus(): void;
   executeJavaScriptInDevTools(code: string): void; // FIXME
-  getCurrentWindow(): BrowserWindow;
+  getCurrentWindow(): Electron$BrowserWindow;
   getLoadSettings(): {
     [keys: string]: JSONValue,
   };
@@ -59,14 +59,14 @@ declare class AtomEnvironment {
   isFullScreen(): boolean;
   isMaximized(): boolean;
   isReleasedVersion(): boolean;
-  onDidBeep(callback: () => void): Disposable;
+  onDidBeep(callback: () => void): EventKit$Disposable;
   onDidThrowError(callback: (event: {
     originalError: Object,
     message: string,
     url: string,
     line: number,
     column: number,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onWillThrowError(callback: (event: {
     originalError: Object,
     message: string,
@@ -74,7 +74,7 @@ declare class AtomEnvironment {
     line: number,
     column: number,
     preventDefault(): void,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   open(params: {
     pathsToOpen: string[],
     newWindow: boolean,

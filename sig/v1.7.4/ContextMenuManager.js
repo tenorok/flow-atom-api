@@ -16,5 +16,5 @@ declare class ContextMenuManager {
     itemsBySelector: {
       [cssSelectors: string]: ContextMenuItem[],
     },
-  ): Disposable;
+  ): EventKit$Disposable;
 }

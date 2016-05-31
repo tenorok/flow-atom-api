@@ -29,7 +29,7 @@ declare class Config {
       scope?: ScopeDescriptor,
     },
     callback: (value: JSONValue) => void,
-  ): Disposable;
+  ): EventKit$Disposable;
   onDidChange(
     keyPath?: string,
     options?: {
@@ -39,7 +39,7 @@ declare class Config {
       newValue: JSONValue,
       oldValue: JSONValue,
     }) => void,
-  ): Disposable;
+  ): EventKit$Disposable;
   set(
     keyPath: string,
     value: JSONValue,

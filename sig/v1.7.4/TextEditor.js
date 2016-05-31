@@ -1,11 +1,12 @@
 // @flow
+/* eslint-disable max-len */
 
 // FIXME: check optional fields
 
 declare class TextEditor {
   abortTransaction(): void;
-  addCursorAtBufferPosition(bufferPosition: PointLike): Cursor;
-  addCursorAtScreenPosition(screenPosition: PointLike): Cursor;
+  addCursorAtBufferPosition(bufferPosition: TextBuffer$PointLike): Cursor;
+  addCursorAtScreenPosition(screenPosition: TextBuffer$PointLike): Cursor;
   addGutter(options: {
     name: string,
     priority?: number,
@@ -16,13 +17,13 @@ declare class TextEditor {
     persistent?: boolean,
   }): TextEditorMarkerLayer;
   addSelectionForBufferRange(
-    bufferRange: RangeLike,
+    bufferRange: TextBuffer$RangeLike,
     options?: {
       reversed: boolean,
     }
   ): Selection;
   addSelectionForScreenRange(
-    screenRange: RangeLike,
+    screenRange: TextBuffer$RangeLike,
     options?: {
       reversed: boolean,
     }
@@ -31,46 +32,46 @@ declare class TextEditor {
   backspace(): void;
   backwardsScanInBufferRange(
     regex: RegExp,
-    range: RangeLike,
+    range: TextBuffer$RangeLike,
     iterator: (event: {
       match: RegExp,
       matchText: string,
-      range: Range,
+      range: TextBuffer$Range,
       stop(): void,
       replace(newText: string): void,
     }) => void, // FIXME
   ): void;
   bufferPositionForScreenPosition(
-    bufferPosition: PointLike, // FIXME
+    bufferPosition: TextBuffer$PointLike, // FIXME
     options?: {
       screenLine: boolean,
       skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
-  ): Point;
-  bufferRangeForScopeAtCursor(scopeSelector: string): Range;
-  bufferRangeForScreenRange(screenRange: RangeLike): Range;
-  clipBufferPosition(bufferPosition: PointLike): Point;
-  clipBufferRange(range: RangeLike): Range;
+  ): TextBuffer$Point;
+  bufferRangeForScopeAtCursor(scopeSelector: string): TextBuffer$Range;
+  bufferRangeForScreenRange(screenRange: TextBuffer$RangeLike): TextBuffer$Range;
+  clipBufferPosition(bufferPosition: TextBuffer$PointLike): TextBuffer$Point;
+  clipBufferRange(range: TextBuffer$RangeLike): TextBuffer$Range;
   clipScreenPosition(
-    screenPosition: PointLike,
+    screenPosition: TextBuffer$PointLike,
     options?: {
       screenLine: boolean,
       skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
-  ): Point;
+  ): TextBuffer$Point;
   clipScreenRange(
-    range: RangeLike,
+    range: TextBuffer$RangeLike,
     options?: {
       screenLine: boolean,
       skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
-  ): Range;
+  ): TextBuffer$Range;
   copySelectedText(): void;
   createCheckpoint(): number;
   cutSelectedText(): void;
@@ -97,29 +98,29 @@ declare class TextEditor {
   findMarkers(properties: {
     startBufferRow: number,
     endBufferRow: number,
-    containsBufferRange: RangeLike,
-    containsBufferPosition: PointLike,
+    containsBufferRange: TextBuffer$RangeLike,
+    containsBufferPosition: TextBuffer$PointLike,
   }): TextEditorMarker[];
   foldAll(): void;
   foldAllAtIndentLevel(level: number): void;
   foldBufferRow(bufferRow: number): void;
   foldCurrentRow(): void;
   foldSelectedLines(): void;
-  getBuffer(): TextBuffer;
-  getCurrentParagraphBufferRange(): Range;
-  getCursorAtScreenPosition(position: PointLike): void | Cursor;
-  getCursorBufferPosition(): Point;
-  getCursorBufferPositions(): Point[];
+  getBuffer(): TextBuffer$TextBuffer;
+  getCurrentParagraphBufferRange(): TextBuffer$Range;
+  getCursorAtScreenPosition(position: TextBuffer$PointLike): void | Cursor;
+  getCursorBufferPosition(): TextBuffer$Point;
+  getCursorBufferPositions(): TextBuffer$Point[];
   getCursors(): Cursor[]; // FIXME
-  getCursorScreenPosition(): Point;
-  getCursorScreenPositions(): Point[];
+  getCursorScreenPosition(): TextBuffer$Point;
+  getCursorScreenPositions(): TextBuffer$Point[];
   getCursorsOrderedByBufferPosition(): Cursor[];
   getDecorations<T: $Shape<DecorationProperties>>(propertyFilter?: T): Array<Decoration & {
     getProperties(): DecorationProperties & T,
   }>;
   getDefaultMarkerLayer(): TextEditorMarkerLayer;
-  getEncoding(): FileEncoding;
-  getGrammar(): Grammar;
+  getEncoding(): Pathwatcher$FileEncoding;
+  getGrammar(): FirstMate$Grammar;
   getGutters(): Gutter[];
   getHighlightDecorations(
     propertyFilter?: $Shape<HighlightDecorationProperties>,
@@ -138,7 +139,7 @@ declare class TextEditor {
   getLongTitle(): string;
   getMarker(id: number): TextEditorMarker;
   getMarkerCount(): number;
-  getMarkerLayer(id: number): MarkerLayer;
+  getMarkerLayer(id: number): TextBuffer$MarkerLayer;
   getMarkers(): TextEditorMarker[];
   getOverlayDecorations(
     propertyFilter?: $Shape<OverlayDecorationProperties>,
@@ -147,10 +148,10 @@ declare class TextEditor {
   getPlaceholderText(): string;
   getRootScopeDescriptor(): ScopeDescriptor;
   getScreenLineCount(): number;
-  getSelectedBufferRange(): Range;
-  getSelectedBufferRanges(): Range[];
-  getSelectedScreenRange(): Range;
-  getSelectedScreenRanges(): Range[];
+  getSelectedBufferRange(): TextBuffer$Range;
+  getSelectedBufferRanges(): TextBuffer$Range[];
+  getSelectedScreenRange(): TextBuffer$Range;
+  getSelectedScreenRanges(): TextBuffer$Range[];
   getSelectedText(): string;
   getSelections(): Selection[];
   getSelectionsOrderedByBufferPosition(): Selection[];
@@ -159,7 +160,7 @@ declare class TextEditor {
   getTabLength(): number;
   getTabText(): string;
   getText(): string;
-  getTextInBufferRange(range: RangeLike): string;
+  getTextInBufferRange(range: TextBuffer$RangeLike): string;
   getTitle(): string;
   getWordUnderCursor(options?: { // FIXME
     allowPrevious: boolean,
@@ -172,9 +173,9 @@ declare class TextEditor {
   indentationForBufferRow(row: number): number;
   indentLevelForLine(line: string): number;
   indentSelectedRows(): void[];
-  insertNewline(): false | Range;
-  insertNewlineAbove(): void | Range;
-  insertNewlineBelow(): false | Range;
+  insertNewline(): false | TextBuffer$Range;
+  insertNewlineAbove(): void | TextBuffer$Range;
+  insertNewlineBelow(): false | TextBuffer$Range;
   insertText(
     text: string,
     options?: {
@@ -185,7 +186,7 @@ declare class TextEditor {
       normalizeEndings?: boolean,
       undo?: "skip" | string,
     },
-  ): false | Range[];
+  ): false | TextBuffer$Range[];
   isBufferRowCommented(): boolean;
   isEmpty(): boolean;
   isFoldableAtBufferRow(row: number): boolean;
@@ -198,10 +199,10 @@ declare class TextEditor {
   lineTextForBufferRow(row: number): string;
   lineTextForScreenRow(row: number): string;
   lowerCase(): mixed[]; // FIXME: docs are wrong; also, seems to return false[]
-  markBufferPosition(position: PointLike, options?: MarkerOptions): TextEditorMarker;
-  markBufferRange(range: RangeLike, properties: MarkerOptionsWithHistory): TextEditorMarker;
-  markScreenPosition(position: PointLike, options?: MarkerOptions): TextEditorMarker;
-  markScreenRange(range: RangeLike, properties: MarkerOptionsWithHistory): TextEditorMarker;
+  markBufferPosition(position: TextBuffer$PointLike, options?: TextBuffer$MarkerOptions): TextEditorMarker;
+  markBufferRange(range: TextBuffer$RangeLike, properties: MarkerOptionsWithHistory): TextEditorMarker;
+  markScreenPosition(position: TextBuffer$PointLike, options?: TextBuffer$MarkerOptions): TextEditorMarker;
+  markScreenRange(range: TextBuffer$RangeLike, properties: MarkerOptionsWithHistory): TextEditorMarker;
   moveToBeginningOfPreviousParagraph(): void;
   moveDown(lines?: number): void;
   moveLeft(columns?: number): void;
@@ -226,56 +227,56 @@ declare class TextEditor {
     fn: (selection: Selection, index: number) => T,
     groupingInterval?: number,
   ): T[];
-  observeCursors(callback: (cursor: Cursor) => void): Disposable;
-  observeDecorations(callback: (decoration: Decoration) => void): Disposable;
-  observeGrammar(callback: (grammar: Grammar) => void): Disposable;
-  observeGutters(callback: (gutter: Gutter) => void): Disposable;
-  observeSelections(callback: (selection: Selection) => void): Disposable;
-  onDidAddCursor(callback: (cursor: Cursor) => void): Disposable;
-  onDidAddDecoration(callback: (decoration: Decoration) => void): Disposable;
-  onDidAddGutter(callback: (gutter: Gutter) => void): Disposable;
-  onDidAddSelection(callback: (selection: Selection) => void): Disposable;
-  onDidChange(callback: () => void): Disposable;
+  observeCursors(callback: (cursor: Cursor) => void): EventKit$Disposable;
+  observeDecorations(callback: (decoration: Decoration) => void): EventKit$Disposable;
+  observeGrammar(callback: (grammar: FirstMate$Grammar) => void): EventKit$Disposable;
+  observeGutters(callback: (gutter: Gutter) => void): EventKit$Disposable;
+  observeSelections(callback: (selection: Selection) => void): EventKit$Disposable;
+  onDidAddCursor(callback: (cursor: Cursor) => void): EventKit$Disposable;
+  onDidAddDecoration(callback: (decoration: Decoration) => void): EventKit$Disposable;
+  onDidAddGutter(callback: (gutter: Gutter) => void): EventKit$Disposable;
+  onDidAddSelection(callback: (selection: Selection) => void): EventKit$Disposable;
+  onDidChange(callback: () => void): EventKit$Disposable;
   onDidChangeCursorPosition(callback: (event: {
     cursor: Cursor,
-    newBufferPosition: Point,
-    newScreenPosition: Point,
-    oldBufferPosition: Point,
-    oldScreenPosition: Point,
+    newBufferPosition: TextBuffer$Point,
+    newScreenPosition: TextBuffer$Point,
+    oldBufferPosition: TextBuffer$Point,
+    oldScreenPosition: TextBuffer$Point,
     textChanged: boolean,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   // FIXME: docs don't mention callback args
-  onDidChangeEncoding(callback: (encoding: FileEncoding) => void): Disposable;
-  onDidChangeGrammar(callback: (grammar: Grammar) => void): Disposable;
-  onDidChangeModified(callback: () => void): Disposable; // FIXME: callback args
-  onDidChangePath(callback: () => void): Disposable; // FIXME: callback args
-  onDidChangePlaceholderText(callback: (text: string) => void): Disposable;
+  onDidChangeEncoding(callback: (encoding: Pathwatcher$FileEncoding) => void): EventKit$Disposable;
+  onDidChangeGrammar(callback: (grammar: FirstMate$Grammar) => void): EventKit$Disposable;
+  onDidChangeModified(callback: () => void): EventKit$Disposable; // FIXME: callback args
+  onDidChangePath(callback: () => void): EventKit$Disposable; // FIXME: callback args
+  onDidChangePlaceholderText(callback: (text: string) => void): EventKit$Disposable;
   onDidChangeSelectionRange(callback: (event: {
-    newBufferRange: Range,
-    newScreenRange: Range,
-    oldBufferRange: Range,
-    oldScreenRange: Range,
+    newBufferRange: TextBuffer$Range,
+    newScreenRange: TextBuffer$Range,
+    oldBufferRange: TextBuffer$Range,
+    oldScreenRange: TextBuffer$Range,
     selection: Selection,
-  }) => void): Disposable;
-  onDidChangeSoftWrapped(callback: () => void): Disposable; // FIXME: callback args
-  onDidChangeTitle(callback: () => void): Disposable; // FIXME: callback args
-  onDidConflict(callback: () => void): Disposable; // FIXME: callback args
-  onDidDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidChangeSoftWrapped(callback: () => void): EventKit$Disposable; // FIXME: callback args
+  onDidChangeTitle(callback: () => void): EventKit$Disposable; // FIXME: callback args
+  onDidConflict(callback: () => void): EventKit$Disposable; // FIXME: callback args
+  onDidDestroy(callback: () => void): EventKit$Disposable;
   onDidInsertText(callback: (event: {
     text: string,
-  }) => void): Disposable;
-  onDidRemoveCursor(callback: (cursor: Cursor) => void): Disposable;
-  onDidRemoveDecoration(callback: (decoration: Decoration) => void): Disposable;
-  onDidRemoveGutter(callback: (gutterName: string) => void): Disposable;
-  onDidRemoveSelection(callback: (selection: Selection) => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidRemoveCursor(callback: (cursor: Cursor) => void): EventKit$Disposable;
+  onDidRemoveDecoration(callback: (decoration: Decoration) => void): EventKit$Disposable;
+  onDidRemoveGutter(callback: (gutterName: string) => void): EventKit$Disposable;
+  onDidRemoveSelection(callback: (selection: Selection) => void): EventKit$Disposable;
   onDidSave(callback: (event: {
     path: string,
-  }) => void): Disposable;
-  onDidStopChanging(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidStopChanging(callback: () => void): EventKit$Disposable;
   onWillInsertText(callback: (event: {
     cancel(): void,
     text: string,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   outdentSelectedRows(): void[];
   pasteText(options?: { // FIXME: optional fields
     select?: boolean,
@@ -294,35 +295,35 @@ declare class TextEditor {
     iterator: (event: {
       match: number, // FIXME
       matchText: string,
-      range: Range, // FIXME
+      range: TextBuffer$Range, // FIXME
       stop(): void,
       replace(newText: string): void,
     }) => void,
   ): void;
   scanInBufferRange(
     regex: RegExp,
-    range: Range,
+    range: TextBuffer$Range,
     iterator: (event: {
       match: number, // FIXME
       matchText: string,
-      range: Range, // FIXME
+      range: TextBuffer$Range, // FIXME
       stop(): void,
       replace(newText: string): void,
     }) => void,
   ): void;
-  scopeDescriptorForBufferPosition(position: PointLike): ScopeDescriptor;
+  scopeDescriptorForBufferPosition(position: TextBuffer$PointLike): ScopeDescriptor;
   screenPositionForBufferPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     options?: {
       screenLine: boolean,
       skipSoftWrapIndentation: boolean, // FIXME: not in docs
       wrapAtSoftNewlines: boolean,
       wrapBeyondNewlines: boolean,
     },
-  ): Point;
-  screenRangeForBufferRange(range: Range): Range;
+  ): TextBuffer$Point;
+  screenRangeForBufferRange(range: TextBuffer$Range): TextBuffer$Range;
   scrollToBufferPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     options?: {
       center: boolean,
     },
@@ -331,17 +332,17 @@ declare class TextEditor {
     center: boolean,
   }): void;
   scrollToScreenPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     options?: {
       center: boolean,
     },
   ): void;
   selectAll(): void;
   selectDown(rows?: number): void;
-  selectionIntersectsBufferRange(bufferRange: RangeLike): boolean;
+  selectionIntersectsBufferRange(bufferRange: TextBuffer$RangeLike): boolean;
   selectLeft(columns?: number): void;
   selectLinesContainingCursors(): void;
-  selectMarker(marker: TextEditorMarker): void | Range;
+  selectMarker(marker: TextEditorMarker): void | TextBuffer$Range;
   selectRight(columns?: number): void;
   selectToBeginningOfLine(): void;
   selectToBeginningOfNextParagraph(): void;
@@ -349,7 +350,7 @@ declare class TextEditor {
   selectToBeginningOfPreviousParagraph(): void;
   selectToBeginningOfWord(): void;
   selectToBottom(): void;
-  selectToBufferPosition(position: PointLike): void;
+  selectToBufferPosition(position: TextBuffer$PointLike): void;
   selectToEndOfLine(): void;
   selectToEndOfWord(): void;
   selectToFirstCharacterOfLine(): void;
@@ -357,12 +358,12 @@ declare class TextEditor {
   selectToNextWordBoundary(): void;
   selectToPreviousSubwordBoundary(): void;
   selectToPreviousWordBoundary(): void;
-  selectToScreenPosition(position: PointLike): void;
+  selectToScreenPosition(position: TextBuffer$PointLike): void;
   selectToTop(): void;
   selectUp(rows?: number): void;
   selectWordsContainingCursors(): void;
   setCursorBufferPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     options?: {
       autoscroll: boolean,
       screenLine: boolean,
@@ -371,7 +372,7 @@ declare class TextEditor {
     },
   ): void;
   setCursorScreenPosition(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     options?: {
       autoscroll: boolean,
       screenLine: boolean,
@@ -380,8 +381,8 @@ declare class TextEditor {
       wrapBeyondNewlines: boolean,
     },
   ): void;
-  setEncoding(encoding: FileEncoding): void;
-  setGrammar(grammar: Grammar): void;
+  setEncoding(encoding: Pathwatcher$FileEncoding): void;
+  setGrammar(grammar: FirstMate$Grammar): void;
   setIndentationForBufferRow(
     bufferRow: number,
     newLevel: number,
@@ -391,27 +392,27 @@ declare class TextEditor {
   ): void;
   setPlaceholderText(placeholderText: string): void;
   setSelectedBufferRange(
-    bufferRange: RangeLike,
+    bufferRange: TextBuffer$RangeLike,
     options?: {
       reversed?: boolean,
       preserveFolds?: boolean,
     },
   ): void;
   setSelectedBufferRanges(
-    bufferRanges: RangeLike[],
+    bufferRanges: TextBuffer$RangeLike[],
     options?: { // FIXME: are these optional?
       reversed?: boolean,
       preserveFolds?: boolean,
     },
   ): void;
   setSelectedScreenRange(
-    screenRange: RangeLike,
+    screenRange: TextBuffer$RangeLike,
     options?: {
       reversed?: boolean,
     },
   ): void;
   setSelectedScreenRanges(
-    screenRanges: RangeLike[],
+    screenRanges: TextBuffer$RangeLike[],
     options?: {
       reversed?: boolean,
     },
@@ -421,13 +422,13 @@ declare class TextEditor {
   setTabLength(tabLength: null | number): void;
   setText(text: string): void;
   setTextInBufferRange(
-    range: RangeLike,
+    range: TextBuffer$RangeLike,
     text: String,
     options?: {
       normalizeLineEndings?: boolean,
       undo?: string,
     },
-  ): Range;
+  ): TextBuffer$Range;
   toggleFoldAtBufferRow(): void;
   toggleLineCommentsInSelection(): void;
   toggleSoftTabs(): void;

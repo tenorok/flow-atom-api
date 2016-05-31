@@ -31,37 +31,37 @@ declare class Pane {
   moveItemLeft(): void;
   moveItemRight(): void;
   moveItemToPane(item: ViewableItem, pane: Pane, index: number): ViewableItem;
-  observeActive(callback: (active: boolean) => void): Disposable;
-  observeActiveItem(callback: (activeItem: ViewableItem) => void): Disposable;
-  observeFlexScale(callback: (flexScale: number) => void): Disposable;
-  observeItems(callback: (item: ViewableItem) => void): Disposable;
-  onDidActivate(callback: () => void): Disposable;
+  observeActive(callback: (active: boolean) => void): EventKit$Disposable;
+  observeActiveItem(callback: (activeItem: ViewableItem) => void): EventKit$Disposable;
+  observeFlexScale(callback: (flexScale: number) => void): EventKit$Disposable;
+  observeItems(callback: (item: ViewableItem) => void): EventKit$Disposable;
+  onDidActivate(callback: () => void): EventKit$Disposable;
   onDidAddItem(callback: (event :{
     item: ViewableItem,
     index: number,
-  }) => void): Disposable;
-  onDidChangeActive(callback: (active: boolean) => void): Disposable;
-  onDidChangeActiveItem(callback: (activeItem: ViewableItem) => void): Disposable;
-  onDidChangeFlexScale(callback: (flexScale: number) => void): Disposable;
-  onDidDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidChangeActive(callback: (active: boolean) => void): EventKit$Disposable;
+  onDidChangeActiveItem(callback: (activeItem: ViewableItem) => void): EventKit$Disposable;
+  onDidChangeFlexScale(callback: (flexScale: number) => void): EventKit$Disposable;
+  onDidDestroy(callback: () => void): EventKit$Disposable;
   onDidMoveItem(callback: (event: {
     item: ViewableItem,
     oldIndex: number,
     newIndex: number,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onDidRemoveItem(callback: (event: {
     item: ViewableItem,
     index: number,
-  }) => void): Disposable;
-  onWillDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onWillDestroy(callback: () => void): EventKit$Disposable;
   onWillDestroyItem(callback: (event: {
     item: ViewableItem,
     index: number,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   onWillRemoveItem(callback: (event: {
     item: ViewableItem,
     index: number,
-  }) => void): Disposable;
+  }) => void): EventKit$Disposable;
   saveActiveItem(nextAction?: () => void): void;
   saveActiveItemAs(nextAction?: () => void): void;
   saveItem(item: ViewableItem, nextAction?: () => void): void;

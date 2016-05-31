@@ -9,7 +9,7 @@ declare class CommandRegistry {
     target: string,
     commandNameOrMap: CommandRegistryNameOrMap,
     callback?: EventHandler, // FIXME: "this" references the matching Node
-  ): Disposable;
+  ): EventKit$Disposable;
   dispatch(target: Node, commandName: string): void;
   findCommands(params: {
     target: Node,

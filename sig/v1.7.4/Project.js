@@ -3,12 +3,12 @@
 declare class Project {
   addPath(projectPath: string): void;
   contains(pathToCheck: string): boolean;
-  getDirectories(): Directory[];
+  getDirectories(): Pathwatcher$Directory[];
   getPaths(): string[];
   getRepositories(): GitRepository[];
-  onDidChangePaths(callback: (projectPaths: string[]) => void): Disposable;
+  onDidChangePaths(callback: (projectPaths: string[]) => void): EventKit$Disposable;
   relativizePath(fullPath: string): [null | string, string];
   removePath(projectPath: string): boolean; // FIXME
-  repositoryForDirectory(directory: Directory): Promise<null | GitRepository>;
+  repositoryForDirectory(directory: Pathwatcher$Directory): Promise<null | GitRepository>;
   setPaths(projectPaths: string[]): void;
 }

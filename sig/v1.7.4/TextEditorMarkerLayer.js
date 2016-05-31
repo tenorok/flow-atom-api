@@ -5,17 +5,17 @@ declare class TextEditorMarkerLayer {
   findMarkers(params: {
     startBufferRow: number,
     endBufferRow: number,
-    containsBufferRange: RangeLike,
-    containsBufferPosition: PointLike,
+    containsBufferRange: TextBuffer$RangeLike,
+    containsBufferPosition: TextBuffer$PointLike,
   }): TextEditorMarker[];
   getMarker(id: number): TextEditorMarker; // FIXME
   getMarkerCount(): number;
   getMarkers(): TextEditorMarker[];
-  markBufferPosition(bufferPosition: PointLike, options: MarkerOptions): TextEditorMarker;
-  markBufferRange(bufferRange: RangeLike, options: MarkerOptionsWithHistory): TextEditorMarker;
-  markScreenPosition(screenPosition: PointLike, options: MarkerOptions): TextEditorMarker;
-  markScreenRange(screenRange: RangeLike, options: MarkerOptionsWithHistory): TextEditorMarker;
-  onDidCreateMarker(callback: (marker: TextEditorMarker) => void): Disposable;
-  onDidDestroy(callback: () => void): Disposable; // FIXME
-  onDidUpdate(callback: () => void): Disposable;
+  markBufferPosition(bufferPosition: TextBuffer$PointLike, options: TextBuffer$MarkerOptions): TextEditorMarker;
+  markBufferRange(bufferRange: TextBuffer$RangeLike, options: MarkerOptionsWithHistory): TextEditorMarker;
+  markScreenPosition(screenPosition: TextBuffer$PointLike, options: TextBuffer$MarkerOptions): TextEditorMarker;
+  markScreenRange(screenRange: TextBuffer$RangeLike, options: MarkerOptionsWithHistory): TextEditorMarker;
+  onDidCreateMarker(callback: (marker: TextEditorMarker) => void): EventKit$Disposable;
+  onDidDestroy(callback: () => void): EventKit$Disposable; // FIXME
+  onDidUpdate(callback: () => void): EventKit$Disposable;
 }

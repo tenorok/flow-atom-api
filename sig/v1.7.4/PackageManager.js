@@ -16,11 +16,11 @@ declare class PackageManager {
   isPackageActive(name: string): boolean;
   isPackageDisabled(name: string): boolean;
   isPackageLoaded(name: string): boolean;
-  onDidActivateInitialPackages(callback: () => void): Disposable;
-  onDidActivatePackage(callback: () => void): Disposable;
-  onDidDeactivatePackage(callback: () => void): Disposable;
-  onDidLoadInitialPackages(callback: () => void): Disposable;
-  onDidLoadPackage(callback: () => void): Disposable;
-  onDidUnloadPackage(callback: () => void): Disposable;
+  onDidActivateInitialPackages(callback: () => void): EventKit$Disposable;
+  onDidActivatePackage(callback: () => void): EventKit$Disposable;
+  onDidDeactivatePackage(callback: () => void): EventKit$Disposable;
+  onDidLoadInitialPackages(callback: () => void): EventKit$Disposable;
+  onDidLoadPackage(callback: () => void): EventKit$Disposable;
+  onDidUnloadPackage(callback: () => void): EventKit$Disposable;
   resolvePackagePath(name: string): void | string;
 }

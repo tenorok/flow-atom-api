@@ -6,31 +6,31 @@ declare type Position =
 declare class Cursor {
   clearAutoscroll(): void;
   clearSelection(): void;
-  compare(otherCursor: Cursor): Comparison; // FIXME
+  compare(otherCursor: Cursor): TextBuffer$Comparison; // FIXME
   getBeginningOfCurrentWordBufferPosition(options?: {
     allowPrevious: boolean,
     includeNonWordCharacters: boolean,
     wordRegex: RegExp,
-  }): Range; // FIXME
+  }): TextBuffer$Range; // FIXME
   getBeginningOfNextWordBufferPosition(options:? {
     wordRegex: RegExp,
-  }): Range; // FIXME
+  }): TextBuffer$Range; // FIXME
   getBufferColumn(): number;
   getBufferPosition(): Position;
   getBufferRow(): number;
   getCurrentBufferLine(): string; // FIXME
   getCurrentLineBufferRange(options?: {
     includeNewline: boolean,
-  }): Range; // FIXME
-  getCurrentParagraphBufferRange(): Range;
+  }): TextBuffer$Range; // FIXME
+  getCurrentParagraphBufferRange(): TextBuffer$Range;
   getCurrentWordBufferRange(options?: {
     wordRegex: RegExp,
-  }): Range; // FIXME
+  }): TextBuffer$Range; // FIXME
   getCurrentWordPrefix(): string; // FIXME
   getEndOfCurrentWordBufferPosition(options?: {
     wordRegex: RegExp,
     includeNonWordCharacters: boolean,
-  }): Range; // FIXME
+  }): TextBuffer$Range; // FIXME
   getIndentLevel(): number; // FIXME
   getMarker(): TextEditorMarker;
   getNextWordBoundaryBufferPosition(options?: {
@@ -41,7 +41,7 @@ declare class Cursor {
   }): Position; // FIXME
   getScopeDescriptor(): ScopeDescriptor;
   getScreenColumn(): number;
-  getScreenPosition(): Point;
+  getScreenPosition(): TextBuffer$Point;
   getScreenRow(): number;
   hasPrecedingCharactersOnLine(): boolean; // FIXME
   isAtBeginningOfLine(): boolean; // FIXME
@@ -52,15 +52,15 @@ declare class Cursor {
   isSurroundedByWhitespace(): boolean;
   isVisible(): boolean; // FIXME
   onDidChangePosition(callback: (event: {
-    oldBufferPosition: Point,
-    oldScreenPosition: Point,
-    newBufferPosition: Point,
-    newScreenPosition: Point,
+    oldBufferPosition: TextBuffer$Point,
+    oldScreenPosition: TextBuffer$Point,
+    newBufferPosition: TextBuffer$Point,
+    newScreenPosition: TextBuffer$Point,
     textChanged: boolean,
     cursor: Cursor,
-  }) => void): Disposable; // FIXME
-  onDidChangeVisibility(callback: (visibility: boolean) => void): Disposable;
-  onDidDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable; // FIXME
+  onDidChangeVisibility(callback: (visibility: boolean) => void): EventKit$Disposable;
+  onDidDestroy(callback: () => void): EventKit$Disposable;
   moveDown(
     rowCount?: number,
     options?: {

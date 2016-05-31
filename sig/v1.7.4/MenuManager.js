@@ -8,6 +8,6 @@ declare type MenuItem =
 
 // FIXME:
 declare class MenuManager {
-  add(items: MenuItem[]): Disposable;
+  add(items: MenuItem[]): EventKit$Disposable;
   update(): void;
 }

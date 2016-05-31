@@ -52,5 +52,5 @@ declare interface TooltipOptions extends BootstrapTooltipOptions {
 }
 
 declare class TooltipManager {
-  add(target: HTMLElement, options: TooltipOptions): Disposable;
+  add(target: HTMLElement, options: TooltipOptions): EventKit$Disposable;
 }

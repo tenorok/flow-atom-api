@@ -13,5 +13,5 @@ declare class NotificationManager {
   addSuccess(message: string, options?: NotificationOptions): Notification;
   addWarning(message: string, options?: NotificationOptions): Notification;
   getNotifications(): Notification[];
-  onDidAddNotification(callback: () => void): Disposable;
+  onDidAddNotification(callback: () => void): EventKit$Disposable;
 }

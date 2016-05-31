@@ -71,8 +71,8 @@ declare class Decoration {
   onDidChangeProperties(callback: (event: {
     oldProperties: DecorationProperties,
     newProperties: DecorationProperties,
-  }) => void): Disposable; // FIXME
-  onDidDestroy(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable; // FIXME
+  onDidDestroy(callback: () => void): EventKit$Disposable;
   setProperties(newProperties: DecorationProperties): void; // FIXME
 }
 

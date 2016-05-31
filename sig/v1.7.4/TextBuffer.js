@@ -1,81 +1,81 @@
 // @flow
 
-declare class TextBuffer {
+declare class TextBuffer$TextBuffer {
   constructor(params: string | {
     load?: boolean,
     text?: string,
   }): this;
   addMarkerLayer(options?: {
     maintainHistory?: boolean,
-  }): MarkerLayer;
+  }): TextBuffer$MarkerLayer;
   append(text: string, options?: {
     normalizeLineEndings?: boolean,
     undo?: "skip" | string,
-  }): Range;
+  }): TextBuffer$Range;
   backwardsScan(
     regex: RegExp,
     iterator: (event: {
       match: number, // FIXME
       matchText: string,
-      range: Range, // FIXME
+      range: TextBuffer$Range, // FIXME
       stop(): void,
       replace(newText: string): void,
     }) => void, // FIXME
   ): void;
   backwardsScanInRange(
     regex: RegExp,
-    range: RangeLike, // FIXME
+    range: TextBuffer$RangeLike, // FIXME
     iterator: (event: {
       match: number, // FIXME
       matchText: string,
-      range: Range, // FIXME
+      range: TextBuffer$Range, // FIXME
       stop(): void,
       replace(newText: string): void,
     }) => void, // FIXME
   ): void;
-  characterIndexForPosition(position: PointLike): number;
+  characterIndexForPosition(position: TextBuffer$PointLike): number;
   clearUndoStack(): void;
-  clipPosition(position: PointLike): Point;
-  clipRange(range: RangeLike): Range;
+  clipPosition(position: TextBuffer$PointLike): TextBuffer$Point;
+  clipRange(range: TextBuffer$RangeLike): TextBuffer$Range;
   createCheckpoint(): number;
-  delete(range: RangeLike): Range;
-  deleteRow(row: number): Range;
-  deleteRows(startRow: number, endRow: number): Range;
-  findMarkers(params: FindMarkersOptions): TextEditorMarker[];
+  delete(range: TextBuffer$RangeLike): TextBuffer$Range;
+  deleteRow(row: number): TextBuffer$Range;
+  deleteRows(startRow: number, endRow: number): TextBuffer$Range;
+  findMarkers(params: TextBuffer$FindMarkersOptions): TextEditorMarker[];
   getChangesSinceCheckpoint(checkpoint: number): Array<{
-    start: Point,
-    oldExtent: Point,
-    newExtent: Point,
+    start: TextBuffer$Point,
+    oldExtent: TextBuffer$Point,
+    newExtent: TextBuffer$Point,
     newText: string,
   }>;
-  getDefaultMarkerLayer(): MarkerLayer;
-  getEncoding(): FileEncoding;
-  getEndPosition(): Point;
-  getFirstPosition(): Point & { column: 0, row: 0 };
+  getDefaultMarkerLayer(): TextBuffer$MarkerLayer;
+  getEncoding(): Pathwatcher$FileEncoding;
+  getEndPosition(): TextBuffer$Point;
+  getFirstPosition(): TextBuffer$Point & { column: 0, row: 0 };
   getLastLine(): string;
   getLastRow(): number;
   getLineCount(): number;
   getLines(): string[];
   getMarker(id: number): TextEditorMarker;
   getMarkerCount(): number;
-  getMarkerLayer(id: number): MarkerLayer;
+  getMarkerLayer(id: number): TextBuffer$MarkerLayer;
   getMarkers(): TextEditorMarker[];
   getMaxCharacterIndex(): number;
   getPath(): string;
-  getRange(): Range;
+  getRange(): TextBuffer$Range;
   getStoppedChangingDelay(): number;
   getText(): string;
-  getTextInRange(range: RangeLike): string;
+  getTextInRange(range: TextBuffer$RangeLike): string;
   getUri(): string;
   groupChangesSinceCheckpoint(checkpoint: number): boolean;
   insert(
-    position: PointLike,
+    position: TextBuffer$PointLike,
     text: string,
     options?: {
       normalizeLineEndings?: boolean,
       undo?: "skip" | string,
     },
-  ): Range;
+  ): TextBuffer$Range;
   isEmpty(): boolean;
   isInConflict(): boolean;
   isModified(): boolean;
@@ -84,48 +84,48 @@ declare class TextBuffer {
   lineForRow(row: number): string;
   lineLengthForRow(row: number): number;
   markPosition(
-    position: PointLike,
-    properties: MarkerOptions,
+    position: TextBuffer$PointLike,
+    properties: TextBuffer$MarkerOptions,
   ): TextEditorMarker;
   markRange(
-    range: RangeLike,
-    properties: MarkerOptions,
+    range: TextBuffer$RangeLike,
+    properties: TextBuffer$MarkerOptions,
   ): TextEditorMarker;
   nextNonBlankRow(startRow: number): null | number;
   onDidChange(callback: (event: {
-    newRange: Range,
+    newRange: TextBuffer$Range,
     newText: string,
-    oldRange: Range,
+    oldRange: TextBuffer$Range,
     oldText: string,
-  }) => void): Disposable;
-  onDidChangeEncoding(callback: (encoding: FileEncoding) => void): Disposable;
-  onDidChangeModified(callback: (modified: boolean) => void): Disposable;
-  onDidChangePath(callback: (path: string) => void): Disposable;
-  onDidConflict(callback: () => void): Disposable;
-  onDidCreateMarker(callback: (marker: TextEditorMarker) => void): Disposable;
-  onDidDelete(callback: () => void): Disposable;
-  onDidDestroy(callback: () => void): Disposable;
-  onDidReload(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidChangeEncoding(callback: (encoding: Pathwatcher$FileEncoding) => void): EventKit$Disposable;
+  onDidChangeModified(callback: (modified: boolean) => void): EventKit$Disposable;
+  onDidChangePath(callback: (path: string) => void): EventKit$Disposable;
+  onDidConflict(callback: () => void): EventKit$Disposable;
+  onDidCreateMarker(callback: (marker: TextEditorMarker) => void): EventKit$Disposable;
+  onDidDelete(callback: () => void): EventKit$Disposable;
+  onDidDestroy(callback: () => void): EventKit$Disposable;
+  onDidReload(callback: () => void): EventKit$Disposable;
   onDidSave(callback: (event: {
     path: string,
-  }) => void): Disposable;
-  onDidStopChanging(callback: () => void): Disposable;
-  onDidUpdateMarkers(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onDidStopChanging(callback: () => void): EventKit$Disposable;
+  onDidUpdateMarkers(callback: () => void): EventKit$Disposable;
   onWillChange(callback: (event : {
-    newRange: Range,
+    newRange: TextBuffer$Range,
     newText: string,
-    oldRange: Range,
+    oldRange: TextBuffer$Range,
     oldText: string,
-  }) => void): Disposable;
-  onWillReload(callback: () => void): Disposable;
-  onWillSave(callback: () => void): Disposable;
+  }) => void): EventKit$Disposable;
+  onWillReload(callback: () => void): EventKit$Disposable;
+  onWillSave(callback: () => void): EventKit$Disposable;
   onWillThrowWatchError(callback: (errorObject: {
     error: Error, // FIXME: should refine this
     handle(): void,
-  }) => void): Disposable;
-  positionForCharacterIndex(offset: number): Point;
+  }) => void): EventKit$Disposable;
+  positionForCharacterIndex(offset: number): TextBuffer$Point;
   previousNonBlankRow(startRow: number): null | number;
-  rangeForRow(row: number, includeNewLine: boolean): Range;
+  rangeForRow(row: number, includeNewLine: boolean): TextBuffer$Range;
   redo(): boolean;
   reload(): void;
   replace(regex: RegExp, replacementText: string): number;
@@ -137,33 +137,33 @@ declare class TextBuffer {
     iterator: (event: {
       match: number, // FIXME
       matchText: string,
-      range: Range, // FIXME
+      range: TextBuffer$Range, // FIXME
       stop(): void,
       replace(newText: string): void,
     }) => void,
   ): void;
   scanInRange(
     regex: RegExp,
-    range: Range, // FIXME
+    range: TextBuffer$Range, // FIXME
     iterator: (event: {
       match: number, // FIXME
       matchText: string,
-      range: Range, // FIXME
+      range: TextBuffer$Range, // FIXME
       stop(): void,
       replace(newText: string): void,
     }) => void,
   ): void;
-  setEncoding(encoding: FileEncoding): void;
+  setEncoding(encoding: Pathwatcher$FileEncoding): void;
   setPath(filePath: string): void;
-  setText(text: string): Range;
+  setText(text: string): TextBuffer$Range;
   setTextInRange(
-    range: RangeLike,
+    range: TextBuffer$RangeLike,
     text: string,
     options?: {
       normalizeLineEndings?: boolean,
       undo?: "skip" | string,
     },
-  ): Range;
+  ): TextBuffer$Range;
   setTextViaDiff(text: string): void;
   transact<T>(groupingInterval?: number, fn: () => T): void | T;
   undo(): boolean;

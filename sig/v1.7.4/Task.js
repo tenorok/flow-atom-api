@@ -5,6 +5,6 @@ declare class Task {
   constructor(taskPath: string): this;
   start(args: mixed[], callback?: () => void): void; // FIXME: variadic
   send(message: JSONValue): void; // FIXME: use object instead?
-  on(eventName: string, callback: () => void): Disposable;
+  on(eventName: string, callback: () => void): EventKit$Disposable;
   terminate(): boolean;
 }

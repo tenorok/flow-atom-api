@@ -18,7 +18,6 @@ declare class AtomEnvironment {
   tooltips: TooltipManager;
   views: ViewRegistry;
   workspace: Workspace;
-
   beep(): void;
   center(): void;
   close(): void;
@@ -40,7 +39,7 @@ declare class AtomEnvironment {
   executeJavaScriptInDevTools(code: string): void; // FIXME
   getCurrentWindow(): Electron$BrowserWindow;
   getLoadSettings(): {
-    [keys: string]: JSONValue,
+    [keys: string]: JSON$Value,
   };
   getPosition(): {
     x: number,

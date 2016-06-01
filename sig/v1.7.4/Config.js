@@ -8,7 +8,7 @@ declare class Config {
       excludeSources?: string[],
       scope?: ScopeDescriptor,
     },
-  ): JSONValue;
+  ): JSON$Value;
   getAll(
     keyPath: string,
     options: {
@@ -18,9 +18,9 @@ declare class Config {
     },
   ): Array<{
     scopeDescriptor: ScopeDescriptor,
-    value: JSONValue,
+    value: JSON$Value,
   }>;
-  getSchema(keyPath: string): JSONValue;
+  getSchema(keyPath: string): JSON$Schema;
   getSources(): string[];
   getUserConfigPath(): string;
   observe(
@@ -28,7 +28,7 @@ declare class Config {
     options?: {
       scope?: ScopeDescriptor,
     },
-    callback: (value: JSONValue) => void,
+    callback: (value: JSON$Value) => void,
   ): EventKit$Disposable;
   onDidChange(
     keyPath?: string,
@@ -36,13 +36,13 @@ declare class Config {
       scope?: ScopeDescriptor,
     },
     callback: (event: {
-      newValue: JSONValue,
-      oldValue: JSONValue,
+      newValue: JSON$Value,
+      oldValue: JSON$Value,
     }) => void,
   ): EventKit$Disposable;
   set(
     keyPath: string,
-    value: JSONValue,
+    value: JSON$Value,
     options?: {
       scopeSelector?: string,
       source?: string,

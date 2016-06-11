@@ -1,8 +1,5 @@
 // @flow
 
-declare type Position =
-  | [number, number]
-
 declare class Cursor {
   clearAutoscroll(): void;
   clearSelection(): void;
@@ -16,7 +13,7 @@ declare class Cursor {
     wordRegex: RegExp,
   }): TextBuffer$Range; // FIXME
   getBufferColumn(): number;
-  getBufferPosition(): Position;
+  getBufferPosition(): TextBuffer$Point;
   getBufferRow(): number;
   getCurrentBufferLine(): string; // FIXME
   getCurrentLineBufferRange(options?: {
@@ -35,10 +32,10 @@ declare class Cursor {
   getMarker(): TextEditorMarker;
   getNextWordBoundaryBufferPosition(options?: {
     wordRegex: RegExp,
-  }): Position; // FIXME
+  }): TextBuffer$Point; // FIXME
   getPreviousWordBoundaryBufferPosition(options?: {
     wordRegex: RegExp,
-  }): Position; // FIXME
+  }): TextBuffer$Point; // FIXME
   getScopeDescriptor(): ScopeDescriptor;
   getScreenColumn(): number;
   getScreenPosition(): TextBuffer$Point;
@@ -103,13 +100,13 @@ declare class Cursor {
   moveToPreviousSubwordBoundary(): void;
   skipLeadingWhitespace(): void;
   setBufferPosition(
-    bufferPosition: Position,
+    bufferPosition: TextBuffer$PointLike,
     options?: {
       autoscroll: boolean,
     }
   ): void;
   setScreenPosition(
-    screenPosition: Position,
+    screenPosition: TextBuffer$PointLike,
     options?: {
       autoscroll: boolean,
     }

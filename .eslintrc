@@ -24,6 +24,14 @@
     - import
     - prefer-object-spread
   rules:
+    babel/array-bracket-spacing: 1
+    babel/arrow-parens: 1
+    babel/flow-object-type: 1
+    babel/generator-star-spacing: 1
+    babel/new-cap: 1
+    babel/no-await-in-loop: 1
+    babel/object-curly-spacing: 1
+    babel/object-shorthand: 1
     eqeqeq: [error, smart]
     flow-vars/define-flow-type: 1
     flow-vars/use-flow-type: 1

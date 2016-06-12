@@ -6,7 +6,7 @@ declare class Selection {
   autoIndentSelectedRows(): void;
   backspace(): void;
   clear(options?: {
-    autoscroll?: boolean,
+    autoscroll?: boolean;
   }): void;
   compare(other: Selection): TextBuffer$Comparison;
   copy(maintainClipboard: boolean, fullLine: boolean): void;
@@ -25,10 +25,10 @@ declare class Selection {
   deleteToNextWordBoundary(): void;
   deleteToPreviousWordBoundary(): void;
   expandOverLine(options?: {
-    autoscroll?: boolean,
+    autoscroll?: boolean;
   }): void; // FIXME
   expandOverWord(options?: {
-    autoscroll?: boolean,
+    autoscroll?: boolean;
   }): void;
   fold(): void;
   getBufferRange(): TextBuffer$Range;
@@ -37,12 +37,12 @@ declare class Selection {
   getText(): string;
   indentSelectedRows(): void;
   insertText(text: string, options?: { // FIXME: optional fields
-    select?: boolean,
-    autoIndent?: boolean,
-    autoIndentNewline?: boolean,
-    autoDecreaseIndent?: boolean,
-    normalizeEndings?: boolean,
-    undo?: "skip" | string,
+    select?: boolean;
+    autoIndent?: boolean;
+    autoIndentNewline?: boolean;
+    autoDecreaseIndent?: boolean;
+    normalizeEndings?: boolean;
+    undo?: "skip" | string;
   }): TextBuffer$Range;
   intersectsBufferRange(range: TextBuffer$RangeLike): boolean;
   intersectsWith(other: Selection): boolean;
@@ -51,23 +51,23 @@ declare class Selection {
   isSingleScreenLine(): boolean;
   joinLines(): void;
   merge(other: Selection, options?: { // FIXME
-    preserveFolds?: true,
-    autoscroll?: true,
+    preserveFolds?: true;
+    autoscroll?: true;
   }): void;
   onDidChangeRange(callback: (event: { // FIXME: should these just use TextBuffer$Range?
-    oldBufferRange: TextBuffer$RangeLike,
-    oldScreenRange: TextBuffer$RangeLike,
-    newBufferRange: TextBuffer$RangeLike,
-    newScreenRange: TextBuffer$RangeLike,
-    selection: Selection,
+    oldBufferRange: TextBuffer$RangeLike;
+    oldScreenRange: TextBuffer$RangeLike;
+    newBufferRange: TextBuffer$RangeLike;
+    newScreenRange: TextBuffer$RangeLike;
+    selection: Selection;
   }) => void): EventKit$Disposable;
   onDidDestroy(callback: () => void): EventKit$Disposable;
   outdentSelectedRows(): void;
   selectDown(rows?: number): void;
   selectLeft(columns?: number): void;
   selectLine(row: number, options?: { // FIXME: options undocumented
-    preserveFolds?: true,
-    autoscroll?: true,
+    preserveFolds?: true;
+    autoscroll?: true;
   }): void;
   selectRight(columns?: number): void;
   selectAll(): void;
@@ -89,19 +89,19 @@ declare class Selection {
   selectToScreenPosition(
     position: TextBuffer$PointLike,
     options?: { // FIXME: options undocumented
-      autoscroll?: boolean,
+      autoscroll?: boolean;
     }
   ): void;
   selectToTop(): void;
   selectUp(rowCount?: number): void;
   selectWord(): void;
   setBufferRange(range: TextBuffer$RangeLike, options?: { // FIXME
-    preserveFolds?: boolean,
-    autoscroll?: boolean,
+    preserveFolds?: boolean;
+    autoscroll?: boolean;
   }): void;
   setScreenRange(range: TextBuffer$RangeLike, options?: {
-    preserveFolds?: boolean,
-    autoscroll?: boolean,
+    preserveFolds?: boolean;
+    autoscroll?: boolean;
   }): void;
   toggleLineComments(): void;
 }

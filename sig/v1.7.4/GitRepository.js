@@ -10,7 +10,7 @@ declare class GitRepository {
   static open(
     path: string,
     options?: {
-      refreshOnWindowFocus: boolean,
+      refreshOnWindowFocus: boolean;
     },
   ): this;
   checkoutHead(path: string): boolean;
@@ -19,28 +19,28 @@ declare class GitRepository {
   getAheadBehindCount(reference: string, path: string): number;
   getCachedPathStatus(path: string): number;
   getCachedUpstreamAheadBehindCount(path: string): {
-    ahead: number,
-    behind: number,
+    ahead: number;
+    behind: number;
   };
   getConfigValue(path?: string): GitConfigValue;
   getDiffStats(path: string): {
-    added: number,
-    deleted: number,
+    added: number;
+    deleted: number;
   };
   getDirectoryStatus(path: string): number;
   getLineDiffs(path: string, text: string): Array<{
-    oldStart: number,
-    newStart: number,
-    oldLines: number,
-    newLines: number,
+    oldStart: number;
+    newStart: number;
+    oldLines: number;
+    newLines: number;
   }>;
   getOriginURL(path?: string): string;
   getPath(): string;
   getPathStatus(path: string): number; // FIXME
   getReferences(path?: string): {
-    heads: string[],
-    remotes: string[],
-    tags: string[],
+    heads: string[];
+    remotes: string[];
+    tags: string[];
   };
   getReferenceTarget(reference: string, path?: string): string;
   getShortHead(path?: string): string;
@@ -56,8 +56,8 @@ declare class GitRepository {
   isStatusNew(status: number): boolean;
   isSubmodule(path: string): boolean;
   onDidChangeStatus(callback: (event: {
-    path: string,
-    pathStatus: number,
+    path: string;
+    pathStatus: number;
   }) => void): EventKit$Disposable;
   onDidChangeStatuses(callback: () => void): EventKit$Disposable; // FIXME
   onDidDestroy(callback: () => void): EventKit$Disposable;

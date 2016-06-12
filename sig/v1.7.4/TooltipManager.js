@@ -3,7 +3,7 @@
 
 declare type BootstrapTooltipDelay =
   | number
-  | { show: number, hide: number }
+  | { show: number; hide: number }
 
 declare type BootstrapTooltipPlacementStyle =
   | "auto"

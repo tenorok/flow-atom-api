@@ -5,8 +5,8 @@ declare class Package {
   isCompatible(): boolean;
   onDidDeactivate(callback: () => void): EventKit$Disposable;
   rebuild(): Promise<{
-    code: number, // FIXME
-    stdout: string,
-    stderr: string,
+    code: number; // FIXME
+    stdout: string;
+    stderr: string;
   }>;
 }

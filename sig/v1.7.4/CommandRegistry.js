@@ -12,10 +12,10 @@ declare class CommandRegistry {
   ): EventKit$Disposable;
   dispatch(target: Node, commandName: string): void;
   findCommands(params: {
-    target: Node,
+    target: Node;
   }): Array<{
-    name: string,
-    displayName: string,
+    name: string;
+    displayName: string;
   }>;
   onDidDispatch(callback: EventHandler): void;
   onWillDispatch(callback: EventHandler): void;

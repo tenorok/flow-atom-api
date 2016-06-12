@@ -2,8 +2,8 @@
 
 declare type MenuItem =
   | { label: string
-    , submenu?: MenuItem[]
-    , command?: string
+    ; submenu?: MenuItem[]
+    ; command?: string
     }
 
 // FIXME:

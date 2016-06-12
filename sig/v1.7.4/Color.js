@@ -3,9 +3,9 @@
 declare type ColorValue =
   | string
   | { red: number
-    , green: number
-    , blue: number
-    , alpha: number
+    ; green: number
+    ; blue: number
+    ; alpha: number
     }
 
 declare class Color {

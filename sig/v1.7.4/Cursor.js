@@ -5,36 +5,36 @@ declare class Cursor {
   clearSelection(): void;
   compare(otherCursor: Cursor): TextBuffer$Comparison; // FIXME
   getBeginningOfCurrentWordBufferPosition(options?: {
-    allowPrevious: boolean,
-    includeNonWordCharacters: boolean,
-    wordRegex: RegExp,
+    allowPrevious: boolean;
+    includeNonWordCharacters: boolean;
+    wordRegex: RegExp;
   }): TextBuffer$Range; // FIXME
   getBeginningOfNextWordBufferPosition(options:? {
-    wordRegex: RegExp,
+    wordRegex: RegExp;
   }): TextBuffer$Range; // FIXME
   getBufferColumn(): number;
   getBufferPosition(): TextBuffer$Point;
   getBufferRow(): number;
   getCurrentBufferLine(): string; // FIXME
   getCurrentLineBufferRange(options?: {
-    includeNewline: boolean,
+    includeNewline: boolean;
   }): TextBuffer$Range; // FIXME
   getCurrentParagraphBufferRange(): TextBuffer$Range;
   getCurrentWordBufferRange(options?: {
-    wordRegex: RegExp,
+    wordRegex: RegExp;
   }): TextBuffer$Range; // FIXME
   getCurrentWordPrefix(): string; // FIXME
   getEndOfCurrentWordBufferPosition(options?: {
-    wordRegex: RegExp,
-    includeNonWordCharacters: boolean,
+    wordRegex: RegExp;
+    includeNonWordCharacters: boolean;
   }): TextBuffer$Range; // FIXME
   getIndentLevel(): number; // FIXME
   getMarker(): TextEditorMarker;
   getNextWordBoundaryBufferPosition(options?: {
-    wordRegex: RegExp,
+    wordRegex: RegExp;
   }): TextBuffer$Point; // FIXME
   getPreviousWordBoundaryBufferPosition(options?: {
-    wordRegex: RegExp,
+    wordRegex: RegExp;
   }): TextBuffer$Point; // FIXME
   getScopeDescriptor(): ScopeDescriptor;
   getScreenColumn(): number;
@@ -49,31 +49,31 @@ declare class Cursor {
   isSurroundedByWhitespace(): boolean;
   isVisible(): boolean; // FIXME
   onDidChangePosition(callback: (event: {
-    oldBufferPosition: TextBuffer$Point,
-    oldScreenPosition: TextBuffer$Point,
-    newBufferPosition: TextBuffer$Point,
-    newScreenPosition: TextBuffer$Point,
-    textChanged: boolean,
-    cursor: Cursor,
+    oldBufferPosition: TextBuffer$Point;
+    oldScreenPosition: TextBuffer$Point;
+    newBufferPosition: TextBuffer$Point;
+    newScreenPosition: TextBuffer$Point;
+    textChanged: boolean;
+    cursor: Cursor;
   }) => void): EventKit$Disposable; // FIXME
   onDidChangeVisibility(callback: (visibility: boolean) => void): EventKit$Disposable;
   onDidDestroy(callback: () => void): EventKit$Disposable;
   moveDown(
     rowCount?: number,
     options?: {
-      moveToEndOfSelection: boolean,
+      moveToEndOfSelection: boolean;
     }
   ): void;
   moveLeft(
     columnCount?: number,
     options?: {
-      moveToEndOfSelection: boolean,
+      moveToEndOfSelection: boolean;
     }
   ): void;
   moveRight(
     columnCount?: number,
     options?: {
-      moveToEndOfSelection: boolean,
+      moveToEndOfSelection: boolean;
     }
   ): void;
   moveToBeginningOfScreenLine(): void;
@@ -83,7 +83,7 @@ declare class Cursor {
   moveUp(
     rowCount?: number,
     options?: {
-      moveToEndOfSelection: boolean,
+      moveToEndOfSelection: boolean;
     }
   ): void;
   moveToBeginningOfNextParagraph(): void;
@@ -102,20 +102,20 @@ declare class Cursor {
   setBufferPosition(
     bufferPosition: TextBuffer$PointLike,
     options?: {
-      autoscroll: boolean,
+      autoscroll: boolean;
     }
   ): void;
   setScreenPosition(
     screenPosition: TextBuffer$PointLike,
     options?: {
-      autoscroll: boolean,
+      autoscroll: boolean;
     }
   ): void;
   setVisible(): void;
   subwordRegExp(options?: {
-    backwards: boolean,
+    backwards: boolean;
   }): RegExp;
   wordRegExp(options?: {
-    includeNonWordCharacters: boolean,
+    includeNonWordCharacters: boolean;
   }): RegExp;
 }

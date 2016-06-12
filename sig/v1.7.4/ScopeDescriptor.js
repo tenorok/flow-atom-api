@@ -2,7 +2,7 @@
 
 declare class ScopeDescriptor {
   constructor(object: {
-    scopes: string[],
+    scopes: string[];
   }): this;
   getScopesArray(): string[];
 }

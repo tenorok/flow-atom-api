@@ -2,12 +2,12 @@
 
 declare type ContextMenuItem =
   | { label?: string
-    , command?: string
-    , enabled?: boolean
-    , submenu?: ContextMenuItem[]
-    , visible?: boolean
-    , created: EventHandler
-    , shouldDisplay: EventHandler
+    ; command?: string
+    ; enabled?: boolean
+    ; submenu?: ContextMenuItem[]
+    ; visible?: boolean
+    ; created: EventHandler
+    ; shouldDisplay: EventHandler
     }
   | { type: "separator" }
 

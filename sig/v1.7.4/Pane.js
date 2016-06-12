@@ -3,7 +3,7 @@
 declare class Pane {
   activate(): void;
   activateItem(options?: {
-    pending?: boolean,
+    pending?: boolean;
   }): void;
   activateItemAtIndex(index: number): ViewableItem; // FIXME
   activateItemForURI(uri: string): boolean;
@@ -12,8 +12,8 @@ declare class Pane {
   addItem(
     item: mixed,
     options?: {
-      index?: number,
-      pending?: boolean,
+      index?: number;
+      pending?: boolean;
     },
   ): ViewableItem; // FIXME
   addItems(items: ViewableItem[], index?: number): ViewableItem[];
@@ -37,30 +37,30 @@ declare class Pane {
   observeItems(callback: (item: ViewableItem) => void): EventKit$Disposable;
   onDidActivate(callback: () => void): EventKit$Disposable;
   onDidAddItem(callback: (event :{
-    item: ViewableItem,
-    index: number,
+    item: ViewableItem;
+    index: number;
   }) => void): EventKit$Disposable;
   onDidChangeActive(callback: (active: boolean) => void): EventKit$Disposable;
   onDidChangeActiveItem(callback: (activeItem: ViewableItem) => void): EventKit$Disposable;
   onDidChangeFlexScale(callback: (flexScale: number) => void): EventKit$Disposable;
   onDidDestroy(callback: () => void): EventKit$Disposable;
   onDidMoveItem(callback: (event: {
-    item: ViewableItem,
-    oldIndex: number,
-    newIndex: number,
+    item: ViewableItem;
+    oldIndex: number;
+    newIndex: number;
   }) => void): EventKit$Disposable;
   onDidRemoveItem(callback: (event: {
-    item: ViewableItem,
-    index: number,
+    item: ViewableItem;
+    index: number;
   }) => void): EventKit$Disposable;
   onWillDestroy(callback: () => void): EventKit$Disposable;
   onWillDestroyItem(callback: (event: {
-    item: ViewableItem,
-    index: number,
+    item: ViewableItem;
+    index: number;
   }) => void): EventKit$Disposable;
   onWillRemoveItem(callback: (event: {
-    item: ViewableItem,
-    index: number,
+    item: ViewableItem;
+    index: number;
   }) => void): EventKit$Disposable;
   saveActiveItem(nextAction?: () => void): void;
   saveActiveItemAs(nextAction?: () => void): void;
@@ -68,19 +68,19 @@ declare class Pane {
   saveItemAs(item: ViewableItem, nextAction?: () => void): void;
   saveItems(): void;
   splitDown(params?: {
-    items?: ViewableItem[],
-    copyActiveItem?: boolean,
+    items?: ViewableItem[];
+    copyActiveItem?: boolean;
   }): Pane;
   splitLeft(params?: {
-    items?: ViewableItem[],
-    copyActiveItem?: boolean,
+    items?: ViewableItem[];
+    copyActiveItem?: boolean;
   }): Pane;
   splitRight(params?: {
-    items?: ViewableItem[],
-    copyActiveItem?: boolean,
+    items?: ViewableItem[];
+    copyActiveItem?: boolean;
   }): Pane;
   splitUp(params?: {
-    items?: ViewableItem[],
-    copyActiveItem?: boolean,
+    items?: ViewableItem[];
+    copyActiveItem?: boolean;
   }): Pane;
 }

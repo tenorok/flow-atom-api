@@ -29,25 +29,25 @@ declare class TextEditorMarker {
   isReversed(): boolean;
   isValid(): boolean;
   onDidChange(callback: (event: {
-    oldHeadBufferPosition: TextBuffer$Point,
-    newHeadBufferPosition: TextBuffer$Point,
-    oldTailBufferPosition: TextBuffer$Point,
-    newTailBufferPosition: TextBuffer$Point,
-    oldHeadScreenPosition: TextBuffer$Point,
-    newHeadScreenPosition: TextBuffer$Point,
-    oldTailScreenPosition: TextBuffer$Point,
-    newTailScreenPosition: TextBuffer$Point,
-    wasValid: boolean,
-    isValid: boolean,
-    hadTail: boolean,
-    hasTail: boolean,
+    oldHeadBufferPosition: TextBuffer$Point;
+    newHeadBufferPosition: TextBuffer$Point;
+    oldTailBufferPosition: TextBuffer$Point;
+    newTailBufferPosition: TextBuffer$Point;
+    oldHeadScreenPosition: TextBuffer$Point;
+    newHeadScreenPosition: TextBuffer$Point;
+    oldTailScreenPosition: TextBuffer$Point;
+    newTailScreenPosition: TextBuffer$Point;
+    wasValid: boolean;
+    isValid: boolean;
+    hadTail: boolean;
+    hasTail: boolean;
     oldProperties: {
       [keys: string]: mixed, // FIXME
-    },
+    };
     newProperties: {
       [keys: string]: mixed, // FIXME
-    },
-    textChanged: boolean,
+    };
+    textChanged: boolean;
   }) => void): EventKit$Disposable;
   onDidDestroy(callback: () => void): EventKit$Disposable;
   plantTail(properties?: { // FIXME: properties seems unused

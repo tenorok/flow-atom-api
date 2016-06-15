@@ -1,15 +1,15 @@
 // @flow
 
 declare class PackageManager {
-  disablePackage(name: string): null | Package;
-  enablePackage(name: string): null | Package;
-  getActivePackage(name: string): void | Package;
+  disablePackage(name: string): ?Package;
+  enablePackage(name: string): ?Package;
+  getActivePackage(name: string): ?Package;
   getActivePackages(): Package[];
   getApmPath(): string;
   getAvailablePackageMetadata(): string[];
   getAvailablePackageNames(): string[];
   getAvailablePackagePaths(): string[];
-  getLoadedPackage(name: string): void | Package;
+  getLoadedPackage(name: string): ?Package;
   getLoadedPackages(): Package[];
   getPackageDirPaths(): string[];
   isBundledPackage(name: string): boolean;
@@ -17,10 +17,10 @@ declare class PackageManager {
   isPackageDisabled(name: string): boolean;
   isPackageLoaded(name: string): boolean;
   onDidActivateInitialPackages(callback: () => void): EventKit$Disposable;
-  onDidActivatePackage(callback: () => void): EventKit$Disposable;
-  onDidDeactivatePackage(callback: () => void): EventKit$Disposable;
+  onDidActivatePackage(callback: (pkg: Package) => void): EventKit$Disposable;
+  onDidDeactivatePackage(callback: (pkg: Package) => void): EventKit$Disposable;
   onDidLoadInitialPackages(callback: () => void): EventKit$Disposable;
-  onDidLoadPackage(callback: () => void): EventKit$Disposable;
-  onDidUnloadPackage(callback: () => void): EventKit$Disposable;
-  resolvePackagePath(name: string): void | string;
+  onDidLoadPackage(callback: (pkg: Package) => void): EventKit$Disposable;
+  onDidUnloadPackage(callback: (pkg: Package) => void): EventKit$Disposable;
+  resolvePackagePath(name: string): ?string;
 }

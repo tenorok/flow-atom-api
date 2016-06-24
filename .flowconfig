@@ -18,3 +18,4 @@ node_modules/iflow-jquery/index.js.flow
 esproposal.class_instance_fields=enable
 esproposal.class_static_fields=enable
 esproposal.decorators=ignore
+module.use_strict=true

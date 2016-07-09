@@ -22,18 +22,18 @@ declare class AtomEnvironment {
   center(): void;
   close(): void;
   confirm(options: {
-    message: string,
-    detailedMessage?: string,
+    detailedMessage?: string;
+    message: string;
   }) : void;
   confirm(options: {
-    message: string,
-    detailedMessage?: string,
-    buttons: string[],
+    buttons: string[];
+    detailedMessage?: string;
+    message: string;
   }) : number;
   confirm<T>(options: {
-    message: string,
-    detailedMessage?: string,
-    buttons: { [buttonName: string]: () => T },
+    buttons: { [buttonName: string]: () => T };
+    detailedMessage?: string;
+    message: string;
   }) : T;
   focus(): void;
   executeJavaScriptInDevTools(code: string): void; // FIXME
@@ -42,12 +42,12 @@ declare class AtomEnvironment {
     [keys: string]: JSON$Value,
   };
   getPosition(): {
-    x: number,
-    y: number,
+    x: number;
+    y: number;
   };
   getSize(): {
-    width: number,
-    height: number,
+    height: number;
+    width: number;
   };
   getVersion(): string;
   getWindowLoadTime(): number;
@@ -60,25 +60,25 @@ declare class AtomEnvironment {
   isReleasedVersion(): boolean;
   onDidBeep(callback: () => void): EventKit$Disposable;
   onDidThrowError(callback: (event: {
-    originalError: Object,
-    message: string,
-    url: string,
-    line: number,
-    column: number,
+    column: number;
+    line: number;
+    message: string;
+    originalError: Object;
+    url: string;
   }) => void): EventKit$Disposable;
   onWillThrowError(callback: (event: {
-    originalError: Object,
-    message: string,
-    url: string,
-    line: number,
-    column: number,
-    preventDefault(): void,
+    column: number;
+    line: number;
+    message: string;
+    originalError: Object;
+    url: string;
+    preventDefault(): void;
   }) => void): EventKit$Disposable;
   open(params: {
-    pathsToOpen: string[],
-    newWindow: boolean,
-    devMode: boolean,
-    safeMode: boolean,
+    devMode: boolean;
+    newWindow: boolean;
+    pathsToOpen: string[];
+    safeMode: boolean;
   }): void;
   openDevTools(): Promise<void>;
   pickFolder(callback: (paths: ?(string[])) => void): void;

@@ -3,10 +3,10 @@
 declare class TextEditorMarkerLayer {
   destroy(): void;
   findMarkers(params: {
-    startBufferRow: number;
-    endBufferRow: number;
-    containsBufferRange: TextBuffer$RangeLike;
     containsBufferPosition: TextBuffer$PointLike;
+    containsBufferRange: TextBuffer$RangeLike;
+    endBufferRow: number;
+    startBufferRow: number;
   }): TextEditorMarker[];
   getMarker(id: number): TextEditorMarker; // FIXME
   getMarkerCount(): number;

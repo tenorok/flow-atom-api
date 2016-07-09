@@ -1,10 +1,10 @@
 // @flow
 
-declare type MenuItem =
-  | { label: string
-    ; submenu?: MenuItem[]
-    ; command?: string
-    }
+declare type MenuItem = {
+  label: string;
+  submenu?: MenuItem[];
+  command?: string;
+}
 
 // FIXME:
 declare class MenuManager {

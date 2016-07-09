@@ -7,12 +7,9 @@ declare type GitConfigValue =
   | string
 
 declare class GitRepository {
-  static open(
-    path: string,
-    options?: {
-      refreshOnWindowFocus: boolean;
-    },
-  ): this;
+  static open(path: string, options?: {
+    refreshOnWindowFocus: boolean;
+  }): this;
   checkoutHead(path: string): boolean;
   checkoutReference(reference: string, create: boolean): boolean;
   destroy(): void;
@@ -29,10 +26,10 @@ declare class GitRepository {
   };
   getDirectoryStatus(path: string): number;
   getLineDiffs(path: string, text: string): Array<{
-    oldStart: number;
+    newLines: number;
     newStart: number;
     oldLines: number;
-    newLines: number;
+    oldStart: number;
   }>;
   getOriginURL(path?: string): string;
   getPath(): string;

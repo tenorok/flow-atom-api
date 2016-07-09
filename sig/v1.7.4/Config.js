@@ -4,17 +4,17 @@ declare class Config {
   get(
     keyPath: string,
     options?: {
-      sources?: string[];
       excludeSources?: string[];
       scope?: ScopeDescriptor;
+      sources?: string[];
     },
   ): JSON$Value;
   getAll(
     keyPath: string,
     options: {
-      sources?: string[];
       excludeSources?: string[];
       scope?: ScopeDescriptor;
+      sources?: string[];
     },
   ): Array<{
     scopeDescriptor: ScopeDescriptor;

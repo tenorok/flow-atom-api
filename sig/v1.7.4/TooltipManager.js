@@ -1,9 +1,10 @@
 // @flow
 /* eslint-disable no-undef */
 
-declare type BootstrapTooltipDelay =
-  | number
-  | { show: number; hide: number }
+declare type BootstrapTooltipDelay = {
+  hide: number;
+  show: number;
+} | number
 
 declare type BootstrapTooltipPlacementStyle =
   | "auto"
@@ -14,8 +15,9 @@ declare type BootstrapTooltipPlacementStyle =
 
 // FIXME: 'this' is set to the tooltip instance in the function.
 // Revisit once flow supports typing 'this' as a parameter.
-declare type BootstrapTooltipPlacementFunction =
-  | ((tooltip: Node, trigger: Node) => BootstrapTooltipPlacementStyle)
+declare interface BootstrapTooltipPlacementFunction {
+  (tooltip: Node, trigger: Node): BootstrapTooltipPlacementStyle
+}
 
 declare type BootstrapTooltipPlacement =
   | BootstrapTooltipPlacementStyle

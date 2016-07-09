@@ -9,13 +9,10 @@ declare class Pane {
   activateItemForURI(uri: string): boolean;
   activateNextItem(): ViewableItem; // FIXME
   activatePreviousItem(): ViewableItem; // FIXME
-  addItem(
-    item: mixed,
-    options?: {
-      index?: number;
-      pending?: boolean;
-    },
-  ): ViewableItem; // FIXME
+  addItem(item: mixed, options?: {
+    index?: number;
+    pending?: boolean;
+  }): ViewableItem; // FIXME
   addItems(items: ViewableItem[], index?: number): ViewableItem[];
   destroy(): void; // FIXME: this might return something other than undefined
   destroyActiveItem(): false;
@@ -37,8 +34,8 @@ declare class Pane {
   observeItems(callback: (item: ViewableItem) => void): EventKit$Disposable;
   onDidActivate(callback: () => void): EventKit$Disposable;
   onDidAddItem(callback: (event :{
-    item: ViewableItem;
     index: number;
+    item: ViewableItem;
   }) => void): EventKit$Disposable;
   onDidChangeActive(callback: (active: boolean) => void): EventKit$Disposable;
   onDidChangeActiveItem(callback: (activeItem: ViewableItem) => void): EventKit$Disposable;
@@ -46,8 +43,8 @@ declare class Pane {
   onDidDestroy(callback: () => void): EventKit$Disposable;
   onDidMoveItem(callback: (event: {
     item: ViewableItem;
-    oldIndex: number;
     newIndex: number;
+    oldIndex: number;
   }) => void): EventKit$Disposable;
   onDidRemoveItem(callback: (event: {
     item: ViewableItem;
@@ -68,19 +65,19 @@ declare class Pane {
   saveItemAs(item: ViewableItem, nextAction?: () => void): void;
   saveItems(): void;
   splitDown(params?: {
-    items?: ViewableItem[];
     copyActiveItem?: boolean;
+    items?: ViewableItem[];
   }): Pane;
   splitLeft(params?: {
-    items?: ViewableItem[];
     copyActiveItem?: boolean;
+    items?: ViewableItem[];
   }): Pane;
   splitRight(params?: {
-    items?: ViewableItem[];
     copyActiveItem?: boolean;
+    items?: ViewableItem[];
   }): Pane;
   splitUp(params?: {
-    items?: ViewableItem[];
     copyActiveItem?: boolean;
+    items?: ViewableItem[];
   }): Pane;
 }

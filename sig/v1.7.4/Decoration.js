@@ -10,49 +10,49 @@ declare type DecorationType =
   | "overlay"
 
 declare interface BlockDecorationProperties {
-  type: "block";
   class: string;
   item: ViewableItem;
   position: "before" | "after";
+  type: "block";
 }
 
 declare interface GutterDecorationProperties {
-  type: "gutter";
   class: string;
   item: ViewableItem;
   onlyEmpty?: boolean;
   onlyNonEmpty?: boolean;
+  type: "gutter";
 }
 
 declare interface HighlightDecorationProperties {
-  type: "highlight";
   class: string;
   item: ViewableItem;
+  type: "highlight";
 }
 
 declare interface LineDecorationProperties {
-  type: "line";
   class: string;
   item: ViewableItem;
-  onlyHead?: boolean;
   onlyEmpty?: boolean;
+  onlyHead?: boolean;
   onlyNonEmpty?: boolean;
+  type: "line";
 }
 
 declare interface LineNumberDecorationProperties {
-  type: "line-number";
   class: string;
   item: ViewableItem;
-  onlyHead?: boolean;
   onlyEmpty?: boolean;
+  onlyHead?: boolean;
   onlyNonEmpty?: boolean;
+  type: "line-number";
 }
 
 declare interface OverlayDecorationProperties {
-  type: "overlay";
   class: string;
   item: ViewableItem;
   position?: "head" | "tail";
+  type: "overlay";
 }
 
 declare type DecorationProperties =
@@ -69,15 +69,15 @@ declare class Decoration {
   getMarker(): TextEditorMarker;
   getProperties(): DecorationProperties; // FIXME
   onDidChangeProperties(callback: (event: {
-    oldProperties: DecorationProperties,
-    newProperties: DecorationProperties,
+    newProperties: DecorationProperties;
+    oldProperties: DecorationProperties;
   }) => void): EventKit$Disposable; // FIXME
   onDidDestroy(callback: () => void): EventKit$Disposable;
   setProperties(newProperties: DecorationProperties): void; // FIXME
 }
 
 declare type RefinedDecoration<T> = Decoration & {
-  getProperties(): DecorationProperties & T,
+  getProperties(): DecorationProperties & T;
 }
 
 /* eslint-disable no-undef */

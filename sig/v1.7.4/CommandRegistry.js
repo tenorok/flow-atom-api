@@ -14,8 +14,8 @@ declare class CommandRegistry {
   findCommands(params: {
     target: Node;
   }): Array<{
-    name: string;
     displayName: string;
+    name: string;
   }>;
   onDidDispatch(callback: EventHandler): void;
   onWillDispatch(callback: EventHandler): void;

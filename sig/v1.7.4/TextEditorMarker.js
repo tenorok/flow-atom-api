@@ -29,67 +29,47 @@ declare class TextEditorMarker {
   isReversed(): boolean;
   isValid(): boolean;
   onDidChange(callback: (event: {
-    oldHeadBufferPosition: TextBuffer$Point;
-    newHeadBufferPosition: TextBuffer$Point;
-    oldTailBufferPosition: TextBuffer$Point;
-    newTailBufferPosition: TextBuffer$Point;
-    oldHeadScreenPosition: TextBuffer$Point;
-    newHeadScreenPosition: TextBuffer$Point;
-    oldTailScreenPosition: TextBuffer$Point;
-    newTailScreenPosition: TextBuffer$Point;
-    wasValid: boolean;
-    isValid: boolean;
     hadTail: boolean;
     hasTail: boolean;
-    oldProperties: {
-      [keys: string]: mixed, // FIXME
-    };
-    newProperties: {
-      [keys: string]: mixed, // FIXME
-    };
+    isValid: boolean;
+    newHeadBufferPosition: TextBuffer$Point;
+    newHeadScreenPosition: TextBuffer$Point;
+    newProperties: { [keys: string]: mixed }; // FIXME
+    newTailBufferPosition: TextBuffer$Point;
+    newTailScreenPosition: TextBuffer$Point;
+    oldHeadBufferPosition: TextBuffer$Point;
+    oldHeadScreenPosition: TextBuffer$Point;
+    oldProperties: { [keys: string]: mixed }; // FIXME
+    oldTailBufferPosition: TextBuffer$Point;
+    oldTailScreenPosition: TextBuffer$Point;
     textChanged: boolean;
+    wasValid: boolean;
   }) => void): EventKit$Disposable;
   onDidDestroy(callback: () => void): EventKit$Disposable;
   plantTail(properties?: { // FIXME: properties seems unused
     [keys: string]: mixed,
   }): void | boolean;
   setBufferRange(
+    properties?: { [keys: string]: mixed },
     range: TextBuffer$Range,
-    properties?: {
-      [keys: string]: mixed,
-    },
   ): void | boolean; // FIXME
-  setHeadBufferPosition(
-    position: TextBuffer$PointLike,
-    properties?: {
-      [keys: string]: mixed,
-    },
-  ): void | boolean;
-  setHeadScreenPosition(
-    position: TextBuffer$PointLike,
-    properties?: {
-      [keys: string]: mixed,
-    },
-  ): void | boolean;
-  setProperties(properties: {
-    [keys: string]: mixed,
+  setHeadBufferPosition(position: TextBuffer$PointLike, properties?: {
+    [keys: string]: mixed
   }): void | boolean;
+  setHeadScreenPosition(position: TextBuffer$PointLike, properties?: {
+    [keys: string]: mixed
+  }): void | boolean;
+  setProperties(properties: { [keys: string]: mixed }): void | boolean;
   setScreenRange(
+    properties?: { [keys: string]: mixed },
     screenRange: TextBuffer$RangeLike,
-    properties?: {
-      [keys: string]: mixed,
-    },
   ): void | boolean;
   setTailBufferPosition(
     bufferPosition: TextBuffer$PointLike,
-    properties?: {
-      [keys: string]: mixed,
-    },
+    properties?: { [keys: string]: mixed },
   ): void | boolean;
   setTailScreenPosition(
+    properties?: { [keys: string]: mixed },
     screenPosition: TextBuffer$PointLike,
-    properties?: {
-      [keys: string]: mixed,
-    },
   ): void | boolean;
 }

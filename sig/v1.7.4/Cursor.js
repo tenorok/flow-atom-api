@@ -25,8 +25,8 @@ declare class Cursor {
   }): TextBuffer$Range; // FIXME
   getCurrentWordPrefix(): string; // FIXME
   getEndOfCurrentWordBufferPosition(options?: {
-    wordRegex: RegExp;
     includeNonWordCharacters: boolean;
+    wordRegex: RegExp;
   }): TextBuffer$Range; // FIXME
   getIndentLevel(): number; // FIXME
   getMarker(): TextEditorMarker;
@@ -49,43 +49,31 @@ declare class Cursor {
   isSurroundedByWhitespace(): boolean;
   isVisible(): boolean; // FIXME
   onDidChangePosition(callback: (event: {
-    oldBufferPosition: TextBuffer$Point;
-    oldScreenPosition: TextBuffer$Point;
+    cursor: Cursor;
     newBufferPosition: TextBuffer$Point;
     newScreenPosition: TextBuffer$Point;
+    oldBufferPosition: TextBuffer$Point;
+    oldScreenPosition: TextBuffer$Point;
     textChanged: boolean;
-    cursor: Cursor;
   }) => void): EventKit$Disposable; // FIXME
   onDidChangeVisibility(callback: (visibility: boolean) => void): EventKit$Disposable;
   onDidDestroy(callback: () => void): EventKit$Disposable;
-  moveDown(
-    rowCount?: number,
-    options?: {
-      moveToEndOfSelection: boolean;
-    }
-  ): void;
-  moveLeft(
-    columnCount?: number,
-    options?: {
-      moveToEndOfSelection: boolean;
-    }
-  ): void;
-  moveRight(
-    columnCount?: number,
-    options?: {
-      moveToEndOfSelection: boolean;
-    }
-  ): void;
+  moveDown(rowCount?: number, options?: {
+    moveToEndOfSelection: boolean;
+  }): void;
+  moveLeft(columnCount?: number, options?: {
+    moveToEndOfSelection: boolean;
+  }): void;
+  moveRight(columnCount?: number, options?: {
+    moveToEndOfSelection: boolean;
+  }): void;
   moveToBeginningOfScreenLine(): void;
   moveToBeginningOfLine(): void;
   moveToBottom(): void;
   moveToTop(): void;
-  moveUp(
-    rowCount?: number,
-    options?: {
-      moveToEndOfSelection: boolean;
-    }
-  ): void;
+  moveUp(rowCount?: number, options?: {
+    moveToEndOfSelection: boolean;
+  }): void;
   moveToBeginningOfNextParagraph(): void;
   moveToBeginningOfNextWord(): void;
   moveToBeginningOfPreviousParagraph(): void;
@@ -99,18 +87,12 @@ declare class Cursor {
   moveToPreviousWordBoundary(): void;
   moveToPreviousSubwordBoundary(): void;
   skipLeadingWhitespace(): void;
-  setBufferPosition(
-    bufferPosition: TextBuffer$PointLike,
-    options?: {
-      autoscroll: boolean;
-    }
-  ): void;
-  setScreenPosition(
-    screenPosition: TextBuffer$PointLike,
-    options?: {
-      autoscroll: boolean;
-    }
-  ): void;
+  setBufferPosition(bufferPosition: TextBuffer$PointLike, options?: {
+    autoscroll: boolean;
+  }): void;
+  setScreenPosition(screenPosition: TextBuffer$PointLike, options?: {
+    autoscroll: boolean;
+  }): void;
   setVisible(): void;
   subwordRegExp(options?: {
     backwards: boolean;

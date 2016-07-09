@@ -2,12 +2,12 @@
 
 declare class BufferedProcess {
   constructor(options: {
-    command: string;
     args?: string[];
-    options?: Object;
-    stdout?: (data: string) => void;
-    stderr?: (data: string) => void;
+    command: string;
     exit?: (code: number) => void;
+    options?: Object;
+    stderr?: (data: string) => void;
+    stdout?: (data: string) => void;
   }): void;
   kill(): void;
   onWillThrowError(callback: (errorObject: {

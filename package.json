@@ -1,5 +1,5 @@
 {
-  "name": "flow-atom-api",
+  "name": "@flow-atom/atom",
   "version": "1.8.0-rev.0",
   "description": "Flow declarations for the Atom API",
   "author": {

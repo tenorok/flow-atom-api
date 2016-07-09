@@ -1,5 +1,5 @@
 [libs]
-sig/v1.7.4
+sig/v1.8.0
 node_modules/@flow-atom/electron/sig/v0.37.8
 node_modules/@flow-atom/event-kit/sig/v2.0.0
 node_modules/@flow-atom/first-mate/sig/v5.1.1

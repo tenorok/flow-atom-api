@@ -26,15 +26,13 @@
     "sig"
   ],
   "dependencies": {
-    "@flow-atom/event-kit": "flow-atom/flow-atom-event-kit",
-    "@flow-atom/first-mate": "flow-atom/flow-atom-first-mate",
-    "@flow-atom/keymap": "flow-atom/flow-atom-keymap",
-    "@flow-atom/oniguruma": "flow-atom/flow-atom-oniguruma",
-    "@flow-atom/pathwatcher": "flow-atom/flow-atom-pathwatcher",
-    "@flow-atom/text-buffer": "flow-atom/flow-atom-text-buffer",
-    "@flow-atom/electron": "flow-atom/flow-electron-api",
-    "flow-json-schema": "freebroccolo/flow-json-schema",
-    "flow-json": "freebroccolo/flow-json",
+    "@flow-atom/electron": "^0.37.8-rev.0",
+    "@flow-atom/event-kit": "^2.0.0-rev.4",
+    "@flow-atom/first-mate": "^5.1.1-rev.1",
+    "@flow-atom/keymap": "^6.3.2-rev.2",
+    "@flow-atom/oniguruma": "^6.1.0-rev.1",
+    "@flow-atom/pathwatcher": "^6.7.0-rev.3",
+    "@flow-atom/text-buffer": "^9.2.2-rev.3",
     "iflow-jquery": "^1.0.32"
   },
   "devDependencies": {

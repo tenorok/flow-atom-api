@@ -2,60 +2,45 @@
   "name": "flow-atom-api",
   "version": "0.0.0",
   "description": "Flow declarations for the Atom API",
-  "files": [
-    "sig"
-  ],
+  "author": {
+    "name": "Darin Morrison",
+    "email": "freebroccolo@users.noreply.github.com",
+    "url": "https://github.com/freebroccolo/"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/flow-atom/flow-atom-api",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flow-atom/flow-atom-api.git"
+    "url": "git://github.com/flow-atom/flow-atom-api.git"
   },
-  "author": "Darin Morrison",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/flow-atom/flow-atom-api/issues"
   },
-  "homepage": "https://github.com/flow-atom/flow-atom-api#readme",
+  "scripts": {
+    "precommit": "npm test",
+    "prepublish": "npm test",
+    "prepush": "npm test",
+    "test": "eslint . & flow & wait"
+  },
+  "files": [
+    "sig"
+  ],
   "dependencies": {
-    "flow-atom-event-kit": "flow-atom/flow-atom-event-kit",
-    "flow-atom-first-mate": "flow-atom/flow-atom-first-mate",
-    "flow-atom-keymap": "flow-atom/flow-atom-keymap",
-    "flow-atom-node": "flow-atom/flow-atom-node",
-    "flow-atom-oniguruma": "flow-atom/flow-atom-oniguruma",
-    "flow-atom-pathwatcher": "flow-atom/flow-atom-pathwatcher",
-    "flow-atom-text-buffer": "flow-atom/flow-atom-text-buffer",
-    "flow-electron-api": "flow-atom/flow-electron-api",
+    "@flow-atom/event-kit": "flow-atom/flow-atom-event-kit",
+    "@flow-atom/first-mate": "flow-atom/flow-atom-first-mate",
+    "@flow-atom/keymap": "flow-atom/flow-atom-keymap",
+    "@flow-atom/oniguruma": "flow-atom/flow-atom-oniguruma",
+    "@flow-atom/pathwatcher": "flow-atom/flow-atom-pathwatcher",
+    "@flow-atom/text-buffer": "flow-atom/flow-atom-text-buffer",
+    "@flow-atom/electron": "flow-atom/flow-electron-api",
     "flow-json-schema": "freebroccolo/flow-json-schema",
     "flow-json": "freebroccolo/flow-json",
     "iflow-jquery": "^1.0.32"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.0",
-    "babel-core": "^6.8.0",
-    "babel-eslint": "^6.0.4",
-    "babel-plugin-syntax-async-functions": "^6.8.0",
-    "babel-plugin-syntax-flow": "^6.8.0",
-    "babel-plugin-syntax-trailing-function-commas": "^6.8.0",
-    "babel-plugin-transform-class-properties": "^6.9.0",
-    "babel-plugin-transform-flow-comments": "^6.8.0",
-    "babel-plugin-transform-regenerator": "^6.9.0",
-    "babel-plugin-transform-runtime": "^6.8.0",
-    "babel-preset-es2015-rollup": "^1.1.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "babelrc-rollup": "^1.0.0",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-babel": "^3.2.0",
-    "eslint-plugin-flow-vars": "^0.4.0",
-    "eslint-plugin-flowtype": "^2.2.7",
-    "eslint-plugin-import": "^1.9.0",
-    "eslint-plugin-jsx-a11y": "^1.2.0",
-    "eslint-plugin-prefer-object-spread": "^1.1.0",
-    "eslint-plugin-react": "^5.1.1",
-    "eslint": "3.0.0",
-    "flow-bin": "^0.27.0",
-    "rollup-plugin-babel": "^2.4.0",
-    "rollup-plugin-commonjs": "^3.0.0",
-    "rollup-plugin-node-resolve": "^1.5.0",
-    "rollup": "^0.33.0",
-    "source-map-support": "^0.4.0"
-  }
+    "babel-eslint": "^6.1.2",
+    "eslint": "^2.13.1",
+    "eslint-config-flow-atom": "^0.0.0",
+    "flow-bin": "^0.28.0",
+    "husky": "^0.11.4"  }
 }

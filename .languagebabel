@@ -1,7 +1,0 @@
-{
-  "babelSourcePath": "src",
-  "babelTranspilePath": "lib",
-  "createTargetDirectories": true,
-  "createTranspiledCode": false,
-  "transpileOnSave": true
-}

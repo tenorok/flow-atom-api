@@ -1,6 +1,5 @@
 // @flow
 
-// @flow
 /* eslint-disable no-undef, no-use-before-define */
 
 declare type JSON$Pointer = {
